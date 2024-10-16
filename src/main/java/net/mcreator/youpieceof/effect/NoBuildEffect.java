@@ -26,7 +26,7 @@ public class NoBuildEffect extends MobEffect {
 
     @Override
     public boolean applyEffectTick(LivingEntity entity, int amplifier) {
-        entity.getAttribute(Attributes.BLOCK_INTERACTION_RANGE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "no_build_effect_modifier"), -999, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        entity.getAttribute(Attributes.BLOCK_INTERACTION_RANGE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "no_build_effect_modifier"), -238, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         return entity instanceof Player && !((Player) entity).isCreative();
     }
 
