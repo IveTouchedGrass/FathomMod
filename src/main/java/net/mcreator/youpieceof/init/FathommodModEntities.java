@@ -25,6 +25,7 @@ import net.minecraft.core.registries.Registries;
 
 import net.mcreator.youpieceof.FathommodMod;
 
+@SuppressWarnings("RedundantTypeArguments")
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class FathommodModEntities {
 	public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(Registries.ENTITY_TYPE, FathommodMod.MODID);
@@ -35,8 +36,9 @@ public class FathommodModEntities {
 	public static final DeferredHolder<EntityType<?>, EntityType<BloodDwellerEntity>> BLOOD_DWELLER = register("blood_dweller", EntityType.Builder.<BloodDwellerEntity>of(BloodDwellerEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 2f));
 	public static final DeferredHolder<EntityType<?>, EntityType<TedEntity>> TED = register("ted", EntityType.Builder.<TedEntity>of(TedEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).sized(1.7f, 4.5f).setTrackingRange(99).setUpdateInterval(1));
 	public static final DeferredHolder<EntityType<?>, EntityType<net.mcreator.youpieceof.entity.ted.ROCK>> ROCK = register("rock", EntityType.Builder.<ROCK>of(ROCK::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(1.f, 1.f));
-	public static final DeferredHolder<EntityType<?>, EntityType<TedSpawner>> TED_SPAWNER = register("ted_spawner", EntityType.Builder.<TedSpawner>of(TedSpawner::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(4.5f, 1.1f));
+	public static final DeferredHolder<EntityType<?>, EntityType<TedSpawner>> TED_SPAWNER = register("ted_spawner", EntityType.Builder.<TedSpawner>of(TedSpawner::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(1.7f, 4.5f));
 
+	@SuppressWarnings("RedundantCast")
 	private static <T extends Entity> DeferredHolder<EntityType<?>, EntityType<T>> register(String registryname, EntityType.Builder<T> entityTypeBuilder) {
 		return REGISTRY.register(registryname, () -> (EntityType<T>) entityTypeBuilder.build(registryname));
 	}

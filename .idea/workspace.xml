@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1dfa89d3-d98e-4dda-bffe-8194546586ac" name="Changes" comment="Minor patch" />
+    <list default="true" id="1dfa89d3-d98e-4dda-bffe-8194546586ac" name="Changes" comment="Minor patch">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/init/FathommodModEntities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/init/FathommodModEntities.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,12 +55,12 @@
     &quot;assignee&quot;: &quot;IveTouchedGrass&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/IveTouchedGrass/FathomMod_1_21_Port.git&quot;,
-    &quot;accountId&quot;: &quot;857eec24-8231-4447-be4a-98c77ffbd61a&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/IveTouchedGrass/FathomMod.git",
+    "accountId": "857eec24-8231-4447-be4a-98c77ffbd61a"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/EventHandler.java" root0="SKIP_INSPECTION" />
   </component>
@@ -90,6 +94,7 @@
     "JavaClassFindUsagesOptions.isMethodsUsages": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.codeium.enabled": "true",
+    "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/User/Desktop/Coding/Minecraft/imma_pull_a_heroshima_because_geckolib_being_dumb/src/main/resources/assets/fathommod/animations",
     "project.structure.last.edited": "Modules",
