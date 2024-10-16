@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/frog_leg",
+  "textures": {
+    "0": "fathommod:block/freg",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

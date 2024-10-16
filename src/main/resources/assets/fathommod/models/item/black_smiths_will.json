@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/the_will_of_smith",
+  "textures": {
+    "0": "fathommod:block/hemer2",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

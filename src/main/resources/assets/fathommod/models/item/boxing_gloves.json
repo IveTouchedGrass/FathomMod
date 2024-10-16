@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/avg_boxing_gloves",
+  "textures": {
+    "0": "fathommod:block/avgboxingtexture",
+    "particle": "fathommod:item/boxinggloves"
+  }
+}

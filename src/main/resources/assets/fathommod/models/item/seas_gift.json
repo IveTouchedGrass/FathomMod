@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/seas_gift",
+  "textures": {
+    "0": "fathommod:block/oaster",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "aaa",
+    "bbb"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:iron_ingot"
+    },
+    "b": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "result": {
+    "id": "fathommod:arrow_sharpener",
+    "count": 1
+  }
+}

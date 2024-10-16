@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/arrow_sharpener",
+  "textures": {
+    "0": "fathommod:block/notknife",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

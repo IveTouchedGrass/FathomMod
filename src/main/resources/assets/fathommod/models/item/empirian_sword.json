@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/empirian_sword",
+  "textures": {
+    "0": "fathommod:block/empirianswordtexture",
+    "particle": "fathommod:item/woodbat"
+  }
+}

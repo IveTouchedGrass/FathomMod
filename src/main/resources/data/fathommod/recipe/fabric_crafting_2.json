@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "  a",
+    "aab",
+    "bb "
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:leather"
+    },
+    "b": {
+      "item": "minecraft:string"
+    }
+  },
+  "result": {
+    "id": "fathommod:fabric",
+    "count": 1
+  }
+}

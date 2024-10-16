@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/paltn_scythe",
+  "textures": {
+    "0": "fathommod:block/paltnscythetexture",
+    "particle": "fathommod:item/paltnscythe"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/chain_handle",
+  "textures": {
+    "0": "fathommod:block/chen",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

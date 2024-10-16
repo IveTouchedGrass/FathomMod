@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/living_torch",
+  "textures": {
+    "0": "fathommod:block/god",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

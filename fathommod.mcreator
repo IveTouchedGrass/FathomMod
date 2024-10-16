@@ -1,0 +1,1466 @@
+{
+  "mod_elements": [
+    {
+      "name": "PALTN",
+      "type": "plant",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "paltn",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/loot_tables/blocks/paltn.json",
+          "src/main/resources/data/fathommod/neoforge/biome_modifier/paltn_biome_modifier.json",
+          "src/main/resources/data/fathommod/worldgen/configured_feature/paltn.json",
+          "src/main/java/net/mcreator/youpieceof/block/PALTNBlock.java",
+          "src/main/resources/assets/fathommod/models/block/paltn.json",
+          "src/main/resources/data/fathommod/worldgen/placed_feature/paltn.json",
+          "src/main/resources/assets/fathommod/models/item/paltn.json",
+          "src/main/resources/assets/fathommod/blockstates/paltn.json"
+        ]
+      },
+      "path": "~/Materials"
+    },
+    {
+      "name": "PaltnScythe",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "paltn_scythe",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/fathommod/models/item/paltn_scythe.json",
+          "src/main/java/net/mcreator/youpieceof/item/PaltnScytheItem.java"
+        ]
+      },
+      "path": "~/Weaponry"
+    },
+    {
+      "name": "CrusifixRightclicked",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "crusifix_rightclicked",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/procedures/CrusifixRightclickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/WeaponProcedures"
+    },
+    {
+      "name": "Crusifix",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "crusifix",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/CrusifixItem.java",
+          "src/main/resources/assets/fathommod/models/item/crusifix.json"
+        ]
+      },
+      "path": "~/Weaponry"
+    },
+    {
+      "name": "Crusifixcrafting",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "crusifixcrafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/recipes/crusifixcrafting.json"
+        ]
+      },
+      "path": "~/CraftingReci-PP"
+    },
+    {
+      "name": "PaltnScytheRightclicked",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "paltn_scythe_rightclicked",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/procedures/PaltnScytheRightclickedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/WeaponProcedures"
+    },
+    {
+      "name": "WoodBat",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "wood_bat",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/WoodBatItem.java",
+          "src/main/resources/assets/fathommod/models/item/wood_bat.json"
+        ]
+      },
+      "path": "~/Weaponry"
+    },
+    {
+      "name": "MetalBat",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "metal_bat",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/fathommod/models/item/metal_bat.json",
+          "src/main/java/net/mcreator/youpieceof/item/MetalBatItem.java"
+        ]
+      },
+      "path": "~/Weaponry"
+    },
+    {
+      "name": "MetalBatCrafting",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "metal_bat_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/recipes/metal_bat_crafting.json"
+        ]
+      },
+      "path": "~/CraftingReci-PP"
+    },
+    {
+      "name": "WoodBatCrafting",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "wood_bat_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/recipes/wood_bat_crafting.json"
+        ]
+      },
+      "path": "~/CraftingReci-PP"
+    },
+    {
+      "name": "HermesCrafting",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hermes_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/recipes/hermes_crafting.json"
+        ]
+      },
+      "path": "~/CraftingReci-PP"
+    },
+    {
+      "name": "FathomMod",
+      "type": "tab",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fathom_mod",
+      "metadata": {
+        "files": []
+      },
+      "path": "~/D R U G S"
+    },
+    {
+      "name": "WhyTho",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "why_tho",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/WhyThoItem.java",
+          "src/main/resources/assets/fathommod/models/item/why_tho.json"
+        ]
+      },
+      "path": "~/D R U G S"
+    },
+    {
+      "name": "KingSimonArmor",
+      "type": "armor",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "king_simon_armor",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/KingSimonArmorItem.java",
+          "src/main/resources/assets/fathommod/models/item/king_simon_armor_helmet.json"
+        ]
+      },
+      "path": "~/D R U G S"
+    },
+    {
+      "name": "Arian",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "arian",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/ArianItem.java",
+          "src/main/resources/assets/fathommod/models/item/arian.json"
+        ]
+      },
+      "path": "~/CRUNCH"
+    },
+    {
+      "name": "ArianPlayerFinishesUsingItem",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "arian_player_finishes_using_item",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/procedures/ArianPlayerFinishesUsingItemProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/crunchy procedures"
+    },
+    {
+      "name": "Axepick",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "axepick",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/AxepickItem.java",
+          "src/main/resources/assets/fathommod/models/item/axepick.json"
+        ]
+      },
+      "path": "~/D R U G S"
+    },
+    {
+      "name": "EmpirianSword",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "empirian_sword",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/EmpirianSwordItem.java",
+          "src/main/resources/assets/fathommod/models/item/empirian_sword.json"
+        ]
+      },
+      "path": "~/Weaponry"
+    },
+    {
+      "name": "PlantOfTheYear",
+      "type": "plant",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "plant_of_the_year",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/fathommod/blockstates/plant_of_the_year.json",
+          "src/main/resources/assets/fathommod/models/item/plant_of_the_year.json",
+          "src/main/java/net/mcreator/youpieceof/block/PlantOfTheYearBlock.java",
+          "src/main/resources/assets/fathommod/models/block/plant_of_the_year.json",
+          "src/main/resources/data/fathommod/loot_tables/blocks/plant_of_the_year.json"
+        ]
+      },
+      "path": "~/D R U G S"
+    },
+    {
+      "name": "Smallroserbush",
+      "type": "plant",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "smallroserbush",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/loot_tables/blocks/smallroserbush.json",
+          "src/main/resources/assets/fathommod/models/item/smallroserbush.json",
+          "src/main/resources/assets/fathommod/models/block/smallroserbush.json",
+          "src/main/resources/assets/fathommod/blockstates/smallroserbush.json",
+          "src/main/java/net/mcreator/youpieceof/block/SmallroserbushBlock.java"
+        ]
+      },
+      "path": "~/D R U G S"
+    },
+    {
+      "name": "BigRoserbush",
+      "type": "plant",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "big_roserbush",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/loot_tables/blocks/big_roserbush.json",
+          "src/main/resources/assets/fathommod/models/block/big_roserbush.json",
+          "src/main/java/net/mcreator/youpieceof/block/BigRoserbushBlock.java",
+          "src/main/resources/assets/fathommod/models/item/big_roserbush.json",
+          "src/main/resources/assets/fathommod/blockstates/big_roserbush.json"
+        ]
+      },
+      "path": "~/D R U G S"
+    },
+    {
+      "name": "PhasingTexas",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "phasing_texas",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/fathommod/models/item/phasing_texas.json",
+          "src/main/java/net/mcreator/youpieceof/item/PhasingTexasItem.java"
+        ]
+      },
+      "path": "~/Weaponry"
+    },
+    {
+      "name": "PhasingTexasLivingEntityIsHitWithTool",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "phasing_texas_living_entity_is_hit_with_tool",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/procedures/PhasingTexasLivingEntityIsHitWithToolProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/WeaponProcedures"
+    },
+    {
+      "name": "BasicSpear",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "basic_spear",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/BasicSpearItem.java",
+          "src/main/resources/assets/fathommod/models/item/basic_spear.json"
+        ]
+      },
+      "path": "~/Weaponry"
+    },
+    {
+      "name": "BasicSpearEntitySwingsItem",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "basic_spear_entity_swings_item",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/procedures/BasicSpearEntitySwingsItemProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/WeaponProcedures"
+    },
+    {
+      "name": "BasicSpearCrafting",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "basic_spear_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/recipes/basic_spear_crafting.json"
+        ]
+      },
+      "path": "~/CraftingReci-PP"
+    },
+    {
+      "name": "Fabric",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fabric",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/FabricItem.java",
+          "src/main/resources/assets/fathommod/models/item/fabric.json"
+        ]
+      },
+      "path": "~/Materials"
+    },
+    {
+      "name": "FabricCrafting",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fabric_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/recipes/fabric_crafting.json"
+        ]
+      },
+      "path": "~/CraftingReci-PP"
+    },
+    {
+      "name": "FabricCrafting2",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fabric_crafting_2",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/recipes/fabric_crafting_2.json"
+        ]
+      },
+      "path": "~/CraftingReci-PP"
+    },
+    {
+      "name": "FabricCrafting3",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "fabric_crafting_3",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/recipes/fabric_crafting_3.json"
+        ]
+      },
+      "path": "~/CraftingReci-PP"
+    },
+    {
+      "name": "BloodGrass",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blood_grass",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/loot_tables/blocks/blood_grass.json",
+          "src/main/resources/assets/fathommod/blockstates/blood_grass.json",
+          "src/main/java/net/mcreator/youpieceof/block/BloodGrassBlock.java",
+          "src/main/resources/assets/fathommod/models/block/blood_grass.json",
+          "src/main/resources/assets/fathommod/models/item/blood_grass.json"
+        ]
+      },
+      "path": "~/Byoming"
+    },
+    {
+      "name": "BloodRiver",
+      "type": "biome",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blood_river",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/worldgen/biome/blood_river.json"
+        ]
+      },
+      "path": "~/Byoming"
+    },
+    {
+      "name": "PhasingTexasCrafting",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "phasing_texas_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/recipes/phasing_texas_crafting.json"
+        ]
+      },
+      "path": "~/CraftingReci-PP"
+    },
+    {
+      "name": "BoxingGloves",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "boxing_gloves",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/BoxingGlovesItem.java",
+          "src/main/resources/assets/fathommod/models/item/boxing_gloves.json"
+        ]
+      },
+      "path": "~/Weaponry"
+    },
+    {
+      "name": "RiotShield",
+      "type": "tool",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "riot_shield",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/fathommod/models/item/riot_shield_0.json",
+          "src/main/java/net/mcreator/youpieceof/item/RiotShieldItem.java",
+          "src/main/resources/assets/fathommod/models/item/riot_shield.json"
+        ]
+      },
+      "path": "~/Weaponry"
+    },
+    {
+      "name": "BoxCrafting",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "box_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/recipes/box_crafting.json"
+        ]
+      },
+      "path": "~/CraftingReci-PP"
+    },
+    {
+      "name": "PaltnScytheCrafting",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "paltn_scythe_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/recipes/paltn_scythe_crafting.json"
+        ]
+      },
+      "path": "~/CraftingReci-PP"
+    },
+    {
+      "name": "RiotShieldCrafting",
+      "type": "recipe",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "riot_shield_crafting",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/fathommod/recipes/riot_shield_crafting.json"
+        ]
+      },
+      "path": "~/CraftingReci-PP"
+    },
+    {
+      "name": "TedSomething",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ted_something",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/procedures/TedSomethingProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/Hey Vsauce your bosses are great or are they"
+    },
+    {
+      "name": "PlayerDisplay",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "player_display",
+      "metadata": {
+        "return_type": "entity",
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/procedures/PlayerDisplayProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/UltraProcedures"
+    },
+    {
+      "name": "BAUSIsNearby",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "baus_is_nearby",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/procedures/BAUSIsNearbyProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/Hey Vsauce your bosses are great or are they"
+    },
+    {
+      "name": "Trinkery",
+      "type": "gui",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "trinkery",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/client/gui/TrinkeryScreen.java",
+          "src/main/java/net/mcreator/youpieceof/world/inventory/TrinkeryMenu.java"
+        ]
+      }
+    },
+    {
+      "name": "TrinketeryOpenOnKeyPressed",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "trinketery_open_on_key_pressed",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/procedures/TrinketeryOpenOnKeyPressedProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "TrinketeryOpen",
+      "type": "keybind",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "trinketery_open",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/network/TrinketeryOpenMessage.java"
+        ]
+      }
+    },
+    {
+      "name": "BloodDweller",
+      "type": "animatedentity",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "blood_dweller",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/entity/BloodDwellerEntity.java",
+          "src/main/java/net/mcreator/youpieceof/entity/model/BloodDwellerModel.java",
+          "src/main/java/net/mcreator/youpieceof/client/renderer/BloodDwellerRenderer.java",
+          "src/main/resources/assets/fathommod/models/item/blood_dweller_spawn_egg.json",
+          "src/main/resources/data/fathommod/neoforge/biome_modifier/blood_dweller_biome_modifier.json"
+        ]
+      },
+      "path": "~/Mobsters"
+    },
+    {
+      "name": "TNTArrow",
+      "type": "projectile",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tnt_arrow",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/entity/TNTArrowEntity.java",
+          "src/main/java/net/mcreator/youpieceof/client/renderer/TNTArrowRenderer.java"
+        ]
+      },
+      "path": "~/Weaponry"
+    },
+    {
+      "name": "TNTArrowItem",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tnt_arrow_item",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/TNTArrowItemItem.java",
+          "src/main/resources/assets/fathommod/models/item/tnt_arrow_item.json"
+        ]
+      },
+      "path": "~/Weaponry"
+    },
+    {
+      "name": "LostOnesBow",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lost_ones_bow",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/LostOnesBowItem.java",
+          "src/main/resources/assets/fathommod/models/item/lost_ones_bow.json"
+        ]
+      },
+      "path": "~/Weaponry"
+    },
+    {
+      "name": "LostOnesBowRangedItemShootsProjectile",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "lost_ones_bow_ranged_item_shoots_projectile",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/procedures/LostOnesBowRangedItemShootsProjectileProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ]
+      },
+      "path": "~/WeaponProcedures"
+    },
+    {
+      "name": "TNTArrowHit",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tnt_arrow_hit",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/procedures/TNTArrowHitProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "immediatesourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/WeaponProcedures"
+    },
+    {
+      "name": "ThrowingKnives",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "throwing_knives",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/fathommod/models/item/throwing_knives.json",
+          "src/main/java/net/mcreator/youpieceof/item/ThrowingKnivesItem.java"
+        ]
+      },
+      "path": "~/Weaponry"
+    },
+    {
+      "name": "ThrowingKnivesEntity",
+      "type": "projectile",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "throwing_knives_entity",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/client/renderer/ThrowingKnivesEntityRenderer.java",
+          "src/main/java/net/mcreator/youpieceof/entity/ThrowingKnivesEntityEntity.java"
+        ]
+      },
+      "path": "~/Weaponry"
+    },
+    {
+      "name": "ThrowingKnivesRangedItemShootsProjectile",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "throwing_knives_ranged_item_shoots_projectile",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/procedures/ThrowingKnivesRangedItemShootsProjectileProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "itemstack",
+            "type": "itemstack"
+          }
+        ]
+      },
+      "path": "~/WeaponProcedures"
+    },
+    {
+      "name": "TNTArrowBok",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tnt_arrow_bok",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/procedures/TNTArrowBokProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "immediatesourceentity",
+            "type": "entity"
+          },
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      },
+      "path": "~/WeaponProcedures"
+    },
+    {
+      "name": "Tester",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "tester",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/procedures/TesterProcedure.java"
+        ],
+        "dependencies": []
+      },
+      "path": "~/WeaponProcedures"
+    },
+    {
+      "name": "IFrameHeaven",
+      "type": "procedure",
+      "compiles": true,
+      "locked_code": true,
+      "registry_name": "i_frame_heaven",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/procedures/IFrameHeavenProcedure.java"
+        ],
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/WeaponProcedures"
+    },
+    {
+      "name": "ArrowSharpener",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "arrow_sharpener",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/ArrowSharpenerItem.java",
+          "src/main/resources/assets/fathommod/models/item/arrow_sharpener.json"
+        ]
+      },
+      "path": "~/Trinkery"
+    },
+    {
+      "name": "AmorPolish",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "amor_polish",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/AmorPolishItem.java",
+          "src/main/resources/assets/fathommod/models/item/amor_polish.json"
+        ]
+      },
+      "path": "~/Trinkery"
+    },
+    {
+      "name": "Balloon",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "balloon",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/fathommod/models/item/balloon.json",
+          "src/main/java/net/mcreator/youpieceof/item/BalloonItem.java"
+        ]
+      },
+      "path": "~/Trinkery"
+    },
+    {
+      "name": "ChainHandle",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "chain_handle",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/ChainHandleItem.java",
+          "src/main/resources/assets/fathommod/models/item/chain_handle.json"
+        ]
+      },
+      "path": "~/Trinkery"
+    },
+    {
+      "name": "DigFaster",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "dig_faster",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/DigFasterItem.java",
+          "src/main/resources/assets/fathommod/models/item/dig_faster.json"
+        ]
+      },
+      "path": "~/Trinkery"
+    },
+    {
+      "name": "FrogLeg",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "frog_leg",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/fathommod/models/item/frog_leg.json",
+          "src/main/java/net/mcreator/youpieceof/item/FrogLegItem.java"
+        ]
+      },
+      "path": "~/Trinkery"
+    },
+    {
+      "name": "FrogSoul",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "frog_soul",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/fathommod/models/item/frog_soul.json",
+          "src/main/java/net/mcreator/youpieceof/item/FrogSoulItem.java"
+        ]
+      },
+      "path": "~/Trinkery"
+    },
+    {
+      "name": "FrogGear",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "frog_gear",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/fathommod/models/item/frog_gear.json",
+          "src/main/java/net/mcreator/youpieceof/item/FrogGearItem.java"
+        ]
+      },
+      "path": "~/Trinkery"
+    },
+    {
+      "name": "HandleExtension",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "handle_extension",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/HandleExtensionItem.java",
+          "src/main/resources/assets/fathommod/models/item/handle_extension.json"
+        ]
+      },
+      "path": "~/Trinkery"
+    },
+    {
+      "name": "Luminance",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "luminance",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/LuminanceItem.java",
+          "src/main/resources/assets/fathommod/models/item/luminance.json"
+        ]
+      },
+      "path": "~/Trinkery"
+    },
+    {
+      "name": "LegRing",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "leg_ring",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/fathommod/models/item/leg_ring.json",
+          "src/main/java/net/mcreator/youpieceof/item/LegRingItem.java"
+        ]
+      },
+      "path": "~/Trinkery"
+    },
+    {
+      "name": "RingOfLife",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ring_of_life",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/fathommod/models/item/ring_of_life.json",
+          "src/main/java/net/mcreator/youpieceof/item/RingOfLifeItem.java"
+        ]
+      },
+      "path": "~/Trinkery"
+    },
+    {
+      "name": "RingOfPower",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ring_of_power",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/RingOfPowerItem.java",
+          "src/main/resources/assets/fathommod/models/item/ring_of_power.json"
+        ]
+      },
+      "path": "~/Trinkery"
+    },
+    {
+      "name": "SeasGift",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "seas_gift",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/SeasGiftItem.java",
+          "src/main/resources/assets/fathommod/models/item/seas_gift.json"
+        ]
+      },
+      "path": "~/Trinkery"
+    },
+    {
+      "name": "BlackSmithsWill",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "black_smiths_will",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/fathommod/models/item/black_smiths_will.json",
+          "src/main/java/net/mcreator/youpieceof/item/BlackSmithsWillItem.java"
+        ]
+      },
+      "path": "~/Trinkery"
+    },
+    {
+      "name": "HermesBoots",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "hermes_boots",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/youpieceof/item/HermesBootsItem.java",
+          "src/main/resources/assets/fathommod/models/item/hermes_boots.json"
+        ]
+      },
+      "path": "~/Trinkery"
+    },
+    {
+      "name": "AchelousBoots",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "achelous_boots",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/fathommod/models/item/achelous_boots.json",
+          "src/main/java/net/mcreator/youpieceof/item/AchelousBootsItem.java"
+        ]
+      },
+      "path": "~/Trinkery"
+    }
+  ],
+  "variable_elements": [
+    {
+      "name": "iwannadie",
+      "type": "logic",
+      "scope": "world",
+      "value": "false"
+    },
+    {
+      "name": "TrinketKeepINV",
+      "type": "itemstack",
+      "scope": "player_persistent",
+      "value": "ItemStack.EMPTY"
+    },
+    {
+      "name": "TrinketKeepINV2",
+      "type": "itemstack",
+      "scope": "player_persistent",
+      "value": "ItemStack.EMPTY"
+    },
+    {
+      "name": "TrinketKeepINV3",
+      "type": "itemstack",
+      "scope": "player_persistent",
+      "value": "ItemStack.EMPTY"
+    },
+    {
+      "name": "TrinketKeepINV4",
+      "type": "itemstack",
+      "scope": "player_persistent",
+      "value": "ItemStack.EMPTY"
+    }
+  ],
+  "sound_elements": [
+    {
+      "name": "pepsiman",
+      "files": [
+        "pepsiman-pepsiman-pepsiman-pepsiman-remix"
+      ],
+      "category": "neutral",
+      "subtitle": "pepsi :3"
+    }
+  ],
+  "tag_elements": {
+    "ITEMS:minecraft:enchantable/durability": [
+      "~CUSTOM:LostOnesBow",
+      "~CUSTOM:Crusifix"
+    ],
+    "ENTITIES:fathommod:boss": [
+      "CUSTOM:TedSpawner",
+      "CUSTOM:Ted"
+    ],
+    "ITEMS:minecraft:pickaxes": [
+      "~CUSTOM:BoxingGloves",
+      "~CUSTOM:BasicSpear",
+      "~CUSTOM:Axepick",
+      "~CUSTOM:PaltnScythe"
+    ],
+    "ITEMS:minecraft:axes": [
+      "~CUSTOM:MetalBat",
+      "~CUSTOM:WoodBat"
+    ],
+    "ITEMS:minecraft:swords": [
+      "~CUSTOM:PhasingTexas",
+      "~CUSTOM:EmpirianSword"
+    ],
+    "ITEMS:minecraft:meat": [
+      "~CUSTOM:SeasGift"
+    ],
+    "ITEMS:fattommod:trinkets": [
+      "CUSTOM:AchelousBoots.boots",
+      "CUSTOM:HermesBoots.boots",
+      "CUSTOM:ArrowSharpener",
+      "CUSTOM:AmorPolish",
+      "CUSTOM:Balloon",
+      "CUSTOM:ChainHandle",
+      "CUSTOM:DigFaster",
+      "CUSTOM:FrogLeg",
+      "CUSTOM:FrogSoul",
+      "CUSTOM:FrogGear",
+      "CUSTOM:HandleExtension",
+      "CUSTOM:Luminance",
+      "CUSTOM:LegRing",
+      "CUSTOM:RingOfLife",
+      "CUSTOM:RingOfPower",
+      "CUSTOM:SeasGift",
+      "CUSTOM:BlackSmithsWill"
+    ],
+    "ITEMS:minecraft:head_armor": [
+      "~CUSTOM:KingSimonArmor.helmet"
+    ],
+    "ENTITIES:fattommod:ted": [
+      "CUSTOM:Ted"
+    ]
+  },
+  "tab_element_order": {},
+  "language_map": {
+    "en_us": {
+      "item.fathommod.empirian_sword": "Empirian\u0027s Sword",
+      "item.fathommod.crusifix": "Crusifix",
+      "subtitles.pepsiman": "pepsi :3",
+      "item.you_piece_of.wood_bat": "Wood Bat",
+      "item.you_piece_of.paltn_scythe": "Paltn Scythe",
+      "item.fathommod.boxing_gloves": "Boxing Gloves",
+      "item.fathommod.arian": "Arian",
+      "item.fathommod.seas_gift": "Sea\u0027s Gift",
+      "item.fathommod.ring_of_life": "Ring of Life",
+      "block.fathommod.blood_grass": "Blood Grass",
+      "item.fathommod.frog_soul": "Frog Soul",
+      "item.fathommod.balloon": "Balloon",
+      "item.you_piece_of.why_tho": "Why Tho",
+      "item.fathommod.lost_ones_bow": "Lost One\u0027s Bow",
+      "item.fathommod.paltn_scythe": "Paltn Scythe",
+      "item.fathommod.axepick": "Axepick",
+      "block.fathommod.big_roserbush": "Big Roser Bush",
+      "item.fathommod.handle_extension": "Handle Extension",
+      "item.fathommod.tnt_arrow_item": "TNT Arrow",
+      "block.fathommod.plant_of_the_year": "Rose Bush with roses",
+      "item.you_piece_of.arian": "Arian",
+      "item.fathommod.phasing_texas": "Phasing Texas",
+      "block.you_piece_of.paltn": "PALTN",
+      "item.you_piece_of.hermes_boots_boots": "Hermes Boots",
+      "item.fathommod.amor_polish": "Amor Polish",
+      "item.fathommod.leg_ring": "Leg Ring",
+      "key.fathommod.trinketery_open": "Trinketery Open",
+      "item.fathommod.why_tho": "Why Tho",
+      "item.fathommod.hermes_boots": "Herme\u0027s Boots",
+      "item.fathommod.chain_handle": "Chain Handle",
+      "item_group.you_piece_of.fathom_mod": "Fathom Mod",
+      "item.fathommod.riot_shield": "Riot Shield",
+      "item_group.fathommod.fathom_mod": "Fathom Mod",
+      "biome.fathommod.blood_river": "Blood River",
+      "item.fathommod.throwing_knives": "Throwing Knives",
+      "item.fathommod.black_smiths_will": "Black Smith\u0027s Will",
+      "item.fathommod.blood_dweller_spawn_egg": "Blood Dweller Spawn Egg",
+      "item.you_piece_of.king_simon_armor_helmet": "King Simon\u0027s Crown",
+      "block.fathommod.paltn": "PALTN",
+      "item.fathommod.king_simon_armor_helmet": "King Simon\u0027s Crown",
+      "item.you_piece_of.empirian_sword": "Empirian\u0027s Sword",
+      "block.fathommod.smallroserbush": "Small Rose Bush",
+      "item.you_piece_of.crusifix": "Crusifix",
+      "item.fathommod.luminance": "Luminance",
+      "item.fathommod.arrow_sharpener": "Arrow Sharpener",
+      "item.fathommod.frog_leg": "Frog Leg",
+      "item.fathommod.ring_of_power": "Ring of Power",
+      "item.fathommod.wood_bat": "Wood Bat",
+      "item.fathommod.dig_faster": "Dig Faster",
+      "item.fathommod.fabric": "Fabric",
+      "entity.fathommod.blood_dweller": "Blood Dweller",
+      "item.fathommod.achelous_boots": "Achelous\u0027 Boots",
+      "item.you_piece_of.metal_bat": "Metal Bat",
+      "item.fathommod.basic_spear": "Basic Spear",
+      "item.fathommod.frog_gear": "Frog Gear",
+      "item.you_piece_of.axepick": "Axepick",
+      "item.fathommod.metal_bat": "Metal Bat"
+    }
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": [
+      {
+        "name": "Weaponry",
+        "children": []
+      },
+      {
+        "name": "WeaponProcedures",
+        "children": []
+      },
+      {
+        "name": "Materials",
+        "children": []
+      },
+      {
+        "name": "Trinkery",
+        "children": []
+      },
+      {
+        "name": "CraftingReci-PP",
+        "children": []
+      },
+      {
+        "name": "Mobsters",
+        "children": []
+      },
+      {
+        "name": "Hey BAUS",
+        "children": []
+      },
+      {
+        "name": "MobsteerProceedureees",
+        "children": []
+      },
+      {
+        "name": "Hey Vsauce your bosses are great or are they",
+        "children": []
+      },
+      {
+        "name": "D R U G S",
+        "children": []
+      },
+      {
+        "name": "Byoming",
+        "children": []
+      },
+      {
+        "name": "CRUNCH",
+        "children": []
+      },
+      {
+        "name": "crunchy procedures",
+        "children": []
+      },
+      {
+        "name": "UltraInstict",
+        "children": []
+      },
+      {
+        "name": "UltraProcedures",
+        "children": []
+      }
+    ]
+  },
+  "workspaceSettings": {
+    "modid": "fathommod",
+    "modName": "Fathom Mod",
+    "version": "1.0.0",
+    "author": "AsusX, MCreator",
+    "websiteURL": "https://mcreator.net",
+    "license": "Academic Free License v3.0",
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [
+      "geckolib"
+    ],
+    "currentGenerator": "neoforge-1.20.6",
+    "credits": "Created using mod maker MCreator - https://mcreator.net/about",
+    "modElementsPackage": "net.mcreator.youpieceof"
+  },
+  "mcreatorVersion": 202400232117
+}

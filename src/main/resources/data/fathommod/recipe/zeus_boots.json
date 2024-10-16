@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "abc"
+  ],
+  "key": {
+    "a": {
+      "item": "fathommod:hermes_boots"
+    },
+    "b": {
+      "item": "fathommod:leg_ring"
+    },
+    "c": {
+      "item": "fathommod:achelous_boots"
+    }
+  },
+  "result": {
+    "id": "fathommod:zeus_boots",
+    "count": 1
+  }
+}

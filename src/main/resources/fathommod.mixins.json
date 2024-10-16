@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.mcreator.youpieceof.mixins",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "MixinDiscard",
+    "MixinElytra"
+  ],
+  "client": [],
+  "server": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

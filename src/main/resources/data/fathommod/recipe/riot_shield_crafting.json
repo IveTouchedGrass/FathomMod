@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "aaa",
+    "bbb",
+    "cbc"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:glass"
+    },
+    "b": {
+      "item": "minecraft:green_dye"
+    },
+    "c": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "id": "fathommod:riot_shield",
+    "count": 1
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/tnt_arrow",
+  "textures": {
+    "22": "fathommod:block/tntarrow",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

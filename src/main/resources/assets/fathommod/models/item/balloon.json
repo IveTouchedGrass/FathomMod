@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/balloon",
+  "textures": {
+    "0": "fathommod:block/balon",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

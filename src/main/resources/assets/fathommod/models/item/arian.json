@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/arian",
+  "textures": {
+    "0": "fathommod:block/ariantexture",
+    "particle": "fathommod:item/arian"
+  }
+}

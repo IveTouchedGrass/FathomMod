@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/basic_spear",
+  "textures": {
+    "0": "fathommod:block/speartemplatenocolor",
+    "particle": "fathommod:item/sper"
+  }
+}

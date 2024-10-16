@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/leg_rings",
+  "textures": {
+    "1": "fathommod:block/nomodelforplayer",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

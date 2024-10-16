@@ -1,0 +1,15 @@
+{
+  "parent": "fathommod:custom/riot_shield",
+  "textures": {
+    "0": "fathommod:block/rioter",
+    "particle": "fathommod:item/arian"
+  },
+  "overrides": [
+    {
+      "predicate": {
+        "blocking": 1
+      },
+      "model": "fathommod:item/riot_shield_0"
+    }
+  ]
+}

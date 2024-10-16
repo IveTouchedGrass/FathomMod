@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/ring_o_life",
+  "textures": {
+    "2": "fathommod:block/ringolife",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

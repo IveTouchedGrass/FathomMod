@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/frogs_soul",
+  "textures": {
+    "1": "fathommod:block/ihatethis",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

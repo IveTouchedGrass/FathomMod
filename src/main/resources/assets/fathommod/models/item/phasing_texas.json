@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/phasing_texas",
+  "textures": {
+    "0": "fathommod:block/phasing_texas",
+    "particle": "fathommod:item/phasingtexas"
+  }
+}

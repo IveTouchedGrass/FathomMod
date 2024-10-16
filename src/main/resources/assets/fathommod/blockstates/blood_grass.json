@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "fathommod:block/blood_grass"
+    },
+    "facing=east": {
+      "model": "fathommod:block/blood_grass",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "fathommod:block/blood_grass",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "fathommod:block/blood_grass",
+      "y": 270
+    }
+  }
+}

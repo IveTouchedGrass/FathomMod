@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/hermes_boots",
+  "textures": {
+    "0": "fathommod:block/hermesboots",
+    "particle": "fathommod:item/hermesbootstexture"
+  }
+}

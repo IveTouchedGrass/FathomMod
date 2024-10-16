@@ -1,0 +1,20 @@
+{
+  "pepsiman": {
+    "subtitle": "subtitles.pepsiman",
+    "sounds": [
+      {
+        "name": "fathommod:pepsiman-pepsiman-pepsiman-pepsiman-remix",
+        "stream": false
+      }
+    ]
+  },
+  "smack": {
+    "subtitle": "subtitles.smack",
+    "sounds": [
+      {
+        "name": "fathommod:ted_smack",
+        "stream": false
+      }
+    ]
+  }
+}

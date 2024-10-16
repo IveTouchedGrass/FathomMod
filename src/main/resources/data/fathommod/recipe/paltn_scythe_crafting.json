@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "aa ",
+    "b a",
+    "c  "
+  ],
+  "key": {
+    "a": {
+      "item": "fathommod:paltn"
+    },
+    "b": {
+      "item": "fathommod:fabric"
+    },
+    "c": {
+      "item": "minecraft:stick"
+    }
+  },
+  "result": {
+    "id": "fathommod:paltn_scythe",
+    "count": 1
+  }
+}

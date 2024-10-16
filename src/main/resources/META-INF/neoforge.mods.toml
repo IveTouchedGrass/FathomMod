@@ -1,0 +1,40 @@
+modLoader="javafml"
+loaderVersion="[2,)"
+license="Academic Free License v3.0"
+
+[[mods]]
+modId="fathommod"
+version="1.0.0.1"
+displayName="Fathom Mod"
+displayURL=""
+credits="Created using mod maker MCreator - https://mcreator.net/about"
+authors="IncredaSlimey"
+description="My version of calamity mod, but made for minecraft"
+
+# Start of user code block mod configuration
+# End of user code block mod configuration
+
+[[dependencies.fathommod]]
+    modId="neoforge"
+    type="required"
+    versionRange="[21.1.12,)"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.fathommod]]
+    modId="minecraft"
+    type="required"
+    versionRange="[1.21.1]"
+    ordering="AFTER"
+    side="BOTH"
+
+[[dependencies.fathommod]]
+    modId="geckolib"
+    type="required"
+    versionRange="[4.6.5,)"
+
+[[mixins]]
+config="fathommod.mixins.json"
+
+# Start of user code block dependencies configuration
+# End of user code block dependencies configuration

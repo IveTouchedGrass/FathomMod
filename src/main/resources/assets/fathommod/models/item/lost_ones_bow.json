@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/lost_ones_bow",
+  "textures": {
+    "1": "fathommod:block/lostonestexture",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

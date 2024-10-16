@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/hangle_extension",
+  "textures": {
+    "0": "fathommod:block/hendel",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

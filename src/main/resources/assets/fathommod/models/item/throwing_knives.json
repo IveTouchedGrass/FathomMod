@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/throwing_knife",
+  "textures": {
+    "0": "fathommod:block/throwingknifetexture",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

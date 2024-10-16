@@ -1,0 +1,13 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "fathommod:block/derd",
+    "up": "fathommod:block/bloodgrasstop",
+    "north": "fathommod:block/blodderd",
+    "east": "fathommod:block/blodderd",
+    "south": "fathommod:block/blodderd",
+    "west": "fathommod:block/blodderd",
+    "particle": "fathommod:block/derd"
+  },
+  "render_type": "solid"
+}

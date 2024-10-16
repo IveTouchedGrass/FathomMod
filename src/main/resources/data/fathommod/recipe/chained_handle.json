@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "aba",
+    "bcb",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:chain"
+    },
+    "b": {
+      "item": "fathommod:handle_extension"
+    },
+    "c": {
+      "item": "minecraft:netherite_ingot"
+    }
+  },
+  "result": {
+    "id": "fathommod:chain_handle",
+    "count": 1
+  }
+}

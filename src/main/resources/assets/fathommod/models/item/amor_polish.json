@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/amor_polish_cow",
+  "textures": {
+    "0": "fathommod:block/amorer",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

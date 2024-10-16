@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "aaa",
+    "bcb",
+    "aaa"
+  ],
+  "key": {
+    "a": {
+      "item": "fathommod:fabric"
+    },
+    "b": {
+      "item": "minecraft:sugar"
+    },
+    "c": {
+      "item": "minecraft:leather_boots"
+    }
+  },
+  "result": {
+    "id": "fathommod:hermes_boots",
+    "count": 1
+  }
+}

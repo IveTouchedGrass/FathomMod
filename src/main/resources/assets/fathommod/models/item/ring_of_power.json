@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/ring_o_power",
+  "textures": {
+    "0": "fathommod:block/ringringring",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

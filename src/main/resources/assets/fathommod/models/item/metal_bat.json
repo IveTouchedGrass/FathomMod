@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/metal_bat_fixed",
+  "textures": {
+    "1": "fathommod:block/metal_bat_texture",
+    "particle": "fathommod:item/metalbat"
+  }
+}

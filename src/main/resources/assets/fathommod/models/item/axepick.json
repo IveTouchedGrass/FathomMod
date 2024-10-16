@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/cursedpickaxe",
+  "textures": {
+    "0": "fathommod:block/cursedpickaxetexture",
+    "particle": "fathommod:item/axepicktexture"
+  }
+}

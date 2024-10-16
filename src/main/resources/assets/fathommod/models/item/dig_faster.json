@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/dig_faster_lol",
+  "textures": {
+    "0": "fathommod:block/pex",
+    "particle": "fathommod:item/fathomtab"
+  }
+}

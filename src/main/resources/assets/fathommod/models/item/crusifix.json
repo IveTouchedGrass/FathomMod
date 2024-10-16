@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/crusifix-model",
+  "textures": {
+    "0": "fathommod:block/crusifix-texture",
+    "particle": "fathommod:item/crusifix"
+  }
+}

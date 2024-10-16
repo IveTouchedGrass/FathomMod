@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "pattern": [
+    "aba",
+    "cdc",
+    "aba"
+  ],
+  "key": {
+    "a": {
+      "item": "minecraft:torch"
+    },
+    "b": {
+      "item": "minecraft:redstone_torch"
+    },
+    "c": {
+      "item": "minecraft:soul_torch"
+    },
+    "d": {
+      "item": "minecraft:wither_skeleton_skull"
+    }
+  },
+  "result": {
+    "id": "fathommod:luminance",
+    "count": 1
+  }
+}

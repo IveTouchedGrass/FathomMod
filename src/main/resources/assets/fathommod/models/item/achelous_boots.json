@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/achelous_boots",
+  "textures": {
+    "0": "fathommod:block/achelous",
+    "particle": "fathommod:item/achelous"
+  }
+}
