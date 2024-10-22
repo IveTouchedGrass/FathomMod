@@ -14,7 +14,12 @@ public class MixinElytra {
 {
         Player instance = (Player) (Object) this;
         return instance.getData(FathommodModVariables.PLAYER_VARIABLES).isGodMode ? false : original;
-}
+    }
+    @Inject(method = "die", at = @At("HEAD"), cancellable = true)
+    public void die(CallbackInfo ci) {
+        Player instance = (Player) (Object) this
+        if (instance.getData(FathommodModVariables.PLAYER_VARIABLES).isGodMode) ci.cancel();
+    }
 }
 
 
