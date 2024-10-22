@@ -242,6 +242,7 @@ public class FathommodModVariables {
 			TrinketKeepINV3 = ItemStack.parseOptional(lookupProvider, nbt.getCompound("TrinketKeepINV3"));
 			TrinketKeepINV4 = ItemStack.parseOptional(lookupProvider, nbt.getCompound("TrinketKeepINV4"));
 			tedEmerge = nbt.getShort("tedEmergeTicks");
+   isGodMode = nbt.getBoolean("isGodMode");
 		}
 
 		public void syncPlayerVariables(Entity entity) {
