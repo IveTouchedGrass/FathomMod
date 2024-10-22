@@ -221,6 +221,7 @@ public class FathommodModVariables {
 		public boolean wingGliding = false;
 		public boolean hasLightItem = false;
 		public short tedEmerge = 50;
+ public boolean isGodMode = false;
 
 		@Override
 		public CompoundTag serializeNBT(HolderLookup.Provider lookupProvider) {
@@ -230,6 +231,7 @@ public class FathommodModVariables {
 			nbt.put("TrinketKeepINV3", TrinketKeepINV3.saveOptional(lookupProvider));
 			nbt.put("TrinketKeepINV4", TrinketKeepINV4.saveOptional(lookupProvider));
 			nbt.putShort("tedEmergeTicks", tedEmerge);
+   nbt.putBoolean("isGodMode", isGodMode);
 			return nbt;
 		}
 
