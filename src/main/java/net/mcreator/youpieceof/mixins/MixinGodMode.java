@@ -13,7 +13,7 @@ public class MixinElytra {
     public boolean hurt(boolean original) 
 {
         Player instance = (Player) (Object) this;
-        return instance.getData(FathommodModVariables.PLAYER_VARIABLES).isGodMode ? false : original
+        return instance.getData(FathommodModVariables.PLAYER_VARIABLES).isGodMode ? false : original;
 }
 }
 
