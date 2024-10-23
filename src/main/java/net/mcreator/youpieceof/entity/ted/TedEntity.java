@@ -88,6 +88,13 @@ public class TedEntity extends Monster implements GeoEntity {
     private static final EntityDataAccessor<Float> SWIPE_BOX_MAX_Y = SynchedEntityData.defineId(TedEntity.class, EntityDataSerializers.FLOAT);
     private static final EntityDataAccessor<Long> SWIPE_BOX_MAX_Z = SynchedEntityData.defineId(TedEntity.class, EntityDataSerializers.LONG);
 
+    private static final EntityDataAccessor<Long> TELEPORT_BOX_MIN_X = SynchedEntityData.defineId(TedEntity.class, EntityDataSerializers.LONG);
+    private static final EntityDataAccessor<Float> TELEPORT_BOX_MIN_Y = SynchedEntityData.defineId(TedEntity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Long> TELEPORT_BOX_MIN_Z = SynchedEntityData.defineId(TedEntity.class, EntityDataSerializers.LONG);
+    private static final EntityDataAccessor<Long> TELEPORT_BOX_MAX_X = SynchedEntityData.defineId(TedEntity.class, EntityDataSerializers.LONG);
+    private static final EntityDataAccessor<Float> TELEPORT_BOX_MAX_Y = SynchedEntityData.defineId(TedEntity.class, EntityDataSerializers.FLOAT);
+    private static final EntityDataAccessor<Long> TELEPORT_BOX_MAX_Z = SynchedEntityData.defineId(TedEntity.class, EntityDataSerializers.LONG);
+
     private static final EntityDataAccessor<Long> INSTA_KILL_BOX_MIN_X = SynchedEntityData.defineId(TedEntity.class, EntityDataSerializers.LONG);
     private static final EntityDataAccessor<Float> INSTA_KILL_BOX_MIN_Y = SynchedEntityData.defineId(TedEntity.class, EntityDataSerializers.FLOAT);
     private static final EntityDataAccessor<Long> INSTA_KILL_BOX_MIN_Z = SynchedEntityData.defineId(TedEntity.class, EntityDataSerializers.LONG);
@@ -630,6 +637,13 @@ public class TedEntity extends Monster implements GeoEntity {
         builder.define(SPAWN_BOX_MAX_X, 0L);
         builder.define(SPAWN_BOX_MAX_Y, 0f);
         builder.define(SPAWN_BOX_MAX_Z, 0L);
+
+        builder.define(TELEPORT_BOX_MIN_X, 0L);
+        builder.define(TELEPORT_BOX_MIN_Y, 0f);
+        builder.define(TELEPORT_BOX_MIN_Z, 0L);
+        builder.define(TELEPORT_BOX_MAX_X, 0L);
+        builder.define(TELEPORT_BOX_MAX_Y, 0f);
+        builder.define(TELEPORT_BOX_MAX_Z, 0L);
     }
 
     public byte attackCooldown() {
