@@ -140,6 +140,8 @@ public class TedEntity extends Monster implements GeoEntity {
         this.entityData.set(SWIPE_BOX_MAX_Z, Math.round(this.swipeAABB.maxZ));
     }
 
+public void updateTeleportAABB()
+
     public TedEntity(EntityType<? extends Monster> p_33002_, Level p_33003_) {
         super(p_33002_, p_33003_);
     }
