@@ -45,7 +45,7 @@ Stacktrace:
 -- MOD fathommod --
 Details:
 	Caused by 0: java.lang.ExceptionInInitializerError
-		at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.FathommodMod.<init>(FathommodMod.java:48) ~[%23191!/:?] {re:classloading}
+		at TRANSFORMER/fathommod@1.0.0.1/net.fathommod.FathommodMod.<init>(FathommodMod.java:48) ~[%23191!/:?] {re:classloading}
 		at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?] {}
 		at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?] {}
 		at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?] {}
@@ -72,8 +72,8 @@ Stacktrace:
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.resources.ResourceLocation.fromNamespaceAndPath(ResourceLocation.java:52) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
 	at TRANSFORMER/neoforge@21.1.12/net.neoforged.neoforge.registries.DeferredRegister.register(DeferredRegister.java:214) ~[neoforge-21.1.12.jar%23190!/:?] {re:classloading}
 	at TRANSFORMER/neoforge@21.1.12/net.neoforged.neoforge.registries.DeferredRegister.register(DeferredRegister.java:199) ~[neoforge-21.1.12.jar%23190!/:?] {re:classloading}
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.init.FathommodModSounds.<clinit>(FathommodModSounds.java:19) ~[%23191!/:?] {re:classloading}
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.FathommodMod.<init>(FathommodMod.java:48) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/init.net.fathommod.FathommodModSounds.<clinit>(FathommodModSounds.java:19) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/net.fathommod.FathommodMod.<init>(FathommodMod.java:48) ~[%23191!/:?] {re:classloading}
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?] {}
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?] {}
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?] {}

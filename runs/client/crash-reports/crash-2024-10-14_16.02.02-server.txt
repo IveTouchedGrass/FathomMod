@@ -5,8 +5,8 @@ Time: 2024-10-14 16:02:02
 Description: Ticking entity
 
 java.lang.NullPointerException: Cannot invoke "net.minecraft.world.entity.ai.attributes.AttributeInstance.removeModifier(net.minecraft.resources.ResourceLocation)" because the return value of "net.minecraft.world.entity.LivingEntity.getAttribute(net.minecraft.core.Holder)" is null
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.init.FathommodModMobEffects.expireEffects(FathommodModMobEffects.java:38) ~[%23191!/:?] {re:classloading}
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.init.FathommodModMobEffects.onEffectRemoved(FathommodModMobEffects.java:47) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/init.net.fathommod.FathommodModMobEffects.expireEffects(FathommodModMobEffects.java:38) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/init.net.fathommod.FathommodModMobEffects.onEffectRemoved(FathommodModMobEffects.java:47) ~[%23191!/:?] {re:classloading}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.SubscribeEventListener.invoke(SubscribeEventListener.java:49) ~[bus-8.0.1.jar%23147!/:?] {}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:350) ~[bus-8.0.1.jar%23147!/:?] {}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:315) ~[bus-8.0.1.jar%23147!/:?] {}
@@ -39,8 +39,8 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Server thread
 Stacktrace:
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.init.FathommodModMobEffects.expireEffects(FathommodModMobEffects.java:38) ~[%23191!/:?] {re:classloading}
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.init.FathommodModMobEffects.onEffectRemoved(FathommodModMobEffects.java:47) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/init.net.fathommod.FathommodModMobEffects.expireEffects(FathommodModMobEffects.java:38) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/init.net.fathommod.FathommodModMobEffects.onEffectRemoved(FathommodModMobEffects.java:47) ~[%23191!/:?] {re:classloading}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.SubscribeEventListener.invoke(SubscribeEventListener.java:49) ~[bus-8.0.1.jar%23147!/:?] {}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:350) ~[bus-8.0.1.jar%23147!/:?] {}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:315) ~[bus-8.0.1.jar%23147!/:?] {}

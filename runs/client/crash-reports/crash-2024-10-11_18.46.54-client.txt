@@ -6,7 +6,7 @@ Description: Initializing game
 
 net.neoforged.fml.ModLoadingException: Loading errors encountered:
 	- Fathom Mod (fathommod) encountered an error while dispatching the net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent event
-	  java.lang.IllegalStateException: Duplicate client extensions registration for net.mcreator.youpieceof.effect.NoBuildEffect@e590941 (old: net.mcreator.youpieceof.effect.MovementStunEffect$1@3891db3a, new: net.mcreator.youpieceof.effect.NoBuildEffect$1@4a778943)
+	  java.lang.IllegalStateException: Duplicate client extensions registration for effect.net.fathommod.NoBuildEffect@e590941 (old: effect.net.fathommod.MovementStunEffect$1@3891db3a, new: effect.net.fathommod.NoBuildEffect$1@4a778943)
 
 	at MC-BOOTSTRAP/fml_loader@4.0.24/net.neoforged.fml.ModContainer.acceptEvent(ModContainer.java:181) ~[loader-4.0.24.jar%23143!/:4.0] {}
 	at MC-BOOTSTRAP/fml_loader@4.0.24/net.neoforged.fml.ModLoader.lambda$postEvent$13(ModLoader.java:358) ~[loader-4.0.24.jar%23143!/:4.0] {}

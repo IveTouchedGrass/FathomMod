@@ -294,7 +294,7 @@
 [20Aug2024 22:31:29.858] [Render thread/DEBUG] [net.minecraftforge.common.ForgeI18n/CORE]: Loading I18N data entries: 6430
 [20Aug2024 22:31:29.899] [Render thread/DEBUG] [net.minecraftforge.fml.ModWorkManager/LOADING]: Using 8 threads for parallel mod-loading
 [20Aug2024 22:31:29.917] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@79aee22a - got cpw.mods.cl.ModuleClassLoader@215a34b4
-[20Aug2024 22:31:29.917] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for net.mcreator.youpieceof.FathommodMod
+[20Aug2024 22:31:29.917] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for net.fathommod.FathommodMod
 [20Aug2024 22:31:29.934] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@79aee22a - got cpw.mods.cl.ModuleClassLoader@215a34b4
 [20Aug2024 22:31:29.935] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLModContainer/LOADING]: Creating FMLModContainer instance for net.minecraftforge.common.ForgeMod
 [20Aug2024 22:31:29.938] [Render thread/DEBUG] [net.minecraftforge.fml.javafmlmod.FMLJavaModLanguageProvider/LOADING]: Loading FMLModContainer from classloader cpw.mods.modlauncher.TransformingClassLoader@79aee22a - got cpw.mods.cl.ModuleClassLoader@215a34b4
@@ -387,33 +387,33 @@ java.lang.IllegalAccessException: class io.netty.util.internal.PlatformDependent
 [20Aug2024 22:31:30.325] [modloading-worker-0/DEBUG] [io.netty.util.internal.PlatformDependent/]: -Dio.netty.noPreferDirect: false
 [20Aug2024 22:31:30.365] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for fathommod
 [20Aug2024 22:31:30.366] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.init.EntityAnimationFactory to FORGE
-[20Aug2024 22:31:30.373] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.init.FathommodModBiomes to FORGE
-[20Aug2024 22:31:30.383] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.init.FathommodModEntities to MOD
-[20Aug2024 22:31:30.390] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.init.FathommodModEntityRenderers to MOD
-[20Aug2024 22:31:30.395] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.init.FathommodModItems to MOD
-[20Aug2024 22:31:30.398] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.init.FathommodModKeyMappings$KeyEventListener to FORGE
-[20Aug2024 22:31:30.405] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.init.FathommodModKeyMappings to MOD
-[20Aug2024 22:31:30.411] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.init.FathommodModModels to MOD
-[20Aug2024 22:31:30.418] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.init.FathommodModScreens to MOD
-[20Aug2024 22:31:30.426] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.init.FathommodModTabs to MOD
+[20Aug2024 22:31:30.373] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing init.net.fathommod.FathommodModBiomes to FORGE
+[20Aug2024 22:31:30.383] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing init.net.fathommod.FathommodModEntities to MOD
+[20Aug2024 22:31:30.390] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing init.net.fathommod.FathommodModEntityRenderers to MOD
+[20Aug2024 22:31:30.395] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing init.net.fathommod.FathommodModItems to MOD
+[20Aug2024 22:31:30.398] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing init.net.fathommod.FathommodModKeyMappings$KeyEventListener to FORGE
+[20Aug2024 22:31:30.405] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing init.net.fathommod.FathommodModKeyMappings to MOD
+[20Aug2024 22:31:30.411] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing init.net.fathommod.FathommodModModels to MOD
+[20Aug2024 22:31:30.418] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing init.net.fathommod.FathommodModScreens to MOD
+[20Aug2024 22:31:30.426] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing init.net.fathommod.FathommodModTabs to MOD
 [20Aug2024 22:31:30.433] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.init.ItemAnimationFactory to FORGE
 [20Aug2024 22:31:30.435] [modloading-worker-0/DEBUG] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Loading Network data for FML net version: FML3
-[20Aug2024 22:31:30.439] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.network.FathommodModVariables$EventBusVariableHandlers to FORGE
-[20Aug2024 22:31:30.455] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.network.FathommodModVariables to MOD
-[20Aug2024 22:31:30.458] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.network.TrinketeryOpenMessage to MOD
+[20Aug2024 22:31:30.439] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing network.net.fathommod.FathommodModVariables$EventBusVariableHandlers to FORGE
+[20Aug2024 22:31:30.455] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing network.net.fathommod.FathommodModVariables to MOD
+[20Aug2024 22:31:30.458] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing network.net.fathommod.TrinketeryOpenMessage to MOD
 [20Aug2024 22:31:30.462] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.procedures.AchelousBootsAreEquipedProcedure to FORGE
 [20Aug2024 22:31:30.467] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.procedures.BasicSpearEntitySwingsItemProcedure to FORGE
-[20Aug2024 22:31:30.472] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.procedures.BAUSIsNearbyProcedure to FORGE
+[20Aug2024 22:31:30.472] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing procedures.net.fathommod.BAUSIsNearbyProcedure to FORGE
 [20Aug2024 22:31:30.477] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.procedures.BoxingGlovesEntitySwingsItemProcedure to FORGE
-[20Aug2024 22:31:30.480] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.procedures.CrusifixRightclickedProcedure to FORGE
+[20Aug2024 22:31:30.480] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing procedures.net.fathommod.CrusifixRightclickedProcedure to FORGE
 [20Aug2024 22:31:30.489] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.procedures.HermesBootsAreEquipedProcedure to FORGE
 [20Aug2024 22:31:30.494] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.procedures.HermesBootsNoFallProcedure to FORGE
-[20Aug2024 22:31:30.504] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.procedures.LostOnesBowRangedItemShootsProjectileProcedure to FORGE
+[20Aug2024 22:31:30.504] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing procedures.net.fathommod.LostOnesBowRangedItemShootsProjectileProcedure to FORGE
 [20Aug2024 22:31:30.508] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file forge-client.toml for forge tracking
 [20Aug2024 22:31:30.508] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.config.ConfigTracker/CONFIG]: Config file forge-server.toml for forge tracking
 [20Aug2024 22:31:30.509] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.ModLoadingContext/]: Attempted to register an empty config for type COMMON on mod forge
-[20Aug2024 22:31:30.510] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.procedures.PaltnScytheRightclickedProcedure to FORGE
-[20Aug2024 22:31:30.514] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.mcreator.youpieceof.procedures.ThrowingKnivesRangedItemShootsProjectileProcedure to FORGE
+[20Aug2024 22:31:30.510] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing procedures.net.fathommod.PaltnScytheRightclickedProcedure to FORGE
+[20Aug2024 22:31:30.514] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing procedures.net.fathommod.ThrowingKnivesRangedItemShootsProjectileProcedure to FORGE
 [20Aug2024 22:31:30.605] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Attempting to inject @EventBusSubscriber classes into the eventbus for forge
 [20Aug2024 22:31:30.606] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.common.ForgeSpawnEggItem$CommonHandler to MOD
 [20Aug2024 22:31:30.611] [modloading-worker-0/DEBUG] [net.minecraftforge.fml.javafmlmod.AutomaticEventSubscriber/LOADING]: Auto-subscribing net.minecraftforge.common.ForgeSpawnEggItem$ColorRegisterHandler to MOD

@@ -9,7 +9,7 @@ software.bernie.geckolib.GeckoLibException: fathommod:animations/ted.animation.j
 	at software.bernie.geckolib.core.animation.AnimationProcessor.buildAnimationQueue(AnimationProcessor.java:45) ~[geckolib-forge-1.20.1-4.4.2_mapped_official_1.20.1.jar:4.4.2] {re:classloading}
 	at software.bernie.geckolib.core.animation.AnimationController.setAnimation(AnimationController.java:338) ~[geckolib-forge-1.20.1-4.4.2_mapped_official_1.20.1.jar:4.4.2] {re:classloading}
 	at software.bernie.geckolib.core.animation.AnimationState.setAndContinue(AnimationState.java:129) ~[geckolib-forge-1.20.1-4.4.2_mapped_official_1.20.1.jar:4.4.2] {re:classloading}
-	at net.mcreator.youpieceof.entity.ted.TedEntity.movementPredicate(TedEntity.java:191) ~[main/:?] {re:classloading}
+	at ted.entity.net.fathommod.TedEntity.movementPredicate(TedEntity.java:191) ~[main/:?] {re:classloading}
 	at software.bernie.geckolib.core.animation.AnimationController.handleAnimationState(AnimationController.java:395) ~[geckolib-forge-1.20.1-4.4.2_mapped_official_1.20.1.jar:4.4.2] {re:classloading}
 	at software.bernie.geckolib.core.animation.AnimationController.process(AnimationController.java:419) ~[geckolib-forge-1.20.1-4.4.2_mapped_official_1.20.1.jar:4.4.2] {re:classloading}
 	at software.bernie.geckolib.core.animation.AnimationProcessor.tickAnimation(AnimationProcessor.java:83) ~[geckolib-forge-1.20.1-4.4.2_mapped_official_1.20.1.jar:4.4.2] {re:classloading}
@@ -54,7 +54,7 @@ Stacktrace:
 	at software.bernie.geckolib.core.animation.AnimationProcessor.buildAnimationQueue(AnimationProcessor.java:45) ~[geckolib-forge-1.20.1-4.4.2_mapped_official_1.20.1.jar%23198!/:4.4.2] {re:classloading}
 	at software.bernie.geckolib.core.animation.AnimationController.setAnimation(AnimationController.java:338) ~[geckolib-forge-1.20.1-4.4.2_mapped_official_1.20.1.jar%23198!/:4.4.2] {re:classloading}
 	at software.bernie.geckolib.core.animation.AnimationState.setAndContinue(AnimationState.java:129) ~[geckolib-forge-1.20.1-4.4.2_mapped_official_1.20.1.jar%23198!/:4.4.2] {re:classloading}
-	at net.mcreator.youpieceof.entity.ted.TedEntity.movementPredicate(TedEntity.java:191) ~[%23196!/:?] {re:classloading}
+	at ted.entity.net.fathommod.TedEntity.movementPredicate(TedEntity.java:191) ~[%23196!/:?] {re:classloading}
 	at software.bernie.geckolib.core.animation.AnimationController.handleAnimationState(AnimationController.java:395) ~[geckolib-forge-1.20.1-4.4.2_mapped_official_1.20.1.jar%23198!/:4.4.2] {re:classloading}
 	at software.bernie.geckolib.core.animation.AnimationController.process(AnimationController.java:419) ~[geckolib-forge-1.20.1-4.4.2_mapped_official_1.20.1.jar%23198!/:4.4.2] {re:classloading}
 	at software.bernie.geckolib.core.animation.AnimationProcessor.tickAnimation(AnimationProcessor.java:83) ~[geckolib-forge-1.20.1-4.4.2_mapped_official_1.20.1.jar%23198!/:4.4.2] {re:classloading}
@@ -69,7 +69,7 @@ Stacktrace:
 	at net.minecraft.client.renderer.GameRenderer.renderLevel(GameRenderer.java:1126) ~[forge-1.20.1-47.2.0_mapped_official_1.20.1.jar%23191!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
 -- Entity being rendered --
 Details:
-	Entity Type: fathommod:ted (net.mcreator.youpieceof.entity.ted.TedEntity)
+	Entity Type: fathommod:ted (ted.entity.net.fathommod.TedEntity)
 	Entity ID: 3
 	Entity Name: You gonna die
 	Entity's Exact location: -48.50, 94.00, -1490.50
@@ -106,7 +106,7 @@ Stacktrace:
 
 -- Renderer details --
 Details:
-	Assigned renderer: net.mcreator.youpieceof.client.renderer.TedRenderer@e2448b4
+	Assigned renderer: renderer.client.net.fathommod.TedRenderer@e2448b4
 	Location: 2.38,-1.62,0.13 - World: (2,-2,0), Section: (at 2,14,0 in 0,-1,0; chunk contains blocks 0,-64,0 to 15,319,15), Region: (0,0; contains chunks 0,0 to 31,31, blocks 0,-64,0 to 511,319,511)
 	Rotation: 133.59375
 	Delta: 0.5399983

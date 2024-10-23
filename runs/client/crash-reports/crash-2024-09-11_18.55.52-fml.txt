@@ -44,10 +44,10 @@ Stacktrace:
 	at TRANSFORMER/neoforge@21.1.12/net.neoforged.neoforge.common.NeoForge.lambda$static$0(NeoForge.java:19) ~[neoforge-21.1.12.jar%23190!/:?] {re:classloading}
 -- MOD fathommod --
 Details:
-	Caused by 0: java.lang.IllegalArgumentException: Method public static void net.mcreator.youpieceof.network.FathommodModPackets.register(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent) has @SubscribeEvent annotation, but takes an argument that is not valid for this busclass net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent
+	Caused by 0: java.lang.IllegalArgumentException: Method public static void network.net.fathommod.FathommodModPackets.register(net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent) has @SubscribeEvent annotation, but takes an argument that is not valid for this busclass net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent
 		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.registerListener(EventBus.java:164) ~[bus-8.0.1.jar%23147!/:?] {}
 		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.register(EventBus.java:91) ~[bus-8.0.1.jar%23147!/:?] {}
-		at TRANSFORMER/fathommod@1.0.0/net.mcreator.youpieceof.FathommodMod.<init>(FathommodMod.java:44) ~[%23191!/:?] {re:classloading}
+		at TRANSFORMER/fathommod@1.0.0/net.fathommod.FathommodMod.<init>(FathommodMod.java:44) ~[%23191!/:?] {re:classloading}
 		at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?] {}
 		at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?] {}
 		at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?] {}
@@ -72,7 +72,7 @@ Stacktrace:
 	at TRANSFORMER/neoforge@21.1.12/net.neoforged.neoforge.common.NeoForge.lambda$static$0(NeoForge.java:19) ~[neoforge-21.1.12.jar%23190!/:?] {re:classloading}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.registerListener(EventBus.java:162) ~[bus-8.0.1.jar%23147!/:?] {}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.register(EventBus.java:91) ~[bus-8.0.1.jar%23147!/:?] {}
-	at TRANSFORMER/fathommod@1.0.0/net.mcreator.youpieceof.FathommodMod.<init>(FathommodMod.java:44) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0/net.fathommod.FathommodMod.<init>(FathommodMod.java:44) ~[%23191!/:?] {re:classloading}
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?] {}
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?] {}
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?] {}

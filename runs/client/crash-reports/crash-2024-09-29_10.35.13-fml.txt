@@ -48,12 +48,12 @@ Details:
 	Failure message: fml.modloadingissue.failedtoloadmod
 	Mod Version: 1.0.0.1
 	Mod Issue URL: NOT PROVIDED
-	Exception message: java.lang.IllegalArgumentException: class net.mcreator.youpieceof.init.FathommodModMobEffects has no @SubscribeEvent methods, but register was called anyway.
+	Exception message: java.lang.IllegalArgumentException: class init.net.fathommod.FathommodModMobEffects has no @SubscribeEvent methods, but register was called anyway.
 The event bus only recognizes listener methods that have the @SubscribeEvent annotation.
 
 Stacktrace:
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.register(EventBus.java:115) ~[bus-8.0.1.jar%23147!/:?] {}
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.FathommodMod.<init>(FathommodMod.java:45) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/net.fathommod.FathommodMod.<init>(FathommodMod.java:45) ~[%23191!/:?] {re:classloading}
 	at java.base/jdk.internal.reflect.DirectConstructorHandleAccessor.newInstance(DirectConstructorHandleAccessor.java:62) ~[?:?] {}
 	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:502) ~[?:?] {}
 	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:486) ~[?:?] {}

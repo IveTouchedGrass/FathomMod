@@ -48,9 +48,9 @@ Details:
 	Failure message: fml.modloadingissue.failedtoloadmod
 	Mod Version: 1.0.0
 	Mod Issue URL: NOT PROVIDED
-	Exception message: java.lang.IllegalArgumentException: Expected @SubscribeEvent method public void net.mcreator.youpieceof.init.FathommodModEntities.ffff(net.neoforged.neoforge.client.event.ClientChatEvent) to be static
+	Exception message: java.lang.IllegalArgumentException: Expected @SubscribeEvent method public void init.net.fathommod.FathommodModEntities.ffff(net.neoforged.neoforge.client.event.ClientChatEvent) to be static
 because register() was called with a class type.
-Either make the method static, or call register() with an instance of class net.mcreator.youpieceof.init.FathommodModEntities.
+Either make the method static, or call register() with an instance of class init.net.fathommod.FathommodModEntities.
 
 Stacktrace:
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.register(EventBus.java:98) ~[bus-8.0.1.jar%23147!/:?] {}

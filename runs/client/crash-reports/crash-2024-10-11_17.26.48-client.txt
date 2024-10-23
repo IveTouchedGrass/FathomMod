@@ -12,9 +12,9 @@ java.lang.IllegalStateException: Missing elements in vertex: UV0
 	at TRANSFORMER/minecraft@1.21.1/com.mojang.blaze3d.vertex.VertexConsumer.addVertex(VertexConsumer.java:156) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.LevelRenderer.renderLineBox(LevelRenderer.java:2323) ~[neoforge-21.1.12.jar%23189!/:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:geckolib.mixins.json:client.LevelRendererMixin from mod geckolib,pl:mixin:A,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.LevelRenderer.renderLineBox(LevelRenderer.java:2246) ~[neoforge-21.1.12.jar%23189!/:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:geckolib.mixins.json:client.LevelRendererMixin from mod geckolib,pl:mixin:A,pl:runtimedistcleaner:A}
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.client.renderer.TedRenderer.renderAABB(TedRenderer.java:40) ~[%23191!/:?] {re:classloading}
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.client.renderer.TedRenderer.render(TedRenderer.java:32) ~[%23191!/:?] {re:classloading}
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.client.renderer.TedRenderer.render(TedRenderer.java:20) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/renderer.client.net.fathommod.TedRenderer.renderAABB(TedRenderer.java:40) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/renderer.client.net.fathommod.TedRenderer.render(TedRenderer.java:32) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/renderer.client.net.fathommod.TedRenderer.render(TedRenderer.java:20) ~[%23191!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.entity.EntityRenderDispatcher.render(EntityRenderDispatcher.java:159) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.LevelRenderer.renderEntity(LevelRenderer.java:1247) ~[neoforge-21.1.12.jar%23189!/:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:geckolib.mixins.json:client.LevelRendererMixin from mod geckolib,pl:mixin:A,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.LevelRenderer.renderLevel(LevelRenderer.java:1030) ~[neoforge-21.1.12.jar%23189!/:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:geckolib.mixins.json:client.LevelRendererMixin from mod geckolib,pl:mixin:A,pl:runtimedistcleaner:A}
@@ -53,16 +53,16 @@ Stacktrace:
 	at TRANSFORMER/minecraft@1.21.1/com.mojang.blaze3d.vertex.VertexConsumer.addVertex(VertexConsumer.java:156) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.LevelRenderer.renderLineBox(LevelRenderer.java:2323) ~[neoforge-21.1.12.jar%23189!/:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:geckolib.mixins.json:client.LevelRendererMixin from mod geckolib,pl:mixin:A,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.LevelRenderer.renderLineBox(LevelRenderer.java:2246) ~[neoforge-21.1.12.jar%23189!/:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:geckolib.mixins.json:client.LevelRendererMixin from mod geckolib,pl:mixin:A,pl:runtimedistcleaner:A}
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.client.renderer.TedRenderer.renderAABB(TedRenderer.java:40) ~[%23191!/:?] {re:classloading}
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.client.renderer.TedRenderer.render(TedRenderer.java:32) ~[%23191!/:?] {re:classloading}
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.client.renderer.TedRenderer.render(TedRenderer.java:20) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/renderer.client.net.fathommod.TedRenderer.renderAABB(TedRenderer.java:40) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/renderer.client.net.fathommod.TedRenderer.render(TedRenderer.java:32) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/renderer.client.net.fathommod.TedRenderer.render(TedRenderer.java:20) ~[%23191!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.entity.EntityRenderDispatcher.render(EntityRenderDispatcher.java:159) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.LevelRenderer.renderEntity(LevelRenderer.java:1247) ~[neoforge-21.1.12.jar%23189!/:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:geckolib.mixins.json:client.LevelRendererMixin from mod geckolib,pl:mixin:A,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.LevelRenderer.renderLevel(LevelRenderer.java:1030) ~[neoforge-21.1.12.jar%23189!/:?] {re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:classloading,pl:accesstransformer:B,pl:mixin:APP:geckolib.mixins.json:client.LevelRendererMixin from mod geckolib,pl:mixin:A,pl:runtimedistcleaner:A}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.GameRenderer.renderLevel(GameRenderer.java:1271) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,pl:runtimedistcleaner:A,re:mixin,pl:accesstransformer:B,pl:runtimedistcleaner:A}
 -- Entity being rendered --
 Details:
-	Entity Type: fathommod:ted (net.mcreator.youpieceof.entity.ted.TedEntity)
+	Entity Type: fathommod:ted (ted.entity.net.fathommod.TedEntity)
 	Entity ID: 3
 	Entity Name: Ted
 	Entity's Exact location: -9901809.37, 64.00, -9134571.29
@@ -98,7 +98,7 @@ Stacktrace:
 
 -- Renderer details --
 Details:
-	Assigned renderer: net.mcreator.youpieceof.client.renderer.TedRenderer@7a3a8ee0
+	Assigned renderer: renderer.client.net.fathommod.TedRenderer@7a3a8ee0
 	Location: 0.13,-2.62,-3.65 - World: (0,-3,-4), Section: (at 0,13,12 in 0,-1,-1; chunk contains blocks 0,-64,-16 to 15,319,-1), Region: (0,-1; contains chunks 0,-32 to 31,-1, blocks 0,-64,-512 to 511,319,-1)
 	Rotation: 25.3125
 	Delta: 0.3199904

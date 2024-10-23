@@ -48,7 +48,7 @@ Details:
 	Failure message: fml.modloadingissue.failedtoloadmod
 	Mod Version: 1.0.0
 	Mod Issue URL: NOT PROVIDED
-	Exception message: java.lang.IllegalArgumentException: class net.mcreator.youpieceof.init.FathommodModEntities has no @SubscribeEvent methods, but register was called anyway.
+	Exception message: java.lang.IllegalArgumentException: class init.net.fathommod.FathommodModEntities has no @SubscribeEvent methods, but register was called anyway.
 The event bus only recognizes listener methods that have the @SubscribeEvent annotation.
 
 Stacktrace:

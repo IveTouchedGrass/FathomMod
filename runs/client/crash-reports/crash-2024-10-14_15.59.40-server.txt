@@ -5,7 +5,7 @@ Time: 2024-10-14 15:59:40
 Description: Ticking entity
 
 java.lang.NullPointerException: Cannot invoke "net.minecraft.world.entity.ai.attributes.AttributeInstance.addOrUpdateTransientModifier(net.minecraft.world.entity.ai.attributes.AttributeModifier)" because the return value of "net.minecraft.world.entity.LivingEntity.getAttribute(net.minecraft.core.Holder)" is null
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.effect.MovementStunEffect.applyEffectTick(MovementStunEffect.java:37) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/effect.net.fathommod.MovementStunEffect.applyEffectTick(MovementStunEffect.java:37) ~[%23191!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.effect.MobEffectInstance.tick(MobEffectInstance.java:223) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.LivingEntity.tickEffects(LivingEntity.java:789) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.LivingEntity.baseTick(LivingEntity.java:493) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
@@ -33,7 +33,7 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Server thread
 Stacktrace:
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.effect.MovementStunEffect.applyEffectTick(MovementStunEffect.java:37) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/effect.net.fathommod.MovementStunEffect.applyEffectTick(MovementStunEffect.java:37) ~[%23191!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.effect.MobEffectInstance.tick(MobEffectInstance.java:223) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.LivingEntity.tickEffects(LivingEntity.java:789) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.LivingEntity.baseTick(LivingEntity.java:493) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}

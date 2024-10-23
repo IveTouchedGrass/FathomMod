@@ -44,7 +44,7 @@ Stacktrace:
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.api.BusBuilder.lambda$markerType$0(BusBuilder.java:25) ~[bus-8.0.1.jar%23147!/:?] {}
 -- MOD fathommod --
 Details:
-	Caused by 0: java.lang.IllegalArgumentException: Method public static void net.mcreator.youpieceof.init.FathommodModEntities.ffff(net.neoforged.neoforge.event.entity.living.LivingDeathEvent) has @SubscribeEvent annotation, but takes an argument that is not valid for this busclass net.neoforged.neoforge.event.entity.living.LivingDeathEvent
+	Caused by 0: java.lang.IllegalArgumentException: Method public static void init.net.fathommod.FathommodModEntities.ffff(net.neoforged.neoforge.event.entity.living.LivingDeathEvent) has @SubscribeEvent annotation, but takes an argument that is not valid for this busclass net.neoforged.neoforge.event.entity.living.LivingDeathEvent
 		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.registerListener(EventBus.java:164) ~[bus-8.0.1.jar%23147!/:?] {}
 		at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.register(EventBus.java:91) ~[bus-8.0.1.jar%23147!/:?] {}
 		at MC-BOOTSTRAP/fml_loader@4.0.24/net.neoforged.fml.javafmlmod.AutomaticEventSubscriber.lambda$inject$4(AutomaticEventSubscriber.java:60) ~[loader-4.0.24.jar%23143!/:4.0] {}

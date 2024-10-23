@@ -5,7 +5,7 @@ Time: 2024-10-13 16:07:02
 Description: Packet handling error
 
 java.lang.NullPointerException: Cannot invoke "net.minecraft.world.entity.Entity.getDisplayName()" because the return value of "net.minecraft.world.damagesource.DamageSource.getEntity()" is null
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.EventHandler.onEntityDeath(EventHandler.java:202) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/net.fathommod.EventHandler.onEntityDeath(EventHandler.java:202) ~[%23191!/:?] {re:classloading}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.SubscribeEventListener.invoke(SubscribeEventListener.java:49) ~[bus-8.0.1.jar%23147!/:?] {}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:350) ~[bus-8.0.1.jar%23147!/:?] {}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:315) ~[bus-8.0.1.jar%23147!/:?] {}
@@ -47,7 +47,7 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Render thread
 Stacktrace:
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.EventHandler.onEntityDeath(EventHandler.java:202) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/net.fathommod.EventHandler.onEntityDeath(EventHandler.java:202) ~[%23191!/:?] {re:classloading}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.SubscribeEventListener.invoke(SubscribeEventListener.java:49) ~[bus-8.0.1.jar%23147!/:?] {}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:350) ~[bus-8.0.1.jar%23147!/:?] {}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:315) ~[bus-8.0.1.jar%23147!/:?] {}

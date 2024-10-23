@@ -5,7 +5,7 @@ Time: 2024-10-12 10:55:46
 Description: Ticking entity
 
 java.lang.NullPointerException: Cannot invoke "net.minecraft.world.entity.LivingEntity.isAlive()" because "this.target" is null
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.entity.goals.FollowSpecificGoal.canUse(FollowSpecificGoal.java:59) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/goals.entity.net.fathommod.FollowSpecificGoal.canUse(FollowSpecificGoal.java:59) ~[%23191!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.ai.goal.WrappedGoal.canUse(WrappedGoal.java:22) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.ai.goal.GoalSelector.tick(GoalSelector.java:92) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.Mob.serverAiStep(Mob.java:777) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
@@ -14,7 +14,7 @@ java.lang.NullPointerException: Cannot invoke "net.minecraft.world.entity.Living
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.monster.Monster.aiStep(Monster.java:44) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.LivingEntity.tick(LivingEntity.java:2431) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.Mob.tick(Mob.java:351) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.entity.ted.TedEntity.tick(TedEntity.java:234) ~[%23191!/:?] {re:mixin,re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/ted.entity.net.fathommod.TedEntity.tick(TedEntity.java:234) ~[%23191!/:?] {re:mixin,re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.level.ServerLevel.tickNonPassenger(ServerLevel.java:774) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.Level.guardEntityTick(Level.java:570) ~[neoforge-21.1.12.jar%23189!/:?] {re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.level.ServerLevel.lambda$tick$2(ServerLevel.java:420) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
@@ -34,7 +34,7 @@ A detailed walkthrough of the error, its code path and all known details is as f
 -- Head --
 Thread: Server thread
 Stacktrace:
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.entity.goals.FollowSpecificGoal.canUse(FollowSpecificGoal.java:59) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/goals.entity.net.fathommod.FollowSpecificGoal.canUse(FollowSpecificGoal.java:59) ~[%23191!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.ai.goal.WrappedGoal.canUse(WrappedGoal.java:22) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.ai.goal.GoalSelector.tick(GoalSelector.java:92) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.Mob.serverAiStep(Mob.java:777) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
@@ -43,14 +43,14 @@ Stacktrace:
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.monster.Monster.aiStep(Monster.java:44) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.LivingEntity.tick(LivingEntity.java:2431) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B,re:mixin,pl:accesstransformer:B}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.Mob.tick(Mob.java:351) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
-	at TRANSFORMER/fathommod@1.0.0.1/net.mcreator.youpieceof.entity.ted.TedEntity.tick(TedEntity.java:234) ~[%23191!/:?] {re:mixin,re:classloading}
+	at TRANSFORMER/fathommod@1.0.0.1/ted.entity.net.fathommod.TedEntity.tick(TedEntity.java:234) ~[%23191!/:?] {re:mixin,re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.level.ServerLevel.tickNonPassenger(ServerLevel.java:774) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.Level.guardEntityTick(Level.java:570) ~[neoforge-21.1.12.jar%23189!/:?] {re:computing_frames,pl:accesstransformer:B,re:classloading,pl:accesstransformer:B}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.server.level.ServerLevel.lambda$tick$2(ServerLevel.java:420) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading,pl:accesstransformer:B}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.level.entity.EntityTickList.forEach(EntityTickList.java:53) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading}
 -- Entity being ticked --
 Details:
-	Entity Type: fathommod:ted (net.mcreator.youpieceof.entity.ted.TedEntity)
+	Entity Type: fathommod:ted (ted.entity.net.fathommod.TedEntity)
 	Entity ID: 5
 	Entity Name: Ted
 	Entity's Exact location: -9901002.74, 62.62, -9136030.71

@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/zeus_boots",
+  "textures": {
+    "0": "fathommod:item/zeus_boots",
+    "particle": "fathommod:item/woodbat"
+  }
+}

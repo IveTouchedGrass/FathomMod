@@ -1,50 +1,50 @@
-/kill @e[type=fathommod:ted]
-/summon fathommod:ted ~ ~ ~10
-/tp @n[type=fathommod:ted]
+/summon minecraft:zombie
+/damage @s 1
+/godmode
+/summon minecraft:zombie
+/godmode
+/godmode Dev false
+/godmode @n
+/godmode
+/kill
+/godmode @s true
+/damage @s 1
+/godmode
+/godmode @s
+/godmode
+/damage @s 1
+/summon fathommod:ted_spawner
+/go
+/godmode
+/kill
 /summon fathommod:ted
-/kill @e[type=fathommod:ted]
+/godmode
 /summon fathommod:ted
-/data merge entity 898dd845-38fa-49a1-a793-215ac9ef4ff6 {NoAI:0b}
+/tick q
+/tick query
 /summon fathommod:ted
-/data merge entity 898dd845-38fa-49a1-a793-215ac9ef4ff6 {NoAI:0b}
-/data merge entity f4ef590e-5447-447d-b847-e818626c9665 {NoAI:0b}
-/data merge entity 898dd845-38fa-49a1-a793-215ac9ef4ff6 {NoAI:0b}
+/godmode
 /summon fathommod:ted
-/attribute 4e30f426-2716-4764-b3c3-cfc5b9b546c8 minecraft:generic.movement_speed base set -69
-/attribute 4e30f426-2716-4764-b3c3-cfc5b9b546c8 minecraft:generic.movement_speed base set 0
-/effect give @s minecraft:resistance infinite 69 true
-/tick rate 15
-/tick rate 10
-/effect give @s minecraft:resistance infinite 5 true
-/effect give @s minecraft:saturation infinite 5 true
-/effect give @s minecraft:resistance infinite 5 true
-/tick rate 10
-/effect give @s minecraft:resistance infinite 5 true
-/effect give @s minecraft:resistance infinite 5
-/tick rate 1
-/tick rate 10
-/tick rate 5
-/summon minecraft:cow
-/attribute 32160ff5-7ce7-4014-ab9e-61d5753e73ca minecraft:generic.movement_speed base set 0
-/tick rate 5
-/tick rate 20
-/tick rate 5
+/tick query
 /summon fathommod:ted
-/give @s minecraft:elytra
-/effect give @s fathommod:movement_stun
-/effect clear
-/effect give @s fathommod:movement_stun
+/tick query
+/godmode
+/kill
+/godmode
+/kill
+/kill @e[type=!minecraft:villager]
+/godmode
+/kill @e[type=!minecraft:villager]
+/kill Dev
+/kill @e[type=!minecraft:villager]
+/godmode
+/kill @e[type=!minecraft:villager]
+/godmode
+/kill @s
+/kill @e[type=!minecraft:villager]
+/godmode
+/kill @e[type=!minecraft:villager]
+/godmode @e[limit=1]
 /summon fathommod:ted_spawner
-/kill @e[type=fathommod:ted_spawner]
-/summon fathommod:ted_spawner
-/tick rate 2
-/summon fathommod:ted_spawner
-/tick rate 2
-/summon fathommod:ted_spawner
-/tick rate 2
-/summon fathommod:ted_spawner
-/tick rate 2
-/summon fathommod:ted_spawner
-/tick rate 2
-/tick rate 20
+/godmode
 /summon fathommod:ted_spawner

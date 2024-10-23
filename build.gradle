@@ -26,6 +26,16 @@ runs {
 
 repositories {
     maven {
+        // jei
+        name = "Jared's maven"
+        url = "https://maven.blamejared.com/"
+    }
+    maven {
+        // jei too
+        name = "ModMaven"
+        url = "https://modmaven.dev"
+    }
+    maven {
         name = 'GeckoLib'
         url 'https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/'
         content {
@@ -37,10 +47,13 @@ repositories {
 dependencies {
     implementation 'net.neoforged:neoforge:21.1.12'
     implementation "software.bernie.geckolib:geckolib-neoforge-${minecraft_version}:${geckolib_version}"
+
+    // compile against the JEI API but do not include it at runtime
+    compileOnly("mezz.jei:jei-${jei_mc_version}-neoforge-api:${jei_version}")
+    // at runtime, use the full JEI jar for NeoForge
+    runtimeOnly("mezz.jei:jei-${jei_mc_version}-neoforge:${jei_version}")
 }
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
-
-apply from: 'mcreator.gradle'

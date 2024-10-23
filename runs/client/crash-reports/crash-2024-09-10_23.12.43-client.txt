@@ -7,8 +7,8 @@ Description: Ticking entity
 java.lang.IllegalArgumentException: Modifier is already applied on this attribute!
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.ai.attributes.AttributeInstance.addModifier(AttributeInstance.java:76) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.ai.attributes.AttributeInstance.addTransientModifier(AttributeInstance.java:92) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading}
-	at TRANSFORMER/fathommod@1.0.0/net.mcreator.youpieceof.EventHandler.jumpHeightHandler(EventHandler.java:353) ~[%23191!/:?] {re:classloading}
-	at TRANSFORMER/fathommod@1.0.0/net.mcreator.youpieceof.EventHandler.onPlayerTick(EventHandler.java:96) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0/net.fathommod.EventHandler.jumpHeightHandler(EventHandler.java:353) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0/net.fathommod.EventHandler.onPlayerTick(EventHandler.java:96) ~[%23191!/:?] {re:classloading}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:350) ~[bus-8.0.1.jar%23147!/:?] {}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:315) ~[bus-8.0.1.jar%23147!/:?] {}
 	at TRANSFORMER/neoforge@21.1.12/net.neoforged.neoforge.event.EventHooks.firePlayerTickPre(EventHooks.java:953) ~[neoforge-21.1.12.jar%23190!/:?] {re:classloading}
@@ -49,8 +49,8 @@ Thread: Render thread
 Stacktrace:
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.ai.attributes.AttributeInstance.addModifier(AttributeInstance.java:76) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading}
 	at TRANSFORMER/minecraft@1.21.1/net.minecraft.world.entity.ai.attributes.AttributeInstance.addTransientModifier(AttributeInstance.java:92) ~[neoforge-21.1.12.jar%23189!/:?] {re:classloading}
-	at TRANSFORMER/fathommod@1.0.0/net.mcreator.youpieceof.EventHandler.jumpHeightHandler(EventHandler.java:353) ~[%23191!/:?] {re:classloading}
-	at TRANSFORMER/fathommod@1.0.0/net.mcreator.youpieceof.EventHandler.onPlayerTick(EventHandler.java:96) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0/net.fathommod.EventHandler.jumpHeightHandler(EventHandler.java:353) ~[%23191!/:?] {re:classloading}
+	at TRANSFORMER/fathommod@1.0.0/net.fathommod.EventHandler.onPlayerTick(EventHandler.java:96) ~[%23191!/:?] {re:classloading}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:350) ~[bus-8.0.1.jar%23147!/:?] {}
 	at MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:315) ~[bus-8.0.1.jar%23147!/:?] {}
 	at TRANSFORMER/neoforge@21.1.12/net.neoforged.neoforge.event.EventHooks.firePlayerTickPre(EventHooks.java:953) ~[neoforge-21.1.12.jar%23190!/:?] {re:classloading}
