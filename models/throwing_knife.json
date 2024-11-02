@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "Mcreator stuff:throwingknifetexture",
-		"particle": "Mcreator stuff:throwingknifetexture"
+		"0": "throwingknifetexture",
+		"particle": "throwingknifetexture"
 	},
 	"elements": [
 		{

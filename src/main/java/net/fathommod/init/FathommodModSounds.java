@@ -14,7 +14,7 @@ import net.minecraft.core.registries.Registries;
 import net.fathommod.FathommodMod;
 
 public class FathommodModSounds {
-	public static final DeferredRegister<SoundEvent> REGISTRY = DeferredRegister.create(Registries.SOUND_EVENT, FathommodMod.MODID);
+	public static final DeferredRegister<SoundEvent> REGISTRY = DeferredRegister.create(Registries.SOUND_EVENT, FathommodMod.MOD_ID);
 	public static final DeferredHolder<SoundEvent, SoundEvent> PEPSIMAN = REGISTRY.register("pepsiman", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("fathommod", "pepsiman")));
 	public static final DeferredHolder<SoundEvent, SoundEvent> SMACK = REGISTRY.register("smack", () -> SoundEvent.createVariableRangeEvent(ResourceLocation.fromNamespaceAndPath("fathommod", "smack")));
 

@@ -15,6 +15,6 @@ import net.fathommod.world.inventory.TrinkeryMenu;
 import net.fathommod.FathommodMod;
 
 public class FathommodModMenus {
-	public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(Registries.MENU, FathommodMod.MODID);
+	public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(Registries.MENU, FathommodMod.MOD_ID);
 	public static final DeferredHolder<MenuType<?>, MenuType<TrinkeryMenu>> TRINKERY = REGISTRY.register("trinkery", () -> IMenuTypeExtension.create(TrinkeryMenu::new));
 }

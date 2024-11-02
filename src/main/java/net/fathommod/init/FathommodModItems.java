@@ -21,7 +21,7 @@ import net.minecraft.client.renderer.item.ItemProperties;
 import net.fathommod.FathommodMod;
 
 public class FathommodModItems {
-	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(BuiltInRegistries.ITEM, FathommodMod.MODID);
+	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(BuiltInRegistries.ITEM, FathommodMod.MOD_ID);
 	public static final DeferredHolder<Item, Item> PALTN = block(FathommodModBlocks.PALTN);
 	public static final DeferredHolder<Item, Item> PALTN_SCYTHE = REGISTRY.register("paltn_scythe", PaltnScytheItem::new);
 	public static final DeferredHolder<Item, Item> CRUSIFIX = REGISTRY.register("crusifix", CrusifixItem::new);
@@ -62,6 +62,7 @@ public class FathommodModItems {
 	public static final DeferredHolder<Item, Item> ACHELOUS_BOOTS = REGISTRY.register("achelous_boots", AchelousBootsItem::new);
 	public static final DeferredHolder<Item, Item> ZEUS_BOOTS = REGISTRY.register("zeus_boots", net.fathommod.item.ZeusBootsItem::new);
 	public static final DeferredHolder<Item, Item> THANKS_SLIMEYS_DYSLEXIA = REGISTRY.register("amor_polish", AmorPolishItem::new);
+	public static final DeferredHolder<Item, Item> TED_CLAWS = REGISTRY.register("ted_claws", TedClawsItem::new);
 
 	// Start of user code block custom items
 	// End of user code block custom items

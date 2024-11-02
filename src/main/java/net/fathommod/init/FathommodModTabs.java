@@ -20,7 +20,7 @@ import net.fathommod.FathommodMod;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class FathommodModTabs {
-	public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, FathommodMod.MODID);
+	public static final DeferredRegister<CreativeModeTab> REGISTRY = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, FathommodMod.MOD_ID);
 	public static final DeferredHolder<CreativeModeTab, CreativeModeTab> FATHOM_MOD = REGISTRY.register("fathom_mod",
 			() -> CreativeModeTab.builder().title(Component.translatable("item_group.fathommod.fathom_mod")).icon(() -> new ItemStack(FathommodModItems.WHY_THO.get())).displayItems((parameters, tabData) -> {
 				tabData.accept(FathommodModBlocks.PALTN.get().asItem());
@@ -58,6 +58,7 @@ public class FathommodModTabs {
 				tabData.accept(FathommodModItems.HERMES_BOOTS.get());
 				tabData.accept(FathommodModItems.ACHELOUS_BOOTS.get());
 				tabData.accept(FathommodModItems.ZEUS_BOOTS.get());
+				tabData.accept(FathommodModItems.TED_CLAWS.get());
 			}).withSearchBar().build());
 
 	@SubscribeEvent

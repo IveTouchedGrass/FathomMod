@@ -17,8 +17,8 @@ public class Trinkets {
     public static final Item UNBREAKABILITY = FathommodModItems.BLACK_SMITHS_WILL.get();
     public static final Item LEG_RING = FathommodModItems.LEG_RING.get();
     public static final Item BALLOON = FathommodModItems.BALLOON.get();
-    public static final Item L_GAMBLE = Items.BARRIER;
-    public static final Item L_RING = FathommodModItems.RING_OF_LIFE.get();
+    public static final Item LIFES_GAMBLE = Items.BARRIER;
+    public static final Item LIFES_RING = FathommodModItems.RING_OF_LIFE.get();
     public static final Item CHAINED_HANDLE = FathommodModItems.CHAIN_HANDLE.get();
     public static final Item HANDLE_EXTENSION = FathommodModItems.HANDLE_EXTENSION.get();
     public static final Item DIG_FASTER = FathommodModItems.DIG_FASTER.get();
@@ -39,8 +39,8 @@ public class Trinkets {
             UNBREAKABILITY,
             LEG_RING,
             BALLOON,
-            L_GAMBLE,
-            L_RING,
+            LIFES_GAMBLE,
+            LIFES_RING,
             CHAINED_HANDLE,
             HANDLE_EXTENSION,
             DIG_FASTER,

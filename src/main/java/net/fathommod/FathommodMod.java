@@ -33,7 +33,6 @@ import java.util.ArrayList;
 @Mod("fathommod")
 public class FathommodMod {
 	public static final Logger LOGGER = LogManager.getLogger(FathommodMod.class);
-	public static final String MODID = "fathommod";
 	public static final String MOD_ID = "fathommod";
 
 	public FathommodMod(IEventBus modEventBus) {
@@ -54,6 +53,7 @@ public class FathommodMod {
 		FathommodModEntities.REGISTRY.register(modEventBus);
 		FathommodModTabs.REGISTRY.register(modEventBus);
 		FathommodModVariables.ATTACHMENT_TYPES.register(modEventBus);
+		FathommodModAttachments.ATTACHMENT_TYPES.register(modEventBus);
 
 		FathommodModMenus.REGISTRY.register(modEventBus);
 
@@ -77,7 +77,7 @@ public class FathommodMod {
 
 	@SuppressWarnings({"rawtypes", "unchecked"})
 	private void registerNetworking(final RegisterPayloadHandlersEvent event) {
-		final PayloadRegistrar registrar = event.registrar(MODID);
+		final PayloadRegistrar registrar = event.registrar(MOD_ID);
 		MESSAGES.forEach((id, networkMessage) -> registrar.playBidirectional(id, ((NetworkMessage) networkMessage).reader(), ((NetworkMessage) networkMessage).handler()));
 		networkingRegistered = true;
 	}

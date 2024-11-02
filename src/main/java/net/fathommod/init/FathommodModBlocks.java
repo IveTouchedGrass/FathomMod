@@ -17,7 +17,7 @@ import net.fathommod.block.BigRoserbushBlock;
 import net.fathommod.FathommodMod;
 
 public class FathommodModBlocks {
-	public static final DeferredRegister.Blocks REGISTRY = DeferredRegister.createBlocks(FathommodMod.MODID);
+	public static final DeferredRegister.Blocks REGISTRY = DeferredRegister.createBlocks(FathommodMod.MOD_ID);
 	public static final DeferredHolder<Block, Block> PALTN = REGISTRY.register("paltn", PALTNBlock::new);
 	public static final DeferredHolder<Block, Block> PLANT_OF_THE_YEAR = REGISTRY.register("plant_of_the_year", PlantOfTheYearBlock::new);
 	public static final DeferredHolder<Block, Block> SMALLROSERBUSH = REGISTRY.register("smallroserbush", SmallroserbushBlock::new);

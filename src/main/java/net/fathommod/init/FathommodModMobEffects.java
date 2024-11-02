@@ -1,8 +1,7 @@
 package net.fathommod.init;
 
-import net.fathommod.Config;
-import net.fathommod.DevUtils;
 import net.fathommod.FathommodMod;
+import net.fathommod.effect.ComboHitEffect;
 import net.fathommod.effect.MovementStunEffect;
 import net.fathommod.effect.NoBuildEffect;
 import net.minecraft.core.registries.Registries;
@@ -22,14 +21,13 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 @EventBusSubscriber
 public class FathommodModMobEffects {
-    public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(Registries.MOB_EFFECT, FathommodMod.MODID);
+    public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(Registries.MOB_EFFECT, FathommodMod.MOD_ID);
     public static final DeferredHolder<MobEffect, MobEffect> ZERO_BUILD = MOB_EFFECTS.register("zero_build", () -> new NoBuildEffect(MobEffectCategory.NEUTRAL, 0x000000));
     public static final DeferredHolder<MobEffect, MobEffect> MOVEMENT_STUN = MOB_EFFECTS.register("movement_stun", () -> new MovementStunEffect(MobEffectCategory.HARMFUL, 0x000000));
+    public static final DeferredHolder<MobEffect, MobEffect> COMBO_HIT = MOB_EFFECTS.register("combo_hit", () -> new ComboHitEffect(MobEffectCategory.HARMFUL, 0x000000));
 
+    @SuppressWarnings("DataFlowIssue")
     public static void expireEffects(MobEffectInstance effect, LivingEntity entity) {
-        if (Config.isDevelopment) {
-            DevUtils.executeCommandAs(entity, "say Expired: " + effect.getEffect());
-        }
         if (effect.is(FathommodModMobEffects.ZERO_BUILD))
             entity.getAttribute(Attributes.BLOCK_INTERACTION_RANGE).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "no_build_effect_modifier"));
         else if (effect.is(FathommodModMobEffects.MOVEMENT_STUN)) {
@@ -38,6 +36,9 @@ public class FathommodModMobEffects {
             entity.getAttribute(NeoForgeMod.SWIM_SPEED).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "movement_stun_effect_modifier_swim"));
             if (entity instanceof Player)
                 entity.getAttribute(NeoForgeMod.CREATIVE_FLIGHT).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "movement_stun_effect_modifier_fly"));
+        } else if (effect.is(FathommodModMobEffects.COMBO_HIT)) {
+            entity.setData(FathommodModAttachments.COMBO_HIT_SOURCE.get(), "");
+            entity.setData(FathommodModAttachments.COMBO_HIT_COUNT, 2);
         }
     }
 
