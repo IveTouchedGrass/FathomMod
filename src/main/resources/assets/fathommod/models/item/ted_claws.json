@@ -1,0 +1,6 @@
+{
+  "parent": "fathommod:custom/ted_claw",
+  "textures": {
+    "0": "fathommod:item/teddy"
+  }
+}

@@ -1,7 +1,9 @@
 package net.fathommod;
 
 import net.fathommod.entity.ted.TedEntity;
+import net.fathommod.init.FathommodModAttachments;
 import net.fathommod.init.FathommodModItems;
+import net.fathommod.init.FathommodModMobEffects;
 import net.fathommod.network.DoubleJumpMessage;
 import net.fathommod.network.FathommodModVariables;
 import net.minecraft.client.Minecraft;
@@ -13,7 +15,9 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffect;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
@@ -43,6 +47,7 @@ import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.Objects;
+import java.util.UUID;
 
 @SuppressWarnings("DataFlowIssue")
 @EventBusSubscriber(modid = FathommodMod.MOD_ID)
@@ -107,7 +112,7 @@ public class EventHandler {
     public static void onEffectAdded(MobEffectEvent.Applicable event) {
         MobEffect effect = event.getEffectInstance().getEffect().value();
         if (event.getEntity() instanceof TedEntity)
-            event.setResult(effect.isBeneficial() ? MobEffectEvent.Applicable.Result.APPLY : MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
+            event.setResult(effect.isBeneficial() || effect.getClass().getName().contains("ComboHitEffect") ? MobEffectEvent.Applicable.Result.APPLY : MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
     }
 
     @SubscribeEvent
@@ -275,8 +280,15 @@ public class EventHandler {
         }
         if (source.getEntity() instanceof LivingEntity && DevUtils.hasTrinket((LivingEntity) source.getEntity(), Trinkets.RING_OF_POWER))
             event.setNewDamage(event.getNewDamage() + 1);
-        if (DevUtils.hasTrinket(entity, Items.STRIPPED_ACACIA_LOG))
+        if (DevUtils.hasTrinket(entity, Trinkets.LIFES_GAMBLE))
             event.setNewDamage(event.getNewDamage() * 2);
+        if (sourceentity instanceof LivingEntity livingEntity && livingEntity.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.TED_CLAWS.get() && !source.is(ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "ted_weapon_combo")))) {
+            entity.setData(FathommodModAttachments.COMBO_HIT_SOURCE, livingEntity.getUUID().toString());
+            entity.setData(FathommodModAttachments.COMBO_HIT_COUNT, 2);
+            entity.addEffect(new MobEffectInstance(FathommodModMobEffects.COMBO_HIT, (entity.invulnerableDuration), Math.round(event.getNewDamage() * 5), false, false));
+//            FathommodMod.queueServerWork(entity.invulnerableTime + 1, () -> entity.hurt(new DamageSource(entity.level().holderOrThrow(DamageTypes.PLAYER_ATTACK), ((ServerLevel) entity.level()).getEntity(UUID.fromString(entity.getData(FathommodModAttachments.COMBO_HIT_SOURCE)))), event.getNewDamage()));
+//            FathommodMod.queueServerWork((entity.invulnerableTime * 2) + 1, () -> entity.hurt(new DamageSource(entity.level().holderOrThrow(DamageTypes.PLAYER_ATTACK), ((ServerLevel) entity.level()).getEntity(UUID.fromString(entity.getData(FathommodModAttachments.COMBO_HIT_SOURCE)))), event.getNewDamage()));
+        }
     }
 
     public static boolean arrowSharpenerHandler(DamageSource source) {
@@ -319,7 +331,7 @@ public class EventHandler {
     }
 
     private static void lifesGambleAttributeHandler(LivingEntity entity) {
-        if (DevUtils.hasTrinket(entity, Trinkets.L_GAMBLE)) {
+        if (DevUtils.hasTrinket(entity, Trinkets.LIFES_GAMBLE)) {
             if (!(entity.getAttributes().hasModifier(Attributes.MAX_HEALTH, ResourceLocation.parse("fathommod:test3")))) {
                 entity.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:test3"), 20, AttributeModifier.Operation.ADD_VALUE));
             }
@@ -329,14 +341,14 @@ public class EventHandler {
     }
 
     private static void ringOfLifeHealing(LivingEntity entity) {
-        if (entity.getData(FathommodModVariables.PLAYER_VARIABLES).ringOfLifeRegenCooldown <= 0 && DevUtils.hasTrinket(entity, Trinkets.L_RING)) {
+        if (entity.getData(FathommodModVariables.PLAYER_VARIABLES).ringOfLifeRegenCooldown <= 0 && DevUtils.hasTrinket(entity, Trinkets.LIFES_RING)) {
             entity.heal(1F);
             {
                 FathommodModVariables.PlayerVariables vars = entity.getData(FathommodModVariables.PLAYER_VARIABLES);
                 vars.ringOfLifeRegenCooldown = 60;
                 vars.syncPlayerVariables(entity);
             }
-        } else if (DevUtils.hasTrinket(entity, Trinkets.L_RING)) {
+        } else if (DevUtils.hasTrinket(entity, Trinkets.LIFES_RING)) {
             FathommodModVariables.PlayerVariables vars = entity.getData(FathommodModVariables.PLAYER_VARIABLES);
             vars.ringOfLifeRegenCooldown -= 1;
             vars.syncPlayerVariables(entity);

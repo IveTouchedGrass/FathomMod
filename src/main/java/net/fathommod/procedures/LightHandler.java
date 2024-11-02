@@ -12,7 +12,7 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 
-@EventBusSubscriber(modid = FathommodMod.MODID)
+@EventBusSubscriber(modid = FathommodMod.MOD_ID)
 public class LightHandler {
 
     @SubscribeEvent

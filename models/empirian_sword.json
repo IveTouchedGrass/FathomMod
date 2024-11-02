@@ -2,8 +2,8 @@
 	"credit": "Made with Blockbench",
 	"texture_size": [64, 64],
 	"textures": {
-		"0": "Mcreator stuff:empirianswordtexture",
-		"particle": "Mcreator stuff:empirianswordtexture"
+		"0": "empirianswordtexture",
+		"particle": "empirianswordtexture"
 	},
 	"elements": [
 		{

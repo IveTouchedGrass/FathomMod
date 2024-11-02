@@ -4,107 +4,103 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1dfa89d3-d98e-4dda-bffe-8194546586ac" name="Changes" comment="Adjusted hitbox of Ted's spawner to match Ted's hitbox">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModCommands.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/AchelousBootsItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/AmorPolishItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ArmorPolishItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BalloonItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ChainHandleItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/DigFasterItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/FrogGearItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/FrogLegItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/FrogSoulItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/HandleExtensionItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/HermesBootsItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/LegRingItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/LuminanceItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/RingOfLifeItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/RingOfPowerItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/SeasGiftItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/TNTArrowItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ZeusBootsItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinGodMode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinKillCmd.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/OtherGodModeMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TrinketInputRequirementProcedure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/animations/ted_animation_set.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/geo/ted.geo.guessr.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/models/custom/zeus_boots.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/models/item/armor_polish.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/models/item/zeus_boots.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/textures/entity/teddy_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/textures/item/zeus_boots.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1dfa89d3-d98e-4dda-bffe-8194546586ac" name="Changes" comment="i already forgot what i added">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/overlay/DeathScreenOverlay.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/effect/ComboHitEffect.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModAttachments.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/KingSimonArmorItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/TedClawsItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/BasicSpearEntitySwingsItemProcedure.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/models/custom/ted_claw.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/models/item/ted_claws.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/textures/block/armorer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/textures/item/teddy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/textures/screens/do_not_ask_why_this_is_8k.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/data/fathommod/damage_type/ted_weapon_combo.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/2024-10-15-1.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/2024-10-15-2.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/2024-10-15-3.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/2024-10-15-4.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/2024-10-15-5.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/2024-10-15-6.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/380df991-f603-344c-a090-369bad2a924a.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/380df991-f603-344c-a090-369bad2a924a.dat_old" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/armorer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/debug-1.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/debug-2.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/debug-3.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/debug-4.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/debug-5.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/level.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/level.dat_old" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/r.-1.0.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/r.-19336.-17844.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/r.-19336.-17845.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/r.-19336.-178451.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/r.-19337.-17844.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/r.-19337.-178441.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/r.-19337.-17845.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/r.-19337.-178451.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/r.0.0.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/raids.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/raids1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/raids_end.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/random_sequences.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/teddy_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM_[Changes]/zeus_boots.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_22_2024_4_23_PM__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/2024-10-15-1.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/2024-10-15-2.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/2024-10-15-3.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/2024-10-15-4.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/2024-10-15-5.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/2024-10-15-6.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/380df991-f603-344c-a090-369bad2a924a.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/380df991-f603-344c-a090-369bad2a924a.dat_old" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/armorer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/debug-1.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/debug-2.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/debug-3.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/debug-4.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/debug-5.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/level.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/level.dat_old" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/r.-1.0.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/r.-19336.-17844.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/r.-19336.-17845.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/r.-19336.-178451.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/r.-19337.-17844.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/r.-19337.-178441.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/r.-19337.-17845.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/r.-19337.-178451.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/r.0.0.mca" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/raids.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/raids1.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/raids_end.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/random_sequences.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/teddy_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM_[Changes]/zeus_boots.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_10_23_2024_4_53_PM__Changes_.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mcreator.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/crash-reports/crash-2024-07-10_14.08.57-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/run/crash-reports/crash-2024-07-10_14.08.57-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/crash-reports/crash-2024-07-10_14.11.18-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/run/crash-reports/crash-2024-07-10_14.11.18-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/crash-reports/crash-2024-07-10_14.13.21-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/run/crash-reports/crash-2024-07-10_14.13.21-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/crash-reports/crash-2024-07-10_14.18.04-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/run/crash-reports/crash-2024-07-10_14.18.04-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/crash-reports/crash-2024-07-10_14.30.06-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/run/crash-reports/crash-2024-07-10_14.30.06-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/crash-reports/crash-2024-07-10_14.32.23-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/run/crash-reports/crash-2024-07-10_14.32.23-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/crash-reports/crash-2024-07-24_18.33.37-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/run/crash-reports/crash-2024-07-24_18.33.37-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/crash-reports/crash-2024-07-24_18.52.08-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/run/crash-reports/crash-2024-07-24_18.52.08-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run/logs/debug.log" beforeDir="false" afterPath="$PROJECT_DIR$/run/logs/debug.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/arrow_sharpener.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/arrow_sharpener.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/balloon.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/balloon.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/chain_handle.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/chain_handle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/empirian_sword.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/empirian_sword.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/ring_o_life.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/ring_o_life.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/the_will_of_smith.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/the_will_of_smith.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/throwing_knife.json" beforeDir="false" afterPath="$PROJECT_DIR$/models/throwing_knife.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/command_history.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/command_history.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-09_20.25.52-fml.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-09_20.25.52-fml.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-09_20.27.22-fml.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-09_20.27.22-fml.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-09_20.28.00-fml.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-09_20.28.00-fml.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-09_20.28.50-fml.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-09_20.28.50-fml.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-09_20.43.00-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-09_20.43.00-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-10_23.12.43-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-10_23.12.43-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-11_11.45.11-fml.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-11_11.45.11-fml.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-11_18.48.49-fml.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-11_18.48.49-fml.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-11_18.55.52-fml.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-11_18.55.52-fml.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-28_11.39.25-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-28_11.39.25-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-28_11.39.26-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-28_11.39.26-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-28_12.38.01-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-28_12.38.01-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-28_12.38.01-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-28_12.38.01-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-28_15.56.10-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-28_15.56.10-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_10.35.13-fml.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_10.35.13-fml.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_11.18.27-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_11.18.27-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_11.18.28-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_11.18.28-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_11.50.06-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_11.50.06-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_11.56.19-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_11.56.19-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_12.58.12-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_12.58.12-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_12.58.13-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_12.58.13-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_22.54.19-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_22.54.19-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_23.05.17-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-29_23.05.17-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-30_16.47.38-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-30_16.47.38-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-30_22.52.00-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-30_22.52.00-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-30_22.52.01-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-09-30_22.52.01-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-11_17.26.48-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-11_17.26.48-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-11_18.46.54-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-11_18.46.54-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-11_18.48.22-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-11_18.48.22-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-11_18.50.23-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-11_18.50.23-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-11_18.52.05-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-11_18.52.05-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-11_18.52.06-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-11_18.52.06-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-11_19.26.58-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-11_19.26.58-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-11_19.26.58-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-11_19.26.58-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-12_10.54.38-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-12_10.54.38-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-12_10.55.46-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-12_10.55.46-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-12_11.08.35-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-12_11.08.35-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-12_11.08.36-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-12_11.08.36-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-13_16.59.00-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-13_16.59.00-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-13_16.59.01-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-13_16.59.01-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-14_15.59.40-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-14_15.59.40-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-14_16.02.02-server.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-14_16.02.02-server.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-15_16.57.15-fml.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/crash-reports/crash-2024-10-15_16.57.15-fml.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/debug/disconnect-2024-10-13_16.07.02-client.txt" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/debug/disconnect-2024-10-13_16.07.02-client.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/logs/2024-09-28-4.log" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/logs/2024-09-28-4.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/logs/2024-10-15-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/logs/2024-10-15-1.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/logs/2024-10-15-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/logs/2024-10-15-2.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/logs/2024-10-15-3.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/logs/2024-10-15-3.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/logs/2024-10-15-4.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/logs/2024-10-15-4.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/logs/2024-10-15-5.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/logs/2024-10-15-5.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/logs/2024-10-15-6.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/logs/2024-10-15-6.log.gz" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/logs/2024-10-15-7.log.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/runs/client/logs/2024-10-23-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/logs/2024-10-23-1.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runs/client/logs/2024-10-23-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/logs/2024-10-23-2.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runs/client/logs/2024-10-23-3.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/logs/2024-10-23-3.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runs/client/logs/2024-10-23-4.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/logs/2024-10-23-4.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runs/client/logs/2024-10-23-5.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/logs/2024-10-23-5.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runs/client/logs/2024-10-23-6.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/logs/2024-10-23-6.log.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runs/client/logs/2024-10-23-7.log.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/logs/debug-1.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/logs/debug-1.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/logs/debug-2.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/logs/debug-2.log.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/logs/debug-3.log.gz" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/logs/debug-3.log.gz" afterDir="false" />
@@ -118,24 +114,19 @@
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/advancements/380df991-f603-344c-a090-369bad2a924a.json" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/advancements/380df991-f603-344c-a090-369bad2a924a.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/data/raids.dat" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/data/raids.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/data/random_sequences.dat" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/data/random_sequences.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19336.-17844.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19336.-17844.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19336.-17845.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19336.-17845.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19336.-17846.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19336.-17846.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19337.-17844.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19337.-17844.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19337.-17845.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19337.-17845.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19337.-17846.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19337.-17846.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19338.-17844.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19338.-17844.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19338.-17845.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19338.-17845.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19338.-17846.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/entities/r.-19338.-17846.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/level.dat" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/level.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/level.dat_old" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/level.dat_old" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/playerdata/380df991-f603-344c-a090-369bad2a924a.dat" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/playerdata/380df991-f603-344c-a090-369bad2a924a.dat" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/playerdata/380df991-f603-344c-a090-369bad2a924a.dat_old" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/playerdata/380df991-f603-344c-a090-369bad2a924a.dat_old" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/poi/r.-19336.-17845.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/poi/r.-19336.-17845.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/poi/r.-19336.-17846.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/poi/r.-19336.-17846.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/poi/r.-19337.-17846.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/poi/r.-19337.-17846.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/poi/r.-19338.-17846.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/poi/r.-19338.-17846.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/poi/r.-19337.-17845.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/poi/r.-19337.-17845.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/region/r.-1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/region/r.-1.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/region/r.-19335.-17845.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/region/r.-19335.-17845.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/region/r.-19336.-17844.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/region/r.-19336.-17844.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/region/r.-19336.-17845.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/region/r.-19336.-17845.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/region/r.-19336.-17846.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/region/r.-19336.-17846.mca" afterDir="false" />
@@ -146,131 +137,24 @@
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/region/r.-19338.-17845.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/region/r.-19338.-17845.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/region/r.-19338.-17846.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/region/r.-19338.-17846.mca" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/region/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/region/r.0.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/session.lock" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/session.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/saves/New World (2)/stats/380df991-f603-344c-a090-369bad2a924a.json" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/saves/New World (2)/stats/380df991-f603-344c-a090-369bad2a924a.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/runs/client/usercache.json" beforeDir="false" afterPath="$PROJECT_DIR$/runs/client/usercache.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runs/server/server.properties" beforeDir="false" afterPath="$PROJECT_DIR$/runs/server/server.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/DevUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/DevUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/EventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/FathommodMod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/FathommodMod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/TrinketDict.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/Trinkets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/block/BigRoserbushBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/block/BigRoserbushBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/block/BloodGrassBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/block/BloodGrassBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/block/PALTNBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/block/PALTNBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/block/PlantOfTheYearBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/block/PlantOfTheYearBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/block/SmallroserbushBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/block/SmallroserbushBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/client/gui/TrinkeryScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/gui/TrinkeryScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/client/model/BloodDwellerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/model/BloodDwellerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/client/model/ModelWood_Bat_Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/model/ModelWood_Bat_Projectile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/client/model/Modelthrowing_knife_Converted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/model/Modelthrowing_knife_Converted.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/client/model/Modeltnt_arrow_Converted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/model/Modeltnt_arrow_Converted.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/client/model/TedModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/model/TedModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/client/model/TedSpawnerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/model/TedSpawnerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/client/renderer/BloodDwellerRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/renderer/BloodDwellerRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/client/renderer/TNTArrowRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/renderer/TNTArrowRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/client/renderer/TedRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/renderer/TedRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/client/renderer/TedSpawnerRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/renderer/TedSpawnerRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/client/renderer/ThrowingKnivesEntityRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/renderer/ThrowingKnivesEntityRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/effect/MovementStunEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/effect/MovementStunEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/effect/NoBuildEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/effect/NoBuildEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/entity/BloodDwellerEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/BloodDwellerEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/entity/RockRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/RockRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/entity/TNTArrowEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/TNTArrowEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/entity/ThrowingKnivesEntityEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ThrowingKnivesEntityEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/entity/goals/FollowSpecificGoal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/goals/FollowSpecificGoal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/entity/model/RockModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/model/RockModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/entity/ted/ROCK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/ROCK.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/entity/ted/TedEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/TedEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/entity/ted/TedSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/TedSpawner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/init/FathommodModBiomes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModBiomes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/init/FathommodModBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModBlocks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/init/FathommodModEntities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModEntities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/init/FathommodModEntityRenderers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModEntityRenderers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/init/FathommodModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/init/FathommodModKeyMappings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModKeyMappings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/init/FathommodModMenus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModMenus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/init/FathommodModMobEffects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModMobEffects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/init/FathommodModModels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModModels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/init/FathommodModScreens.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModScreens.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/init/FathommodModSounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModSounds.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/init/FathommodModTabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModTabs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/init/FathommodModTrades.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModTrades.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/AchelousBootsItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/AmorPolishItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/ArianItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ArianItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/ArrowSharpenerItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ArrowSharpenerItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/AxepickItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/AxepickItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/BalloonItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/BasicSpearItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BasicSpearItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/BlackSmithsWillItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BlackSmithsWillItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/BoxingGlovesItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BoxingGlovesItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/ChainHandleItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/CrusifixItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/CrusifixItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/DigFasterItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/EmpirianSwordItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/EmpirianSwordItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/FabricItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/FabricItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/FrogGearItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/FrogLegItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/FrogSoulItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/HandleExtensionItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/HermesBootsItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/KingSimonArmorItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/KingSimonArmorItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/LegRingItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/LostOnesBowItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/LostOnesBowItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/LuminanceItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/MetalBatItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/MetalBatItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/PaltnScytheItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/PaltnScytheItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/PhasingTexasItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/PhasingTexasItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/RingOfLifeItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/RingOfPowerItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/RiotShieldItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/RiotShieldItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/SeasGiftItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/TNTArrowItemItem.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/ThrowingKnivesItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ThrowingKnivesItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/WhyThoItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/WhyThoItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/item/WoodBatItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/WoodBatItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/mixins/MixinDiscard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinDiscard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/mixins/MixinElytra.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinElytra.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/mixins/MixinGodMode.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/network/DoubleJumpMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/DoubleJumpMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/network/DoubleJumpMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/DoubleJumpMessageHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/network/FathommodModPackets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FathommodModPackets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/network/FathommodModVariables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FathommodModVariables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/network/FlyKeyMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FlyKeyMessageHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/network/FlyMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FlyMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/network/FlyShiftMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FlyShiftMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/network/FlyShiftMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FlyShiftMessageHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/network/TrinketeryOpenMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/TrinketeryOpenMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/network/WingGlideHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/WingGlideHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/network/WingGlideMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/WingGlideMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/ArianPlayerFinishesUsingItemProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/ArianPlayerFinishesUsingItemProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/BAUSIsNearbyProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/BAUSIsNearbyProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/BasicSpearEntitySwingsItemProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/BasicSpearEntitySwingsItemProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/CrusifixRightclickedProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/CrusifixRightclickedProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/IFrameHeavenProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/IFrameHeavenProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/LightHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/LightHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/LostOnesBowRangedItemShootsProjectileProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/LostOnesBowRangedItemShootsProjectileProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/OnlyOneTrinketProcedure.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/PaltnScytheRightclickedProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/PaltnScytheRightclickedProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/PhasingTexasLivingEntityIsHitWithToolProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/PhasingTexasLivingEntityIsHitWithToolProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/PlayerDisplayProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/PlayerDisplayProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/TNTArrowBokProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TNTArrowBokProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/TNTArrowHitProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TNTArrowHitProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/TedSomethingProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TedSomethingProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/TesterProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TesterProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/ThrowingKnivesRangedItemShootsProjectileProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/ThrowingKnivesRangedItemShootsProjectileProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/TrinkeryThisGUIIsClosedProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TrinkeryThisGUIIsClosedProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/TrinkeryThisGUIIsOpenedProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TrinkeryThisGUIIsOpenedProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/procedures/TrinketeryOpenOnKeyPressedProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TrinketeryOpenOnKeyPressedProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/world/inventory/TrinkeryMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/world/inventory/TrinkeryMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/neoforge.mods.toml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/neoforge.mods.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/fathommod/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/lang/en_us.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/fathommod/models/custom/amor_polish_cow.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/models/custom/armor_polish_cow.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/fathommod/models/item/amor_polish.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/models/item/amor_polish.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/fathommod/textures/block/amorer.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/textures/block/armorer.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fathommod.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fathommod.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/EventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/FathommodMod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/FathommodMod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/Trinkets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/Trinkets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModBlocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModEntities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModEntities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModItems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModMenus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModMenus.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModMobEffects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModMobEffects.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModSounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModSounds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModTabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModTabs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FathommodModVariables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FathommodModVariables.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/TrinketeryOpenMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/TrinketeryOpenMessage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/LightHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/LightHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/fathommod/models/custom/avg_boxing_gloves.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/models/custom/avg_boxing_gloves.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/fathommod/models/displaysettings/avg_boxing_gloves.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/models/displaysettings/avg_boxing_gloves.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/data/fathommod/tags/item/trinkets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/fathommod/tags/item/trinkets.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -310,6 +194,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="1.21.1-dev" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
@@ -353,47 +242,47 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Fathom Mod: Client.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Imma_pull_a_heroshima_because_geckolib_being_dumb: Client.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build Fathom Mod.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Fathom Mod [:cpw.mods.bootstraplauncher.BootstrapLauncher.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Fathom Mod [clientIdeBeforeRun].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Fathom Mod [serverIdeBeforeRun].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.imma_pull_a_heroshima_because_geckolib_being_dumb [:cpw.mods.bootstraplauncher.BootstrapLauncher.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.imma_pull_a_heroshima_because_geckolib_being_dumb [clientIdeBeforeRun].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.imma_pull_a_heroshima_because_geckolib_being_dumb [compileJava].executor&quot;: &quot;Run&quot;,
-    &quot;JavaClassFindUsagesOptions.isDerivedClasses&quot;: &quot;true&quot;,
-    &quot;JavaClassFindUsagesOptions.isFieldsUsages&quot;: &quot;true&quot;,
-    &quot;JavaClassFindUsagesOptions.isMethodsUsages&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/Coding/Minecraft/Fathom Mod/src/main/resources/assets/fathommod/models/item&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Fathom Mod: Client.executor": "Run",
+    "Application.Imma_pull_a_heroshima_because_geckolib_being_dumb: Client.executor": "Run",
+    "Gradle.Build Fathom Mod.executor": "Run",
+    "Gradle.Fathom Mod [:cpw.mods.bootstraplauncher.BootstrapLauncher.main()].executor": "Run",
+    "Gradle.Fathom Mod [clientIdeBeforeRun].executor": "Run",
+    "Gradle.Fathom Mod [serverIdeBeforeRun].executor": "Run",
+    "Gradle.imma_pull_a_heroshima_because_geckolib_being_dumb [:cpw.mods.bootstraplauncher.BootstrapLauncher.main()].executor": "Run",
+    "Gradle.imma_pull_a_heroshima_because_geckolib_being_dumb [clientIdeBeforeRun].executor": "Run",
+    "Gradle.imma_pull_a_heroshima_because_geckolib_being_dumb [compileJava].executor": "Run",
+    "JavaClassFindUsagesOptions.isDerivedClasses": "true",
+    "JavaClassFindUsagesOptions.isFieldsUsages": "true",
+    "JavaClassFindUsagesOptions.isMethodsUsages": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/User/Desktop/Coding/Minecraft/Fathom Mod/src/main/resources/assets/fathommod/textures/item",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\textures\item" />
       <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\models\item" />
       <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\geo" />
       <recent name="C:\Users\User\Desktop\Coding\Minecraft\imma_pull_a_heroshima_because_geckolib_being_dumb\src\main\resources\assets\fathommod\animations" />
       <recent name="C:\Users\User\Desktop\Coding\Minecraft\imma_pull_a_heroshima_because_geckolib_being_dumb\src\main\resources\assets\fathommod\geo" />
-      <recent name="C:\Users\User\Desktop\Coding\Minecraft\imma_pull_a_heroshima_because_geckolib_being_dumb\src\main\resources\data\fathommod\damage_type" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\textures\item" />
       <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\models\custom" />
+      <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\models" />
+      <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\textures\screens" />
+      <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\textures\item" />
       <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\textures\entity" />
-      <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\animations" />
-      <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\geo" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="net.mcreator.youpieceof.client.renderer" />
@@ -422,7 +311,6 @@
         <env name="MOD_CLASSES" value="Fathom Mod%%C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\build\resources\main;Fathom Mod%%C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\build\classes\java\main" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="cpw.mods.bootstraplauncher.BootstrapLauncher" />
-      <module name="Fathom_Mod.main" />
       <option name="PROGRAM_PARAMETERS" value="--launchTarget forgedatauserdev --assetIndex asset-index --assetsDir C:\Users\User\.gradle\caches\minecraft\assets\1.21.1 --gameDir . --fml.neoForgeVersion 21.1.12 --fml.fmlVersion 4.0.24 --fml.mcVersion 1.21.1 --fml.neoFormVersion 20240808.144430" />
       <shortenClasspath name="ARGS_FILE" />
       <option name="VM_PARAMETERS" value="-p C:\Users\User\.gradle\caches\modules-2\files-2.1\cpw.mods\bootstraplauncher\2.0.2\1a2d076cbc33b0520cbacd591224427b2a20047d\bootstraplauncher-2.0.2.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\cpw.mods\securejarhandler\3.0.8\c0ef95cecd8699a0449053ac7d9c160748d902cd\securejarhandler-3.0.8.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-commons\9.5\19ab5b5800a3910d30d3a3e64fdb00fd0cb42de0\asm-commons-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-util\9.5\64b5a1fc8c1b15ed2efd6a063e976bc8d3dc5ffe\asm-util-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-analysis\9.5\490bacc77de7cbc0be1a30bb3471072d705be4a4\asm-analysis-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-tree\9.5\fd33c8b6373abaa675be407082fdfda35021254a\asm-tree-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm\9.5\dc6ea1875f4d64fbc85e1691c95b96a3d8569c90\asm-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\net.neoforged\JarJarFileSystems\0.4.1\78f59f89defcd032ed788b151ca6a0d40ace796a\JarJarFileSystems-0.4.1.jar --add-modules ALL-MODULE-PATH --add-opens java.base/java.util.jar=cpw.mods.securejarhandler --add-opens java.base/java.lang.invoke=cpw.mods.securejarhandler --add-exports java.base/sun.security.util=cpw.mods.securejarhandler --add-exports jdk.naming.dns/com.sun.jndi.dns=java.naming -Dforge.logging.console.level=debug -Dforge.logging.markers=REGISTRIES &quot;-DlegacyClassPath.file=C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\.gradle\configuration\neoForm\neoFormJoined1.21.1-20240808.144430\steps\writeMinecraftClasspathData\classpath.txt&quot; -DignoreList=securejarhandler-3.0.8.jar,asm-9.5.jar,asm-commons-9.5.jar,asm-tree-9.5.jar,asm-util-9.5.jar,asm-analysis-9.5.jar,bootstraplauncher-2.0.2.jar,JarJarFileSystems-0.4.1.jar,mixinextras-neoforge-0.3.5.jar,client-extra,neoforge- -Dfml.gameLayerLibraries -DmergeModules=jna-5.10.0.jar,jna-platform-5.10.0.jar -Djava.net.preferIPv6Addresses=system -Dfml.pluginLayerLibraries" />
@@ -437,7 +325,6 @@
         <env name="MOD_CLASSES" value="Fathom Mod%%C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\build\resources\main;Fathom Mod%%C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\build\classes\java\main" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="cpw.mods.bootstraplauncher.BootstrapLauncher" />
-      <module name="Fathom_Mod.main" />
       <option name="PROGRAM_PARAMETERS" value="--launchTarget forgeserveruserdev --gameDir . --fml.neoForgeVersion 21.1.12 --fml.fmlVersion 4.0.24 --fml.mcVersion 1.21.1 --fml.neoFormVersion 20240808.144430" />
       <shortenClasspath name="ARGS_FILE" />
       <option name="VM_PARAMETERS" value="-p C:\Users\User\.gradle\caches\modules-2\files-2.1\cpw.mods\bootstraplauncher\2.0.2\1a2d076cbc33b0520cbacd591224427b2a20047d\bootstraplauncher-2.0.2.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\cpw.mods\securejarhandler\3.0.8\c0ef95cecd8699a0449053ac7d9c160748d902cd\securejarhandler-3.0.8.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-commons\9.5\19ab5b5800a3910d30d3a3e64fdb00fd0cb42de0\asm-commons-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-util\9.5\64b5a1fc8c1b15ed2efd6a063e976bc8d3dc5ffe\asm-util-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-analysis\9.5\490bacc77de7cbc0be1a30bb3471072d705be4a4\asm-analysis-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-tree\9.5\fd33c8b6373abaa675be407082fdfda35021254a\asm-tree-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm\9.5\dc6ea1875f4d64fbc85e1691c95b96a3d8569c90\asm-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\net.neoforged\JarJarFileSystems\0.4.1\78f59f89defcd032ed788b151ca6a0d40ace796a\JarJarFileSystems-0.4.1.jar --add-modules ALL-MODULE-PATH --add-opens java.base/java.util.jar=cpw.mods.securejarhandler --add-opens java.base/java.lang.invoke=cpw.mods.securejarhandler --add-exports java.base/sun.security.util=cpw.mods.securejarhandler --add-exports jdk.naming.dns/com.sun.jndi.dns=java.naming -Dforge.logging.console.level=debug -Dneoforge.enableGameTest=true -Dneoforge.gameTestServer=true -Dforge.logging.markers=REGISTRIES &quot;-DlegacyClassPath.file=C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\.gradle\configuration\neoForm\neoFormJoined1.21.1-20240808.144430\steps\writeMinecraftClasspathGameTestServer\classpath.txt&quot; -DignoreList=securejarhandler-3.0.8.jar,asm-9.5.jar,asm-commons-9.5.jar,asm-tree-9.5.jar,asm-util-9.5.jar,asm-analysis-9.5.jar,bootstraplauncher-2.0.2.jar,JarJarFileSystems-0.4.1.jar,mixinextras-neoforge-0.3.5.jar,client-extra,neoforge- -Dfml.gameLayerLibraries -DmergeModules=jna-5.10.0.jar,jna-platform-5.10.0.jar -Djava.net.preferIPv6Addresses=system -Dfml.pluginLayerLibraries" />
@@ -452,7 +339,6 @@
         <env name="MOD_CLASSES" value="Fathom Mod%%C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\build\resources\main;Fathom Mod%%C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\build\classes\java\main" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="cpw.mods.bootstraplauncher.BootstrapLauncher" />
-      <module name="Fathom_Mod.main" />
       <option name="PROGRAM_PARAMETERS" value="--launchTarget forgeserveruserdev --gameDir . --fml.neoForgeVersion 21.1.12 --fml.fmlVersion 4.0.24 --fml.mcVersion 1.21.1 --fml.neoFormVersion 20240808.144430" />
       <shortenClasspath name="ARGS_FILE" />
       <option name="VM_PARAMETERS" value="-p C:\Users\User\.gradle\caches\modules-2\files-2.1\cpw.mods\bootstraplauncher\2.0.2\1a2d076cbc33b0520cbacd591224427b2a20047d\bootstraplauncher-2.0.2.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\cpw.mods\securejarhandler\3.0.8\c0ef95cecd8699a0449053ac7d9c160748d902cd\securejarhandler-3.0.8.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-commons\9.5\19ab5b5800a3910d30d3a3e64fdb00fd0cb42de0\asm-commons-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-util\9.5\64b5a1fc8c1b15ed2efd6a063e976bc8d3dc5ffe\asm-util-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-analysis\9.5\490bacc77de7cbc0be1a30bb3471072d705be4a4\asm-analysis-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-tree\9.5\fd33c8b6373abaa675be407082fdfda35021254a\asm-tree-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm\9.5\dc6ea1875f4d64fbc85e1691c95b96a3d8569c90\asm-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\net.neoforged\JarJarFileSystems\0.4.1\78f59f89defcd032ed788b151ca6a0d40ace796a\JarJarFileSystems-0.4.1.jar --add-modules ALL-MODULE-PATH --add-opens java.base/java.util.jar=cpw.mods.securejarhandler --add-opens java.base/java.lang.invoke=cpw.mods.securejarhandler --add-exports java.base/sun.security.util=cpw.mods.securejarhandler --add-exports jdk.naming.dns/com.sun.jndi.dns=java.naming -Dforge.logging.console.level=debug -Dforge.logging.markers=REGISTRIES &quot;-DlegacyClassPath.file=C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\.gradle\configuration\neoForm\neoFormJoined1.21.1-20240808.144430\steps\writeMinecraftClasspathServer\classpath.txt&quot; -DignoreList=securejarhandler-3.0.8.jar,asm-9.5.jar,asm-commons-9.5.jar,asm-tree-9.5.jar,asm-util-9.5.jar,asm-analysis-9.5.jar,bootstraplauncher-2.0.2.jar,JarJarFileSystems-0.4.1.jar,mixinextras-neoforge-0.3.5.jar,client-extra,neoforge- -Dfml.gameLayerLibraries -DmergeModules=jna-5.10.0.jar,jna-platform-5.10.0.jar -Djava.net.preferIPv6Addresses=system -Dfml.pluginLayerLibraries" />
@@ -638,7 +524,15 @@
       <option name="project" value="LOCAL" />
       <updated>1729052382715</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Added God Mode">
+      <option name="closed" value="true" />
+      <created>1729713495896</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1729713495896</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -665,7 +559,9 @@
     <MESSAGE value="Minor patch: Made AABB storage use Longs instead of Ints, shrank the no rock bounding box and made the bounding boxes every so slightly more accurate" />
     <MESSAGE value="Minor patch" />
     <MESSAGE value="Adjusted hitbox of Ted's spawner to match Ted's hitbox" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adjusted hitbox of Ted's spawner to match Ted's hitbox" />
+    <MESSAGE value="Added God Mode" />
+    <MESSAGE value="i already forgot what i added" />
+    <option name="LAST_COMMIT_MESSAGE" value="i already forgot what i added" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

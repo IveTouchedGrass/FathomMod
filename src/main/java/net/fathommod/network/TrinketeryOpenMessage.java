@@ -20,7 +20,7 @@ import net.fathommod.FathommodMod;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public record TrinketeryOpenMessage(int eventType, int pressedms) implements CustomPacketPayload {
-	public static final Type<TrinketeryOpenMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(FathommodMod.MODID, "key_trinketery_open"));
+	public static final Type<TrinketeryOpenMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "key_trinketery_open"));
 	public static final StreamCodec<RegistryFriendlyByteBuf, TrinketeryOpenMessage> STREAM_CODEC = StreamCodec.of((RegistryFriendlyByteBuf buffer, TrinketeryOpenMessage message) -> {
 		buffer.writeInt(message.eventType);
 		buffer.writeInt(message.pressedms);

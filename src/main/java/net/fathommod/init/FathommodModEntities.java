@@ -30,7 +30,7 @@ import net.fathommod.FathommodMod;
 @SuppressWarnings("RedundantTypeArguments")
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class FathommodModEntities {
-	public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(Registries.ENTITY_TYPE, FathommodMod.MODID);
+	public static final DeferredRegister<EntityType<?>> REGISTRY = DeferredRegister.create(Registries.ENTITY_TYPE, FathommodMod.MOD_ID);
 	public static final DeferredHolder<EntityType<?>, EntityType<TNTArrowEntity>> TNT_ARROW = register("tnt_arrow",
 			EntityType.Builder.<TNTArrowEntity>of(TNTArrowEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
 	public static final DeferredHolder<EntityType<?>, EntityType<ThrowingKnivesEntityEntity>> THROWING_KNIVES_ENTITY = register("throwing_knives_entity",
