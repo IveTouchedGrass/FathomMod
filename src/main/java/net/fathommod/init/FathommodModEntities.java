@@ -4,6 +4,7 @@
  */
 package net.fathommod.init;
 
+import net.fathommod.FathommodMod;
 import net.fathommod.entity.BloodDwellerEntity;
 import net.fathommod.entity.TNTArrowEntity;
 import net.fathommod.entity.ThrowingKnivesEntityEntity;
@@ -11,21 +12,18 @@ import net.fathommod.entity.ted.ROCK;
 import net.fathommod.entity.ted.TedEntity;
 import net.fathommod.entity.ted.TedSpawner;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.*;
- import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
-
-import net.minecraft.core.registries.Registries;
-
-import net.fathommod.FathommodMod;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 @SuppressWarnings("RedundantTypeArguments")
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)

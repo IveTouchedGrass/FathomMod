@@ -23,7 +23,7 @@ public class FlyKeyMessageHandler {
         damage = entity.getItemBySlot(EquipmentSlot.HEAD).getComponents().get(DataComponents.DAMAGE);
         maxDamage = entity.getItemBySlot(EquipmentSlot.HEAD).getComponents().get(DataComponents.MAX_DAMAGE);
 
-        if (entity.getItemBySlot(EquipmentSlot.HEAD).getItem() == Trinkets.WINGS && entity.getData(FathommodModVariables.PLAYER_VARIABLES).doubleJumpCooldownInt <= 0 && entity.getData(FathommodModVariables.PLAYER_VARIABLES).doubleJumpCooldownInt == 0 && !entity.onGround()) { // gold helmet is a placeholder
+        if (entity.getItemBySlot(EquipmentSlot.HEAD).getItem() == Trinkets.WINGS && entity.getData(FathommodModVariables.ENTITY_VARIABLES).doubleJumpCooldownInt <= 0 && entity.getData(FathommodModVariables.ENTITY_VARIABLES).doubleJumpCooldownInt == 0 && !entity.onGround()) { // gold helmet is a placeholder
             if (!(damage + 1 == maxDamage)) {
                 entity.getItemBySlot(EquipmentSlot.HEAD).hurtAndBreak(1, entity, EquipmentSlot.HEAD);
                 PacketDistributor.sendToPlayer((ServerPlayer) entity, new FlyMessage.FlyKeyMessage(true, (DevUtils.hasTrinket(entity, Trinkets.DOUBLE_DOUBLE_JUMP_AND_JUMP_HEIGHT_ON_CRACK_BRO_THIS_IS_SO_OVERPOWERED_AND_TRASH_AT_THE_SAME_TIME_BECAUSE_YOU_TAKE_HELLA_FALL_DAMAGE)) ? 4 : (DevUtils.hasTrinket(entity, Trinkets.JUMP_HEIGHT)) ? 2.5 : 1));

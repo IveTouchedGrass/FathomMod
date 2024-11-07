@@ -1,6 +1,8 @@
 {
   "type": "neoforge:add_features",
-  "biomes": "stony_peaks",
+  "biomes": {
+    "type": "neoforge:any"
+  },
   "features": "fathommod:paltn",
-  "step": "vegetal_decoration"
+  "step": "local_modifications"
 }

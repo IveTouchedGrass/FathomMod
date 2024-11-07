@@ -1,13 +1,14 @@
 package net.fathommod.item;
 
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Rarity;
-import net.minecraft.world.item.SwordItem;
-import net.minecraft.world.item.Tier;
-import net.minecraft.world.item.component.ItemAttributeModifiers;
+import net.minecraft.world.item.*;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.block.Block;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
 
 public class TedClawsItem extends Item {
     private static final Tier TOOL_TIER = new Tier() {
@@ -44,8 +45,13 @@ public class TedClawsItem extends Item {
     };
 
     public TedClawsItem() {
-        super(new Properties().stacksTo(1).rarity(Rarity.COMMON).attributes(SwordItem.createAttributes(TOOL_TIER, 1, -2.5f)));
+        super(new Properties().stacksTo(1).rarity(Rarity.COMMON).attributes(SwordItem.createAttributes(TOOL_TIER, 5, -2.5f)));
     }
 
-
+    @Override
+    public void appendHoverText(@NotNull ItemStack itemstack, @NotNull TooltipContext context, @NotNull List<Component> components, @NotNull TooltipFlag tooltipFlag) {
+        super.appendHoverText(itemstack, context, components, tooltipFlag);
+        components.add(Component.translatable("tooltip.fathommod.ted_claws.first_line").withStyle(ChatFormatting.GRAY));
+        components.add(Component.translatable("tooltip.fathommod.ted_claws.second_line").setStyle(net.minecraft.network.chat.Style.EMPTY.withColor(0x58a7bf)));
+    }
 }

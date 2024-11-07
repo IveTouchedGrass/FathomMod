@@ -1,7 +1,6 @@
 package net.fathommod;
 
 import net.fathommod.entity.ted.TedEntity;
-import net.fathommod.init.FathommodModAttachments;
 import net.fathommod.init.FathommodModItems;
 import net.fathommod.init.FathommodModMobEffects;
 import net.fathommod.network.DoubleJumpMessage;
@@ -15,7 +14,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.Entity;
@@ -42,12 +40,12 @@ import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RenderNameTagEvent;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.entity.living.*;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.Objects;
-import java.util.UUID;
 
 @SuppressWarnings("DataFlowIssue")
 @EventBusSubscriber(modid = FathommodMod.MOD_ID)
@@ -73,13 +71,13 @@ public class EventHandler {
 
     @SubscribeEvent
     public static void onEntitySetTarget(LivingChangeTargetEvent event) {
-        if (event.getNewAboutToBeSetTarget() != null && event.getNewAboutToBeSetTarget().getData(FathommodModVariables.PLAYER_VARIABLES).isGodMode)
+        if (event.getNewAboutToBeSetTarget() != null && event.getNewAboutToBeSetTarget().getData(FathommodModVariables.ENTITY_VARIABLES).isGodMode)
             event.setNewAboutToBeSetTarget(null);
     }
 
     @SubscribeEvent
     public static void onLivingDamage(LivingIncomingDamageEvent event) {
-        if (event.getEntity().getData(FathommodModVariables.PLAYER_VARIABLES).isGodMode)
+        if (event.getEntity().getData(FathommodModVariables.ENTITY_VARIABLES).isGodMode)
             event.setCanceled(true);
     }
 
@@ -103,7 +101,7 @@ public class EventHandler {
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player entity = event.getEntity();
-        if (entity instanceof ServerPlayer && entity.getData(FathommodModVariables.PLAYER_VARIABLES).isGodMode) {
+        if (entity instanceof ServerPlayer && entity.getData(FathommodModVariables.ENTITY_VARIABLES).isGodMode) {
             entity.getAbilities().invulnerable = true;
         }
     }
@@ -127,7 +125,7 @@ public class EventHandler {
 
         lifesGambleAttributeHandler(entity);
         {
-            FathommodModVariables.PlayerVariables vars = entity.getData(FathommodModVariables.PLAYER_VARIABLES);
+            FathommodModVariables.EntityVariables vars = entity.getData(FathommodModVariables.ENTITY_VARIABLES);
             if (entity.onGround()) {
                 vars.doubleJumpCooldownInt -= 1;
                 vars.secondDoubleJumpUsed = false;
@@ -265,6 +263,29 @@ public class EventHandler {
     }
 
     @SubscribeEvent
+    public static void onEntityHurt(LivingIncomingDamageEvent event) {
+        LivingEntity entity = event.getEntity();
+        DamageSource source = event.getSource();
+        Entity sourceentity = source.getEntity();
+
+        if (sourceentity instanceof Rabbit rabbit && rabbit.getData(FathommodModVariables.ENTITY_VARIABLES).isTedRabbit) {
+            event.setCanceled(true);
+            entity.hurt(new DamageSource(entity.level().holderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "skill_issue")))), event.getAmount());
+        }
+    }
+
+    @SubscribeEvent
+    public static void onPlayerLeave(PlayerEvent.PlayerLoggedOutEvent event) {
+        if (event.getEntity() instanceof ServerPlayer player && player.level() instanceof ServerLevel world && world.players().size() <= 1) {
+            for (Entity entity : world.getAllEntities()) {
+                if (entity instanceof BossEntity) {
+                    entity.discard();
+                }
+            }
+        }
+    }
+
+    @SubscribeEvent
     public static void onEntityAttacked(LivingDamageEvent.Pre event) {
         Entity sourceentity = event.getSource().getEntity();
         LivingEntity entity = event.getEntity();
@@ -283,8 +304,9 @@ public class EventHandler {
         if (DevUtils.hasTrinket(entity, Trinkets.LIFES_GAMBLE))
             event.setNewDamage(event.getNewDamage() * 2);
         if (sourceentity instanceof LivingEntity livingEntity && livingEntity.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.TED_CLAWS.get() && !source.is(ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "ted_weapon_combo")))) {
-            entity.setData(FathommodModAttachments.COMBO_HIT_SOURCE, livingEntity.getUUID().toString());
-            entity.setData(FathommodModAttachments.COMBO_HIT_COUNT, 2);
+            FathommodModVariables.EntityVariables vars = livingEntity.getData(FathommodModVariables.ENTITY_VARIABLES);
+            vars.comboHitSource = sourceentity.getUUID().toString();
+            vars.syncPlayerVariables(livingEntity);
             entity.addEffect(new MobEffectInstance(FathommodModMobEffects.COMBO_HIT, (entity.invulnerableDuration), Math.round(event.getNewDamage() * 5), false, false));
 //            FathommodMod.queueServerWork(entity.invulnerableTime + 1, () -> entity.hurt(new DamageSource(entity.level().holderOrThrow(DamageTypes.PLAYER_ATTACK), ((ServerLevel) entity.level()).getEntity(UUID.fromString(entity.getData(FathommodModAttachments.COMBO_HIT_SOURCE)))), event.getNewDamage()));
 //            FathommodMod.queueServerWork((entity.invulnerableTime * 2) + 1, () -> entity.hurt(new DamageSource(entity.level().holderOrThrow(DamageTypes.PLAYER_ATTACK), ((ServerLevel) entity.level()).getEntity(UUID.fromString(entity.getData(FathommodModAttachments.COMBO_HIT_SOURCE)))), event.getNewDamage()));
@@ -304,11 +326,11 @@ public class EventHandler {
         if (!(event.getEntity() instanceof Player))
             return;
         if (event.getEntity().isShiftKeyDown()) {
-            FathommodModVariables.PlayerVariables vars = event.getEntity().getData(FathommodModVariables.PLAYER_VARIABLES);
+            FathommodModVariables.EntityVariables vars = event.getEntity().getData(FathommodModVariables.ENTITY_VARIABLES);
             vars.doubleJumpCooldownInt = 8;
             vars.syncPlayerVariables(event.getEntity());
         } else {
-            FathommodModVariables.PlayerVariables vars = event.getEntity().getData(FathommodModVariables.PLAYER_VARIABLES);
+            FathommodModVariables.EntityVariables vars = event.getEntity().getData(FathommodModVariables.ENTITY_VARIABLES);
             vars.doubleJumpCooldownInt = 5;
             vars.syncPlayerVariables(event.getEntity());
         }
@@ -341,19 +363,19 @@ public class EventHandler {
     }
 
     private static void ringOfLifeHealing(LivingEntity entity) {
-        if (entity.getData(FathommodModVariables.PLAYER_VARIABLES).ringOfLifeRegenCooldown <= 0 && DevUtils.hasTrinket(entity, Trinkets.LIFES_RING)) {
+        if (entity.getData(FathommodModVariables.ENTITY_VARIABLES).ringOfLifeRegenCooldown <= 0 && DevUtils.hasTrinket(entity, Trinkets.LIFES_RING)) {
             entity.heal(1F);
             {
-                FathommodModVariables.PlayerVariables vars = entity.getData(FathommodModVariables.PLAYER_VARIABLES);
+                FathommodModVariables.EntityVariables vars = entity.getData(FathommodModVariables.ENTITY_VARIABLES);
                 vars.ringOfLifeRegenCooldown = 60;
                 vars.syncPlayerVariables(entity);
             }
         } else if (DevUtils.hasTrinket(entity, Trinkets.LIFES_RING)) {
-            FathommodModVariables.PlayerVariables vars = entity.getData(FathommodModVariables.PLAYER_VARIABLES);
+            FathommodModVariables.EntityVariables vars = entity.getData(FathommodModVariables.ENTITY_VARIABLES);
             vars.ringOfLifeRegenCooldown -= 1;
             vars.syncPlayerVariables(entity);
         } else {
-            FathommodModVariables.PlayerVariables vars = entity.getData(FathommodModVariables.PLAYER_VARIABLES);
+            FathommodModVariables.EntityVariables vars = entity.getData(FathommodModVariables.ENTITY_VARIABLES);
             vars.ringOfLifeRegenCooldown = 60;
             vars.syncPlayerVariables(entity);
         }

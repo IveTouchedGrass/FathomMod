@@ -1,8 +1,8 @@
 
 package net.fathommod.item;
 
-import net.minecraft.world.item.Rarity;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Rarity;
 
 public class BlackSmithsWillItem extends Item {
 	public BlackSmithsWillItem() {

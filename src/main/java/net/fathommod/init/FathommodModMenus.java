@@ -4,15 +4,13 @@
  */
 package net.fathommod.init;
 
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
-
-import net.minecraft.world.inventory.MenuType;
-import net.minecraft.core.registries.Registries;
-
-import net.fathommod.world.inventory.TrinkeryMenu;
 import net.fathommod.FathommodMod;
+import net.fathommod.world.inventory.TrinkeryMenu;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.inventory.MenuType;
+import net.neoforged.neoforge.common.extensions.IMenuTypeExtension;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class FathommodModMenus {
 	public static final DeferredRegister<MenuType<?>> REGISTRY = DeferredRegister.create(Registries.MENU, FathommodMod.MOD_ID);

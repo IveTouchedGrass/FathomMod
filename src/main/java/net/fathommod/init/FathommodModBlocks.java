@@ -4,17 +4,11 @@
  */
 package net.fathommod.init;
 
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.DeferredHolder;
-
-import net.minecraft.world.level.block.Block;
-
-import net.fathommod.block.SmallroserbushBlock;
-import net.fathommod.block.PlantOfTheYearBlock;
-import net.fathommod.block.PALTNBlock;
-import net.fathommod.block.BloodGrassBlock;
-import net.fathommod.block.BigRoserbushBlock;
 import net.fathommod.FathommodMod;
+import net.fathommod.block.*;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class FathommodModBlocks {
 	public static final DeferredRegister.Blocks REGISTRY = DeferredRegister.createBlocks(FathommodMod.MOD_ID);

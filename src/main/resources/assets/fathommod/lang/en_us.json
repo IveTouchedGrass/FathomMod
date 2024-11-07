@@ -110,5 +110,11 @@
   "commands.fathommod.godmode.success.enable.target": "Set god mode to enabled for %1$s",
   "commands.fathommod.godmode.success.disable.target": "Set god mode to disabled for %1$s",
   "commands.fathommod.vanilla_kill.fail_god_mode": "no lol",
-  "commands.fathommod.vanilla_kill.fail_god_mode.multiple": "Killed %1$s entities, you aint killing %2$s with this buddy :3"
+  "commands.fathommod.vanilla_kill.fail_god_mode.multiple": "Killed %1$s entities, you aint killing %2$s with this buddy :3",
+  "tooltip.fathommod.ted_claws.first_line": "- oooo... that's gonna leave a mark...",
+  "tooltip.fathommod.ted_claws.second_line": "- enemies hit by this get multihit 3 times",
+  "fathommod.damage_classes.assassin": "(Assassin)",
+  "fathommod.damage_classes.summon": "(Summon)",
+  "fathommod.damage_classes.melee": "(Melee)",
+  "fathommod.damage_classes.ranged": "(Ranged)"
 }

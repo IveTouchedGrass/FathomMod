@@ -2,8 +2,6 @@ package net.fathommod.init;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.fathommod.FathommodMod;
 import net.fathommod.network.FathommodModVariables;
 import net.minecraft.commands.CommandSourceStack;
@@ -11,8 +9,6 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
@@ -32,7 +28,7 @@ public class FathommodModCommands {
                                     context.getSource().sendFailure(Component.translatable("commands.fathommod.godmode.fails.not_a_player"));
                                     return 0;
                                 }
-                                FathommodModVariables.PlayerVariables vars = player.getData(FathommodModVariables.PLAYER_VARIABLES);
+                                FathommodModVariables.EntityVariables vars = player.getData(FathommodModVariables.ENTITY_VARIABLES);
                                 vars.isGodMode = !vars.isGodMode;
                                 if (!vars.isGodMode) {
                                     player.getAbilities().invulnerable = false;
@@ -51,7 +47,7 @@ public class FathommodModCommands {
                                 .executes(context -> {
                                     try {
                                         ServerPlayer player = EntityArgument.getPlayer(context, "player");
-                                        FathommodModVariables.PlayerVariables vars = player.getData(FathommodModVariables.PLAYER_VARIABLES);
+                                        FathommodModVariables.EntityVariables vars = player.getData(FathommodModVariables.ENTITY_VARIABLES);
                                         vars.isGodMode = !vars.isGodMode;
                                         vars.syncPlayerVariables(player);
                                         if (!vars.isGodMode) {
@@ -70,7 +66,7 @@ public class FathommodModCommands {
                                         .executes(context -> {
                                             try {
                                                 ServerPlayer player = EntityArgument.getPlayer(context, "player");
-                                                FathommodModVariables.PlayerVariables vars = player.getData(FathommodModVariables.PLAYER_VARIABLES);
+                                                FathommodModVariables.EntityVariables vars = player.getData(FathommodModVariables.ENTITY_VARIABLES);
                                                 vars.isGodMode = context.getArgument("enable", Boolean.class);
                                                 if (!vars.isGodMode) {
                                                     player.getAbilities().invulnerable = false;

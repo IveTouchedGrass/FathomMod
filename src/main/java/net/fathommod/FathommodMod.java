@@ -2,33 +2,26 @@ package net.fathommod;
 
 import net.fathommod.init.*;
 import net.fathommod.network.FathommodModPackets;
-import net.fathommod.procedures.LightHandler;
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
-
-import net.neoforged.neoforge.network.registration.PayloadRegistrar;
-import net.neoforged.neoforge.network.handling.IPayloadHandler;
-import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
-import net.neoforged.neoforge.event.tick.ServerTickEvent;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.fml.util.thread.SidedThreadGroups;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.bus.api.IEventBus;
-
-import net.minecraft.util.Tuple;
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.FriendlyByteBuf;
-
 import net.fathommod.network.FathommodModVariables;
+import net.fathommod.procedures.LightHandler;
+import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.util.Tuple;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.Mod;
+import net.neoforged.fml.util.thread.SidedThreadGroups;
+import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.tick.ServerTickEvent;
+import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.neoforged.neoforge.network.handling.IPayloadHandler;
+import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import java.util.*;
 import java.util.concurrent.ConcurrentLinkedQueue;
-import java.util.Map;
-import java.util.List;
-import java.util.HashMap;
-import java.util.Collection;
-import java.util.ArrayList;
 
 @Mod("fathommod")
 public class FathommodMod {
@@ -53,7 +46,6 @@ public class FathommodMod {
 		FathommodModEntities.REGISTRY.register(modEventBus);
 		FathommodModTabs.REGISTRY.register(modEventBus);
 		FathommodModVariables.ATTACHMENT_TYPES.register(modEventBus);
-		FathommodModAttachments.ATTACHMENT_TYPES.register(modEventBus);
 
 		FathommodModMenus.REGISTRY.register(modEventBus);
 

@@ -62,7 +62,7 @@ public class DevUtils {
     public static boolean hasTrinket(LivingEntity entity, Item item) {
         if (entity.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.BOXING_GLOVES.get() && item == FathommodModItems.CHAIN_HANDLE.get())
             return false;
-        return (entity.getData(FathommodModVariables.PLAYER_VARIABLES).TrinketKeepINV.getItem() == item || entity.getData(FathommodModVariables.PLAYER_VARIABLES).TrinketKeepINV2.getItem() == item || entity.getData(FathommodModVariables.PLAYER_VARIABLES).TrinketKeepINV3.getItem() == item || entity.getData(FathommodModVariables.PLAYER_VARIABLES).TrinketKeepINV4.getItem() == item);
+        return (entity.getData(FathommodModVariables.ENTITY_VARIABLES).trinket1.getItem() == item || entity.getData(FathommodModVariables.ENTITY_VARIABLES).trinket2.getItem() == item || entity.getData(FathommodModVariables.ENTITY_VARIABLES).trinket3.getItem() == item || entity.getData(FathommodModVariables.ENTITY_VARIABLES).trinket4.getItem() == item);
     }
 
     public static short getEnchantLevel(ItemStack itemstack, ResourceKey<Enchantment> enchant, Level world) {
@@ -80,6 +80,23 @@ public class DevUtils {
         }
         public static int zRaytracePos(Entity entity, double distance) {
             return entity.level().clip(new ClipContext(entity.getEyePosition(1f), entity.getEyePosition(1f).add(entity.getViewVector(1f).scale(distance)), ClipContext.Block.OUTLINE, ClipContext.Fluid.NONE, entity)).getBlockPos().getX();
+        }
+    }
+
+    public static class PositionCalculator {
+        public static Vec3 calculateRelativePosition(float yaw, float pitch, Vec3 relativePosition) {
+            double yawRad = Math.toRadians(yaw);
+            double pitchRad = Math.toRadians(pitch);
+
+            double x = Math.cos(yawRad) * Math.cos(pitchRad);
+            double y = Math.sin(pitchRad);
+            double z = Math.sin(yawRad) * Math.cos(pitchRad);
+
+            double absX = relativePosition.x * x;
+            double absY = relativePosition.y + y;
+            double absZ = relativePosition.z * z;
+
+            return new Vec3(absX, absY, absZ);
         }
     }
 }

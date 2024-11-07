@@ -1,21 +1,19 @@
 
 package net.fathommod.item;
 
-import net.minecraft.ChatFormatting;
+import net.fathommod.entity.ThrowingKnivesEntityEntity;
+import net.fathommod.procedures.ThrowingKnivesRangedItemShootsProjectileProcedure;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.server.level.ServerPlayer;
-
-import net.fathommod.procedures.ThrowingKnivesRangedItemShootsProjectileProcedure;
-import net.fathommod.entity.ThrowingKnivesEntityEntity;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;

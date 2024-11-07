@@ -25,7 +25,7 @@ public class MixinKillCmd {
         List<Entity> godmoded = new java.util.ArrayList<>(List.of());
 
         for (Entity entity : entities) {
-            if (!entity.getData(FathommodModVariables.PLAYER_VARIABLES).isGodMode) {
+            if (!entity.getData(FathommodModVariables.ENTITY_VARIABLES).isGodMode) {
                 entity.kill();
                 entitiesKilled++;
             } else {
@@ -35,7 +35,7 @@ public class MixinKillCmd {
 
         if (entities.size() == 1) {
             Entity entity = entities.iterator().next();
-            if (entity.getData(FathommodModVariables.PLAYER_VARIABLES).isGodMode) {
+            if (entity.getData(FathommodModVariables.ENTITY_VARIABLES).isGodMode) {
                 context.sendFailure(Component.translatable("commands.fathommod.vanilla_kill.fail_god_mode"));
             } else {
                 context.sendSuccess(() -> Component.translatable("commands.kill.success.single", new Object[]{((Entity) entities.iterator().next()).getDisplayName()}), true);

@@ -4,6 +4,7 @@ import net.fathommod.FathommodMod;
 import net.fathommod.effect.ComboHitEffect;
 import net.fathommod.effect.MovementStunEffect;
 import net.fathommod.effect.NoBuildEffect;
+import net.fathommod.network.FathommodModVariables;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
@@ -37,8 +38,9 @@ public class FathommodModMobEffects {
             if (entity instanceof Player)
                 entity.getAttribute(NeoForgeMod.CREATIVE_FLIGHT).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "movement_stun_effect_modifier_fly"));
         } else if (effect.is(FathommodModMobEffects.COMBO_HIT)) {
-            entity.setData(FathommodModAttachments.COMBO_HIT_SOURCE.get(), "");
-            entity.setData(FathommodModAttachments.COMBO_HIT_COUNT, 2);
+            FathommodModVariables.EntityVariables vars = entity.getData(FathommodModVariables.ENTITY_VARIABLES);
+            vars.comboHitSource = "";
+            vars.syncPlayerVariables(entity);
         }
     }
 

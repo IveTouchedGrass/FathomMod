@@ -1,10 +1,12 @@
 package net.fathommod.entity.ted;
 
+import net.fathommod.BossEntity;
 import net.fathommod.Config;
 import net.fathommod.DevUtils;
 import net.fathommod.init.FathommodModEntities;
 import net.fathommod.init.FathommodModMobEffects;
 import net.fathommod.init.FathommodModSounds;
+import net.fathommod.network.FathommodModVariables;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -43,8 +45,8 @@ import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.animation.AnimationState;
+import software.bernie.geckolib.animation.*;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Comparator;
@@ -52,7 +54,7 @@ import java.util.List;
 import java.util.Objects;
 
 @SuppressWarnings("deprecated")
-public class TedEntity extends Monster implements GeoEntity {
+public class TedEntity extends Monster implements GeoEntity, BossEntity {
     public static final ResourceLocation TEXTURE_LOCATION = ResourceLocation.parse("fathommod:textures/entity/teddy_2.png");
 
     public static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("Ted_Idle");
@@ -425,6 +427,7 @@ public class TedEntity extends Monster implements GeoEntity {
 
     @Override
     public void tick() {
+        super.tick();
         this.entityData.set(HAS_TARGET, this.target != null);
         this.setPersistenceRequired();
         this.updateSpawnAABB();
@@ -481,7 +484,6 @@ public class TedEntity extends Monster implements GeoEntity {
             }
         }
 
-        super.tick();
         if (this.age % 5 == 0 && this.isAlive())
             for (int x = -6; x <= 6; x++) {
                 for (int z = -6; z <= 6; z++) {
@@ -500,7 +502,7 @@ public class TedEntity extends Monster implements GeoEntity {
             this.triedAttacking = false;
             this.setTeleportTimer(360);
             this.setRockTimer(240);
-            this.setRabbitTimer(600);
+            this.setRabbitTimer(Config.isDevelopment ? 30 : 600);
         }
 
         if (this.scanCooldown <= 0 && this.isAlive()) {
@@ -580,9 +582,26 @@ public class TedEntity extends Monster implements GeoEntity {
                     projectileLevel.addFreshEntity(_entityToSpawn);
                 }
             } else if (this.currentAttack == Attacks.SPAWN_RABBITS) {
-                DevUtils.executeCommandAs(this, "summon rabbit ^ ^ ^1 {RabbitType:99}");
-                DevUtils.executeCommandAs(this, "summon rabbit ^-1 ^ ^ {RabbitType:99}");
-                DevUtils.executeCommandAs(this, "summon rabbit ^1 ^ ^ {RabbitType:99}");
+                for (int i = 0; i < 3; i++) {
+                    Rabbit rabbit = new Rabbit(EntityType.RABBIT, this.level());
+                    float yaw = this.getYRot();
+                    float pitch = this.getXRot();
+
+                    String command = switch (i) {
+                        case 0 -> "^ ^ ^1";
+                        case 1 -> "^-1 ^ ^";
+                        case 2 -> "^1 ^ ^";
+                        default -> "^ ^ ^";
+                    };
+
+                    rabbit.setVariant(Rabbit.Variant.EVIL);
+                    rabbit.teleportTo(this.getX(), this.getY(), this.getZ());
+                    this.level().addFreshEntity(rabbit);
+                    FathommodModVariables.EntityVariables vars = rabbit.getData(FathommodModVariables.ENTITY_VARIABLES);
+                    vars.isTedRabbit = true;
+                    vars.syncPlayerVariables(rabbit);
+                    DevUtils.executeCommandAs(rabbit, "tp @s " + command);
+                }
             }
             this.windUpLeft = 127;
             this.currentAttack = Attacks.PURSUIT;
@@ -601,7 +620,7 @@ public class TedEntity extends Monster implements GeoEntity {
             this.setRabbitTimer(this.rabbitTimer() - 1);
         if (this.rabbitTimer() <= 0 && this.isAlive()) {
             this.spawnRabbits();
-            this.setRabbitTimer(600);
+            this.setRabbitTimer(Config.isDevelopment ? 30 : 600);
         }
 
         if (this.teleportTimer() > 0)

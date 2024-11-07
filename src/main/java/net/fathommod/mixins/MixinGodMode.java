@@ -15,20 +15,20 @@ public class MixinGodMode {
 //    @Inject(method = "hurt", at = @At("RETURN"), cancellable = true)
 //    public void hurt(DamageSource p_9037_, float p_9038_, CallbackInfoReturnable<Boolean> cir) {
 //        Player instance = (Player) (Object) this;
-//        if (instance.getData(FathommodModVariables.PLAYER_VARIABLES).isGodMode) {
+//        if (instance.getData(FathommodModVariables.ENTITY_VARIABLES).isGodMode) {
 //            cir.setReturnValue(false);
 //            cir.cancel();
 //        }
 //    }
     @ModifyReturnValue(method = "hurt", at = @At("RETURN"))
     public boolean hurt(boolean original, DamageSource p_9037_, float p_9038_) {
-        return !((Player) (Object) this).getData(FathommodModVariables.PLAYER_VARIABLES).isGodMode && original;
+        return !((Player) (Object) this).getData(FathommodModVariables.ENTITY_VARIABLES).isGodMode && original;
     }
 
     @Inject(method = "die", at = @At("HEAD"), cancellable = true)
     public void die(CallbackInfo ci) {
         Player instance = (Player) (Object) this;
-        if (instance.getData(FathommodModVariables.PLAYER_VARIABLES).isGodMode)
+        if (instance.getData(FathommodModVariables.ENTITY_VARIABLES).isGodMode)
             ci.cancel();
     }
 }
