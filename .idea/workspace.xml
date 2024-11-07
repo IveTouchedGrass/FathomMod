@@ -5,110 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1dfa89d3-d98e-4dda-bffe-8194546586ac" name="Changes" comment="i already forgot what i added">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/BossEntity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/DamageClasses.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/DamageTypedWeapon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinRemove.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/DevUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/DevUtils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/EventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/FathommodMod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/FathommodMod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/block/BigRoserbushBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/block/BigRoserbushBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/block/BloodGrassBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/block/BloodGrassBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/block/PALTNBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/block/PALTNBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/block/PlantOfTheYearBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/block/PlantOfTheYearBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/block/SmallroserbushBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/block/SmallroserbushBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/client/gui/TrinkeryScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/gui/TrinkeryScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/client/model/ModelWood_Bat_Projectile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/model/ModelWood_Bat_Projectile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/client/model/Modelthrowing_knife_Converted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/model/Modelthrowing_knife_Converted.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/client/model/Modeltnt_arrow_Converted.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/model/Modeltnt_arrow_Converted.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/client/renderer/TNTArrowRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/renderer/TNTArrowRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/client/renderer/ThrowingKnivesEntityRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/renderer/ThrowingKnivesEntityRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/effect/ComboHitEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/effect/ComboHitEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/TNTArrowEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/TNTArrowEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ThrowingKnivesEntityEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ThrowingKnivesEntityEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/TedEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/TedEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/TedSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/TedSpawner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModAttachments.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModBiomes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModBiomes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModBlocks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModCommands.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModCommands.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModEntities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModEntities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModEntityRenderers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModEntityRenderers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModKeyMappings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModKeyMappings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModMenus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModMenus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModMobEffects.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModMobEffects.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModModels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModModels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModScreens.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModScreens.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModSounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModSounds.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModTabs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModTabs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/AchelousBootsItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/AchelousBootsItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/AmorPolishItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/AmorPolishItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ArianItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ArianItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ArmorPolishItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ArmorPolishItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ArrowSharpenerItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ArrowSharpenerItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/AxepickItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/AxepickItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BalloonItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BalloonItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BasicSpearItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BasicSpearItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BlackSmithsWillItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BlackSmithsWillItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BoxingGlovesItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BoxingGlovesItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ChainHandleItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ChainHandleItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/CrusifixItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/CrusifixItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/DigFasterItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/DigFasterItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/EmpirianSwordItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/EmpirianSwordItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/FabricItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/FabricItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/FrogGearItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/FrogGearItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/FrogLegItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/FrogLegItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/FrogSoulItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/FrogSoulItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/HandleExtensionItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/HandleExtensionItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/HermesBootsItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/HermesBootsItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/LegRingItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/LegRingItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/LostOnesBowItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/LostOnesBowItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/LuminanceItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/LuminanceItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/MetalBatItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/MetalBatItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/PaltnScytheItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/PaltnScytheItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/PhasingTexasItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/PhasingTexasItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/RingOfLifeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/RingOfLifeItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/RingOfPowerItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/RingOfPowerItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/RiotShieldItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/RiotShieldItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/SeasGiftItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/SeasGiftItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/TNTArrowItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/TNTArrowItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/TedClawsItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/TedClawsItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ThrowingKnivesItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ThrowingKnivesItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/WhyThoItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/WhyThoItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/WoodBatItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/WoodBatItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinGodMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinGodMode.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinKillCmd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinKillCmd.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/OtherGodModeMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/OtherGodModeMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/DoubleJumpMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/DoubleJumpMessageHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FathommodModVariables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FathommodModVariables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FlyKeyMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FlyKeyMessageHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FlyShiftMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FlyShiftMessageHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/TrinketeryOpenMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/TrinketeryOpenMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/WingGlideHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/WingGlideHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/ArianPlayerFinishesUsingItemProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/ArianPlayerFinishesUsingItemProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/BAUSIsNearbyProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/BAUSIsNearbyProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/CrusifixRightclickedProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/CrusifixRightclickedProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/IFrameHeavenProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/IFrameHeavenProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/LightHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/LightHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/LostOnesBowRangedItemShootsProjectileProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/LostOnesBowRangedItemShootsProjectileProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/PaltnScytheRightclickedProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/PaltnScytheRightclickedProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/PhasingTexasLivingEntityIsHitWithToolProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/PhasingTexasLivingEntityIsHitWithToolProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/PlayerDisplayProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/PlayerDisplayProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TNTArrowBokProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TNTArrowBokProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TNTArrowHitProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TNTArrowHitProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/ThrowingKnivesRangedItemShootsProjectileProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/ThrowingKnivesRangedItemShootsProjectileProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TrinkeryThisGUIIsClosedProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TrinkeryThisGUIIsClosedProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TrinkeryThisGUIIsOpenedProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TrinkeryThisGUIIsOpenedProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TrinketeryOpenOnKeyPressedProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/TrinketeryOpenOnKeyPressedProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/world/inventory/TrinkeryMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/world/inventory/TrinkeryMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/fathommod/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/lang/en_us.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/fathommod/neoforge/biome_modifier/paltn_biome_modifier.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/fathommod/neoforge/biome_modifier/paltn_biome_modifier.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/fathommod/worldgen/configured_feature/paltn.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/fathommod/worldgen/configured_feature/paltn.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/fathommod/worldgen/placed_feature/paltn.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/fathommod/worldgen/placed_feature/paltn.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fathommod.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fathommod.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinComponent.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -536,7 +434,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730552108471</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="i already forgot what i added">
+      <option name="closed" value="true" />
+      <created>1730957037251</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1730957037251</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

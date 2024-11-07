@@ -53,7 +53,7 @@ public class MixinComponent {
 
             if (flag) {
                 if (modifier.is(Item.BASE_ATTACK_DAMAGE_ID))
-                    consumer.accept(CommonComponents.space().append(Component.translatable("attribute.modifier.equals." + modifier.operation().id(), new Object[]{ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT.format(d1), Component.translatable(((Attribute)attribute.value()).getDescriptionId())})).append(Component.literal(" ")).append(weapon.getDamageClass().getComponent()).withStyle(ChatFormatting.DARK_GREEN));
+                    consumer.accept((CommonComponents.space().append(Component.translatable("attribute.modifier.equals." + modifier.operation().id(), new Object[]{ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT.format(d1), Component.translatable(((Attribute)attribute.value()).getDescriptionId())})).withStyle(ChatFormatting.DARK_GREEN)).append(Component.literal(" ")).append(Component.translatable(weapon.getDamageClass().getComponent()).withColor(weapon.getDamageClass().getColor())));
                 else
                     consumer.accept(CommonComponents.space().append(Component.translatable("attribute.modifier.equals." + modifier.operation().id(), new Object[]{ItemAttributeModifiers.ATTRIBUTE_MODIFIER_FORMAT.format(d1), Component.translatable(((Attribute)attribute.value()).getDescriptionId())})).withStyle(ChatFormatting.DARK_GREEN));
             } else if (d0 > 0.0) {
