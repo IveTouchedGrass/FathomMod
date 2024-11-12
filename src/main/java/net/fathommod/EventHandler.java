@@ -3,6 +3,7 @@ package net.fathommod;
 import net.fathommod.entity.ted.TedEntity;
 import net.fathommod.init.FathommodModItems;
 import net.fathommod.init.FathommodModMobEffects;
+import net.fathommod.init.FathommodModSounds;
 import net.fathommod.network.DoubleJumpMessage;
 import net.fathommod.network.FathommodModVariables;
 import net.minecraft.client.Minecraft;
@@ -13,6 +14,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -202,6 +204,13 @@ public class EventHandler {
     }
 
     @SubscribeEvent
+    public static void afterEntityDamage(LivingDamageEvent.Post event) {
+        if (event.getSource().getEntity() instanceof ServerPlayer player && player.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.METAL_BAT.get()) {
+            player.level().playSound(null, player.blockPosition(), FathommodModSounds.BONK.get(), SoundSource.PLAYERS, 2.75f, 1f);
+        }
+    }
+
+    @SubscribeEvent
     public static void onEntityDeath(LivingDeathEvent event) {
         double seed = Math.random();
         LivingEntity entity = event.getEntity();
@@ -209,6 +218,24 @@ public class EventHandler {
         double x = entity.getX();
         double y = entity.getY();
         double z = entity.getZ();
+
+        if (entity instanceof ServerPlayer) {
+            for (Entity entityiterator : ((ServerLevel) entity.level()).getEntities().getAll()) {
+                if (entityiterator instanceof TedEntity ted) {
+                    boolean flag = false;
+                    for (Entity entityiteratoriterator : ((ServerLevel) ted.level()).getEntities(ted, ted.getTeleportAABB())) {
+                        if (entityiteratoriterator instanceof Player player && !player.isDeadOrDying()) {
+                            flag = true;
+                            ted.target = player;
+                            break;
+                        }
+                    }
+                    if (!flag) {
+                        ted.discard();
+                    }
+                }
+            }
+        }
 
         if (event.getSource().getEntity() != null && event.getSource().getEntity() instanceof Rabbit) {
             event.setCanceled(true);
@@ -304,10 +331,10 @@ public class EventHandler {
         if (DevUtils.hasTrinket(entity, Trinkets.LIFES_GAMBLE))
             event.setNewDamage(event.getNewDamage() * 2);
         if (sourceentity instanceof LivingEntity livingEntity && livingEntity.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.TED_CLAWS.get() && !source.is(ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "ted_weapon_combo")))) {
-            FathommodModVariables.EntityVariables vars = livingEntity.getData(FathommodModVariables.ENTITY_VARIABLES);
-            vars.comboHitSource = sourceentity.getUUID().toString();
+            FathommodModVariables.EntityVariables vars = entity.getData(FathommodModVariables.ENTITY_VARIABLES);
+            vars.comboHitSource = livingEntity.getUUID().toString();
             vars.syncPlayerVariables(livingEntity);
-            entity.addEffect(new MobEffectInstance(FathommodModMobEffects.COMBO_HIT, (entity.invulnerableDuration), Math.round(event.getNewDamage() * 5), false, false));
+            entity.addEffect(new MobEffectInstance(FathommodModMobEffects.COMBO_HIT, 25, Math.round(event.getNewDamage() * 5), false, false));
 //            FathommodMod.queueServerWork(entity.invulnerableTime + 1, () -> entity.hurt(new DamageSource(entity.level().holderOrThrow(DamageTypes.PLAYER_ATTACK), ((ServerLevel) entity.level()).getEntity(UUID.fromString(entity.getData(FathommodModAttachments.COMBO_HIT_SOURCE)))), event.getNewDamage()));
 //            FathommodMod.queueServerWork((entity.invulnerableTime * 2) + 1, () -> entity.hurt(new DamageSource(entity.level().holderOrThrow(DamageTypes.PLAYER_ATTACK), ((ServerLevel) entity.level()).getEntity(UUID.fromString(entity.getData(FathommodModAttachments.COMBO_HIT_SOURCE)))), event.getNewDamage()));
         }

@@ -5,7 +5,7 @@
   "subtitles.smack": "SMACK",
   "item.you_piece_of.wood_bat": "Wood Bat",
   "item.you_piece_of.paltn_scythe": "Paltn Scythe",
-  "item.fathommod.boxing_gloves": "Boxing Gloves",
+  "item.fathommod.boxing_gloves": "Boxing Glove",
   "item.fathommod.arian": "Arian",
   "item.fathommod.seas_gift": "Sea\u0027s Gift",
   "item.fathommod.ring_of_life": "Ring of Life",
@@ -112,9 +112,11 @@
   "commands.fathommod.vanilla_kill.fail_god_mode": "no lol",
   "commands.fathommod.vanilla_kill.fail_god_mode.multiple": "Killed %1$s entities, you aint killing %2$s with this buddy :3",
   "tooltip.fathommod.ted_claws.first_line": "- oooo... that's gonna leave a mark...",
-  "tooltip.fathommod.ted_claws.second_line": "- enemies hit by this get multihit 3 times",
+  "tooltip.fathommod.ted_claws.second_line": "- enemies hit by this get multihit 2 more times",
   "fathommod.damage_classes.assassin": "(Assassin)",
   "fathommod.damage_classes.summon": "(Summon)",
   "fathommod.damage_classes.melee": "(Melee)",
-  "fathommod.damage_classes.ranged": "(Ranged)"
+  "fathommod.damage_classes.ranged": "(Ranged)",
+  "subtitles.fathommod.bonk": "BONK",
+  "item.fathommod.ted_claws": "Ted's Claw"
 }

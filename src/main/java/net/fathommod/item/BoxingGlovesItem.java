@@ -1,6 +1,8 @@
 
 package net.fathommod.item;
 
+import net.fathommod.DamageClasses;
+import net.fathommod.DamageTypedWeapon;
 import net.fathommod.init.FathommodModItems;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.component.DataComponents;
@@ -20,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
-public class BoxingGlovesItem extends PickaxeItem {
+public class BoxingGlovesItem extends PickaxeItem implements DamageTypedWeapon {
 	private static final Tier TOOL_TIER = new Tier() {
 		@Override
 		public int getUses() {
@@ -54,7 +56,7 @@ public class BoxingGlovesItem extends PickaxeItem {
 	};
 
 	public BoxingGlovesItem() {
-		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 1f, 16f)));
+		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 2f, 65f)));
 	}
 
 	@SubscribeEvent
@@ -72,5 +74,10 @@ public class BoxingGlovesItem extends PickaxeItem {
 		components.add(Component.translatable("tooltip.fathommod.boxing_gloves.first_line").setStyle(net.minecraft.network.chat.Style.EMPTY.withColor(ChatFormatting.GRAY)));
 
 		super.appendHoverText(stack, context, components, tooltipFlag);
+	}
+
+	@Override
+	public DamageClasses getDamageClass() {
+		return DamageClasses.ASSASSIN;
 	}
 }

@@ -1,5 +1,7 @@
 package net.fathommod.item;
 
+import net.fathommod.DamageClasses;
+import net.fathommod.DamageTypedWeapon;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.TagKey;
@@ -10,7 +12,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class TedClawsItem extends Item {
+public class TedClawsItem extends Item implements DamageTypedWeapon {
     private static final Tier TOOL_TIER = new Tier() {
 
         @Override
@@ -53,5 +55,10 @@ public class TedClawsItem extends Item {
         super.appendHoverText(itemstack, context, components, tooltipFlag);
         components.add(Component.translatable("tooltip.fathommod.ted_claws.first_line").withStyle(ChatFormatting.GRAY));
         components.add(Component.translatable("tooltip.fathommod.ted_claws.second_line").setStyle(net.minecraft.network.chat.Style.EMPTY.withColor(0x58a7bf)));
+    }
+
+    @Override
+    public DamageClasses getDamageClass() {
+        return DamageClasses.MELEE;
     }
 }

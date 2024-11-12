@@ -1,6 +1,8 @@
 
 package net.fathommod.item;
 
+import net.fathommod.DamageClasses;
+import net.fathommod.DamageTypedWeapon;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.tags.BlockTags;
@@ -12,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class MetalBatItem extends AxeItem {
+public class MetalBatItem extends AxeItem implements DamageTypedWeapon {
 	private static final Tier TOOL_TIER = new Tier() {
 		@Override
 		public int getUses() {
@@ -54,5 +56,10 @@ public class MetalBatItem extends AxeItem {
 		components.add(Component.translatable("tooltip.fathommod.metal_bat.first_line").setStyle(net.minecraft.network.chat.Style.EMPTY.withColor(ChatFormatting.GRAY)));
 
 		super.appendHoverText(stack, context, components, tooltipFlag);
+	}
+
+	@Override
+	public DamageClasses getDamageClass() {
+		return DamageClasses.MELEE;
 	}
 }

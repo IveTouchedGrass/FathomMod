@@ -68,8 +68,8 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
     private final AnimatableInstanceCache cache = GeckoLibUtil.createInstanceCache(this);
 
     public Attacks currentAttack = Attacks.PURSUIT;
-    private Player target;
-    private byte scanCooldown = 0;
+    public Player target;
+    public byte scanCooldown = 0;
     private byte windUpLeft = 0;
     public boolean triedAttacking = false;
 //    private short rabbitTimer = 600;
@@ -267,7 +267,7 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
 
     @SuppressWarnings("SameReturnValue")
     private PlayState predicate(AnimationState<TedEntity> animationState) {
-        if (!this.isDeadOrDying() && this.initializedSpawn && this.emergeTicks <= 1) {
+        if (!this.isDeadOrDying()) {
             if (animationState.isMoving()) {
                 animationState.setAndContinue(WALK_ANIM);
             } else {
@@ -502,7 +502,7 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
             this.triedAttacking = false;
             this.setTeleportTimer(360);
             this.setRockTimer(240);
-            this.setRabbitTimer(Config.isDevelopment ? 30 : 600);
+            this.setRabbitTimer(600);
         }
 
         if (this.scanCooldown <= 0 && this.isAlive()) {
@@ -620,7 +620,7 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
             this.setRabbitTimer(this.rabbitTimer() - 1);
         if (this.rabbitTimer() <= 0 && this.isAlive()) {
             this.spawnRabbits();
-            this.setRabbitTimer(Config.isDevelopment ? 30 : 600);
+            this.setRabbitTimer(600);
         }
 
         if (this.teleportTimer() > 0)

@@ -1,6 +1,8 @@
 
 package net.fathommod.item;
 
+import net.fathommod.DamageClasses;
+import net.fathommod.DamageTypedWeapon;
 import net.fathommod.init.FathommodModItems;
 import net.fathommod.procedures.PhasingTexasLivingEntityIsHitWithToolProcedure;
 import net.minecraft.core.component.DataComponents;
@@ -18,7 +20,7 @@ import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import java.util.List;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
-public class PhasingTexasItem extends SwordItem {
+public class PhasingTexasItem extends SwordItem implements DamageTypedWeapon {
 	private static final Tier TOOL_TIER = new Tier() {
 		@Override
 		public int getUses() {
@@ -80,5 +82,10 @@ public class PhasingTexasItem extends SwordItem {
 	@Override
 	public ItemStack getCraftingRemainingItem(ItemStack itemstack) {
 		return new ItemStack(this);
+	}
+
+	@Override
+	public DamageClasses getDamageClass() {
+		return DamageClasses.MELEE;
 	}
 }

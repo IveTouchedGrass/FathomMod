@@ -16,5 +16,14 @@
         "stream": false
       }
     ]
+  },
+  "bonk": {
+    "subtitle": "subtitles.fathommod.bonk",
+    "sounds": [
+      {
+        "name": "fathommod:bonk",
+        "stream": false
+      }
+    ]
   }
 }

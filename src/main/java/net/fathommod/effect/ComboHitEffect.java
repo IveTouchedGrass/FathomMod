@@ -35,11 +35,15 @@ public class ComboHitEffect extends MobEffect {
 
     @Override
     public boolean applyEffectTick(@NotNull LivingEntity entity, int amplifier) {
-        if (entity.level() instanceof ServerLevel level && !entity.getData(FathommodModVariables.ENTITY_VARIABLES).comboHitSource.isEmpty()) {
-            entity.hurt(new DamageSource(entity.level().holderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "ted_weapon_combo"))), level.getEntity(UUID.fromString(entity.getData(FathommodModVariables.ENTITY_VARIABLES).comboHitSource))), (float) amplifier / 5);
+        try {
+            if (entity.level() instanceof ServerLevel level) {
+                entity.hurt(new DamageSource(entity.level().holderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "ted_weapon_combo"))), level.getEntity(UUID.fromString(entity.getData(FathommodModVariables.ENTITY_VARIABLES).comboHitSource))), (float) amplifier / 5);
+                return true;
+            }
+            return !entity.isInvulnerable() || entity.level().isClientSide();
+        } catch (IllegalArgumentException e) {
             return true;
         }
-        return (!entity.getData(FathommodModVariables.ENTITY_VARIABLES).comboHitSource.isEmpty() && !entity.isInvulnerable()/* && entity.getData(FathommodModAttachments.COMBO_HIT_COUNT) > 0*/) || entity.level().isClientSide();
     }
 
     @SubscribeEvent

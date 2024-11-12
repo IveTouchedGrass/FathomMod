@@ -1,6 +1,8 @@
 
 package net.fathommod.item;
 
+import net.fathommod.DamageClasses;
+import net.fathommod.DamageTypedWeapon;
 import net.fathommod.entity.TNTArrowEntity;
 import net.fathommod.procedures.LostOnesBowRangedItemShootsProjectileProcedure;
 import net.minecraft.network.chat.Component;
@@ -18,7 +20,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class LostOnesBowItem extends Item {
+public class LostOnesBowItem extends Item implements DamageTypedWeapon {
 	public LostOnesBowItem() {
 		super(new Item.Properties().durability(629).rarity(Rarity.COMMON));
 	}
@@ -103,5 +105,10 @@ public class LostOnesBowItem extends Item {
 		components.add(Component.translatable("tooltip.fathommod.lost_ones_bow.first_line").setStyle(Style.EMPTY.withColor(0x58a7bf)));
 
 		super.appendHoverText(p_41421_, p_339594_, components, p_41424_);
+	}
+
+	@Override
+	public DamageClasses getDamageClass() {
+		return DamageClasses.RANGED;
 	}
 }

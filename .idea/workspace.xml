@@ -4,9 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1dfa89d3-d98e-4dda-bffe-8194546586ac" name="Changes" comment="i already forgot what i added">
+    <list default="true" id="1dfa89d3-d98e-4dda-bffe-8194546586ac" name="Changes" comment="Fixed components breaking">
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/sounds/bonk.ogg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinComponent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinComponent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/EventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/effect/ComboHitEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/effect/ComboHitEffect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/TedEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/TedEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModSounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModSounds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BoxingGlovesItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BoxingGlovesItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/EmpirianSwordItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/EmpirianSwordItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/FabricItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/FabricItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/LostOnesBowItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/LostOnesBowItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/MetalBatItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/MetalBatItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/PaltnScytheItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/PaltnScytheItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/PhasingTexasItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/PhasingTexasItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/TedClawsItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/TedClawsItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/WoodBatItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/WoodBatItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/fathommod/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/fathommod/sounds.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/sounds.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,11 +159,11 @@
       <recent name="C:\Users\User\Desktop\Coding\Minecraft\imma_pull_a_heroshima_because_geckolib_being_dumb\src\main\resources\assets\fathommod\geo" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\sounds" />
       <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\models\custom" />
       <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\models" />
       <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\textures\screens" />
       <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\textures\item" />
-      <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\textures\entity" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="net.mcreator.youpieceof.client.renderer" />
@@ -442,7 +457,15 @@
       <option name="project" value="LOCAL" />
       <updated>1730957037251</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Fixed components breaking">
+      <option name="closed" value="true" />
+      <created>1731002989580</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1731002989580</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -471,7 +494,8 @@
     <MESSAGE value="Adjusted hitbox of Ted's spawner to match Ted's hitbox" />
     <MESSAGE value="Added God Mode" />
     <MESSAGE value="i already forgot what i added" />
-    <option name="LAST_COMMIT_MESSAGE" value="i already forgot what i added" />
+    <MESSAGE value="Fixed components breaking" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed components breaking" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
