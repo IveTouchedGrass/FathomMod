@@ -15,6 +15,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(value = Dist.CLIENT, _interface = ItemSupplier.class)
 public class ThrowingKnivesEntityEntity extends AbstractArrow implements ItemSupplier {
@@ -34,7 +35,7 @@ public class ThrowingKnivesEntityEntity extends AbstractArrow implements ItemSup
 
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public ItemStack getItem() {
+	public @NotNull ItemStack getItem() {
 		return PROJECTILE_ITEM;
 	}
 

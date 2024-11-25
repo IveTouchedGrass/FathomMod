@@ -23,7 +23,7 @@ public class CrusifixItem extends Item {
 	public CrusifixItem() {
 		super(new Item.Properties().durability(1).fireResistant().rarity(Rarity.COMMON)
 				.attributes(ItemAttributeModifiers.builder().add(Attributes.ATTACK_DAMAGE, new AttributeModifier(ResourceLocation.fromNamespaceAndPath("fathommod","crusifix_modifier"), 0, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND)
-						.add(Attributes.ATTACK_SPEED, new AttributeModifier(ResourceLocation.fromNamespaceAndPath("fathommod","crusifix_modifier2"), -2.4, AttributeModifier.Operation.ADD_VALUE), EquipmentSlotGroup.MAINHAND).build()));
+						.build()));
 	}
 
 	@Override

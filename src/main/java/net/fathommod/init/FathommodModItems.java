@@ -21,6 +21,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public class FathommodModItems {
 	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(BuiltInRegistries.ITEM, FathommodMod.MOD_ID);
 	public static final DeferredHolder<Item, Item> PALTN = block(FathommodModBlocks.PALTN);
+	public static final DeferredHolder<Item, Item> KILLERS_PAW = REGISTRY.register("killers_paw", KillersPawItem::new);
 	public static final DeferredHolder<Item, Item> PALTN_SCYTHE = REGISTRY.register("paltn_scythe", PaltnScytheItem::new);
 	public static final DeferredHolder<Item, Item> CRUSIFIX = REGISTRY.register("crusifix", CrusifixItem::new);
 	public static final DeferredHolder<Item, Item> WOOD_BAT = REGISTRY.register("wood_bat", WoodBatItem::new);

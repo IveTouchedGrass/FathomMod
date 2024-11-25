@@ -56,7 +56,7 @@ public class BoxingGlovesItem extends PickaxeItem implements DamageTypedWeapon {
 	};
 
 	public BoxingGlovesItem() {
-		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 2f, 65f)));
+		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 3f, 65f)));
 	}
 
 	@SubscribeEvent

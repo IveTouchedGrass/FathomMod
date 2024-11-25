@@ -46,7 +46,7 @@ public class PaltnScytheRightclickedProcedure {
 						if (entityiterator instanceof LivingEntity _entity && !_entity.level().isClientSide())
 							_entity.addEffect(new MobEffectInstance(MobEffects.POISON, 140, 16));
 						if (entity instanceof Player _player)
-							_player.getCooldowns().addCooldown(FathommodModItems.PALTN_SCYTHE.get(), 280);
+							_player.getCooldowns().addCooldown(FathommodModItems.PALTN_SCYTHE.get(), 200);
 					}
 				}
 			}

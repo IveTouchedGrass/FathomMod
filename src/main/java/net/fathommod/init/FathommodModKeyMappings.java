@@ -4,7 +4,7 @@
  */
 package net.fathommod.init;
 
-import net.fathommod.network.TrinketeryOpenMessage;
+import net.fathommod.network.packets.TrinketeryOpenMessage;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.neoforged.api.distmarker.Dist;
@@ -19,6 +19,7 @@ import org.lwjgl.glfw.GLFW;
 public class FathommodModKeyMappings {
 	public static final KeyMapping TRINKETERY_OPEN = new KeyMapping("key.fathommod.trinketery_open", GLFW.GLFW_KEY_RIGHT_ALT, "key.categories.misc") {
 		private boolean isDownOld = false;
+
 
 		@Override
 		public void setDown(boolean isDown) {

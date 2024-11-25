@@ -49,7 +49,7 @@ public class WoodBatItem extends AxeItem implements DamageTypedWeapon {
 	};
 
 	public WoodBatItem() {
-		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 4f, -2.8f)));
+		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 9f, -2.8f)));
 	}
 
 	@Override

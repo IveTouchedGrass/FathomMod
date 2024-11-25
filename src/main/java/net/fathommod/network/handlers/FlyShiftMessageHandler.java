@@ -1,5 +1,7 @@
-package net.fathommod.network;
+package net.fathommod.network.handlers;
 
+import net.fathommod.network.FathommodModVariables;
+import net.fathommod.network.packets.FlyShiftMessage;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;

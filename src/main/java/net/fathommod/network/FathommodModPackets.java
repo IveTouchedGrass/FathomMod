@@ -1,5 +1,7 @@
 package net.fathommod.network;
 
+import net.fathommod.network.handlers.*;
+import net.fathommod.network.packets.*;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.handling.DirectionalPayloadHandler;
@@ -32,6 +34,18 @@ public class FathommodModPackets {
                         DoubleJumpMessageHandler::handleOnClient,
                         DoubleJumpMessageHandler::handleOnServer
                 )
+        );
+
+        registrar.playToServer(
+                AutoAttackMessage.AutoAttackPacket.TYPE,
+                AutoAttackMessage.AutoAttackPacket.STREAM_CODEC,
+                AutoAttackPacketHandler::handleDataOnServer
+        );
+
+        registrar.playToClient(
+                ResetAttackStrengthMessage.ResetAttackStrengthPacket.TYPE,
+                ResetAttackStrengthMessage.ResetAttackStrengthPacket.STREAM_CODEC,
+                ResetAttackStrengthPacketHandler::handleDataOnClient
         );
 
 //        registrar.playBidirectional(

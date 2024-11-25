@@ -1,5 +1,6 @@
 package net.fathommod.entity.ted;
 
+import net.fathommod.init.FathommodModDamageTypes;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
@@ -53,8 +54,8 @@ public class ROCK extends AbstractArrow implements GeoEntity {
         if (entity instanceof Player && ((Player) entity).getAbilities().invulnerable)
             return;
 
-        entity.hurt(new DamageSource(this.level().holderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.parse("fathommod:ted_rock")))), 15);
-        entity.addEffect(new MobEffectInstance(this.level().holderOrThrow(ResourceKey.create(Registries.MOB_EFFECT, ResourceLocation.parse("fathommod:movement_stun"))), 20, 0, false, false));
+        entity.hurt(new DamageSource(this.level().holderOrThrow(FathommodModDamageTypes.TED_ROCK)), 25);
+        entity.addEffect(new MobEffectInstance(this.level().holderOrThrow(ResourceKey.create(Registries.MOB_EFFECT, ResourceLocation.parse("fathommod:movement_stun"))), 30, 0, false, false));
         this.discard();
     }
 

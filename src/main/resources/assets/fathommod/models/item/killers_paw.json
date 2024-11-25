@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/killers_paw",
+  "textures": {
+    "0": "fathommod:item/killerspaw",
+    "particle": "fathommod:item/killerspaw"
+  }
+}

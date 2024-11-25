@@ -48,7 +48,7 @@ public class MetalBatItem extends AxeItem implements DamageTypedWeapon {
 	};
 
 	public MetalBatItem() {
-		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 8f, -3f)));
+		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 17f, -3f)));
 	}
 
 	@Override

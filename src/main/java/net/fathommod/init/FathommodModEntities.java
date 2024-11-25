@@ -35,7 +35,7 @@ public class FathommodModEntities {
 			EntityType.Builder.<ThrowingKnivesEntityEntity>of(ThrowingKnivesEntityEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
 	public static final DeferredHolder<EntityType<?>, EntityType<BloodDwellerEntity>> BLOOD_DWELLER = register("blood_dweller", EntityType.Builder.<BloodDwellerEntity>of(BloodDwellerEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 2f));
 	public static final DeferredHolder<EntityType<?>, EntityType<TedEntity>> TED = register("ted", EntityType.Builder.<TedEntity>of(TedEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).sized(1.7f, 4.5f).setTrackingRange(99).setUpdateInterval(1));
-	public static final DeferredHolder<EntityType<?>, EntityType<net.fathommod.entity.ted.ROCK>> ROCK = register("rock", EntityType.Builder.<ROCK>of(ROCK::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(1.f, 1.f));
+	public static final DeferredHolder<EntityType<?>, EntityType<net.fathommod.entity.ted.ROCK>> ROCK = register("rock", EntityType.Builder.<ROCK>of(ROCK::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(1.5f, 1.5f));
 	public static final DeferredHolder<EntityType<?>, EntityType<TedSpawner>> TED_SPAWNER = register("ted_spawner", EntityType.Builder.<TedSpawner>of(TedSpawner::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(1.7f, 4.5f));
 
 	@SuppressWarnings("RedundantCast")

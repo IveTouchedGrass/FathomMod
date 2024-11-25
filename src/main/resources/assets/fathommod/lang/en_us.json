@@ -37,7 +37,7 @@
   "item_group.fathommod.fathom_mod": "Fathom Mod",
   "biome.fathommod.blood_river": "Blood River",
   "item.fathommod.throwing_knives": "Throwing Knives",
-  "item.fathommod.black_smiths_will": "Black Smith\u0027s Will",
+  "item.fathommod.black_smiths_will": "Blacksmith\u0027s Will",
   "item.fathommod.blood_dweller_spawn_egg": "Blood Dweller Spawn Egg",
   "item.you_piece_of.king_simon_armor_helmet": "King Simon\u0027s Crown",
   "block.fathommod.paltn": "PALTN",
@@ -86,7 +86,7 @@
   "tooltip.fathommod.handle_extension.second_line": "- Increases building and entity reach by 1",
   "tooltip.fathommod.chained_handle.second_line": "- Damage is decreased -15%",
   "tooltip.fathommod.chained_handle.first_line": "- Increases building and entity reach by 3",
-  "tooltip.fathommod.ring_of_power.second_line": "- Damage from all sources +1",
+  "tooltip.fathommod.ring_of_power.second_line": "- Damage from all sources +2",
   "tooltip.fathommod.leg_ring.second_line": "- Increases movement speed by 10%",
   "tooltip.fathommod.ring_of_life.second_line": "- +1 health regen every 3 seconds",
   "tooltip.fathommod.seas_gift.first_line": "- Not so much a \"gift\" after all",
@@ -118,5 +118,9 @@
   "fathommod.damage_classes.melee": "(Melee)",
   "fathommod.damage_classes.ranged": "(Ranged)",
   "subtitles.fathommod.bonk": "BONK",
-  "item.fathommod.ted_claws": "Ted's Claw"
+  "item.fathommod.ted_claws": "Ted's Claw",
+  "tooltip.fathommod.arrow_sharpener.first_line": "- +10% arrow damage",
+  "tooltip.fathommod.black_smiths_will.first_line": "- TRY MY UNBREAKING!",
+  "tooltip.fathommod.black_smiths_will.second_line": "- Makes armor literally unbreakable while trinket is equipped",
+  "tooltip.fathommod.tnt_arrow.first_line": "- attach an explosive to an arrow, what can go wrong?"
 }

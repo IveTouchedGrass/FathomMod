@@ -9,7 +9,9 @@
     "MixinElytra",
     "MixinGodMode",
     "MixinKillCmd",
+    "MixinPush",
     "MixinRemove",
+    "MixinServerPlayer",
     "OtherGodModeMixin"
   ],
   "client": [],

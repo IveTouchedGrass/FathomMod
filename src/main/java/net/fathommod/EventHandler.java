@@ -1,16 +1,17 @@
 package net.fathommod;
 
 import net.fathommod.entity.ted.TedEntity;
+import net.fathommod.init.FathommodModDamageTypes;
 import net.fathommod.init.FathommodModItems;
 import net.fathommod.init.FathommodModMobEffects;
 import net.fathommod.init.FathommodModSounds;
-import net.fathommod.network.DoubleJumpMessage;
+import net.fathommod.network.packets.AutoAttackMessage;
+import net.fathommod.network.packets.DoubleJumpMessage;
 import net.fathommod.network.FathommodModVariables;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
@@ -18,36 +19,34 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
-import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Rabbit;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.Bogged;
-import net.minecraft.world.entity.monster.ElderGuardian;
-import net.minecraft.world.entity.monster.Zombie;
-import net.minecraft.world.entity.monster.ZombieVillager;
+import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.Unbreakable;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
 import net.neoforged.neoforge.client.event.RenderNameTagEvent;
 import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.entity.living.*;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
+import java.util.Comparator;
 import java.util.Objects;
+import java.util.UUID;
 
 @SuppressWarnings("DataFlowIssue")
 @EventBusSubscriber(modid = FathommodMod.MOD_ID)
@@ -69,12 +68,28 @@ public class EventHandler {
 
         if (instance.options.keyShift.isDown() && instance.options.keyJump.isDown() && instance.level != null)
             PacketDistributor.sendToServer(new DoubleJumpMessage.DoubleJumpPacket(0f));
+
+        if (instance.options.keyAttack.isDown() && instance.level != null)
+            PacketDistributor.sendToServer(new AutoAttackMessage.AutoAttackPacket(0));
     }
 
     @SubscribeEvent
     public static void onEntitySetTarget(LivingChangeTargetEvent event) {
+        if (!(event.getEntity().level() instanceof ServerLevel))
+            return;
         if (event.getNewAboutToBeSetTarget() != null && event.getNewAboutToBeSetTarget().getData(FathommodModVariables.ENTITY_VARIABLES).isGodMode)
             event.setNewAboutToBeSetTarget(null);
+        if (event.getNewAboutToBeSetTarget() != null && event.getEntity().getData(FathommodModVariables.ENTITY_VARIABLES).isSummon && Objects.equals(event.getEntity().getData(FathommodModVariables.ENTITY_VARIABLES).summonOwner, event.getNewAboutToBeSetTarget().getUUID().toString())) {
+            event.setNewAboutToBeSetTarget(null);
+        }
+        LivingEntity entity = event.getEntity();
+        if (event.getNewAboutToBeSetTarget() == null && event.getEntity().getData(FathommodModVariables.ENTITY_VARIABLES).isSummon) {
+            for (LivingEntity entityiterator : event.getEntity().level().getEntitiesOfClass(Mob.class, new AABB(entity.getX() - 25, entity.getY() - 25, entity.getZ() - 25, entity.getX() + 25,  entity.getY() + 25 ,entity.getZ() + 25))) {
+                if (entityiterator != ((ServerLevel) entity.level()).getEntity(UUID.fromString(entity.getData(FathommodModVariables.ENTITY_VARIABLES).summonOwner)) && (entityiterator instanceof Mob mob && mob.getTarget() == ((ServerLevel) entity.level()).getEntity(UUID.fromString(entity.getData(FathommodModVariables.ENTITY_VARIABLES).summonOwner))) && entity.canAttack(entityiterator)) {
+                    event.setNewAboutToBeSetTarget(entityiterator);
+                }
+            }
+        }
     }
 
     @SubscribeEvent
@@ -103,9 +118,12 @@ public class EventHandler {
     @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player entity = event.getEntity();
-        if (entity instanceof ServerPlayer && entity.getData(FathommodModVariables.ENTITY_VARIABLES).isGodMode) {
+        FathommodModVariables.EntityVariables vars = entity.getData(FathommodModVariables.ENTITY_VARIABLES);
+        if (entity instanceof ServerPlayer && vars.isGodMode) {
             entity.getAbilities().invulnerable = true;
         }
+        vars.lastAutoAttack++;
+        vars.syncPlayerVariables(entity);
     }
 
     @SubscribeEvent
@@ -113,6 +131,22 @@ public class EventHandler {
         MobEffect effect = event.getEffectInstance().getEffect().value();
         if (event.getEntity() instanceof TedEntity)
             event.setResult(effect.isBeneficial() || effect.getClass().getName().contains("ComboHitEffect") ? MobEffectEvent.Applicable.Result.APPLY : MobEffectEvent.Applicable.Result.DO_NOT_APPLY);
+    }
+
+    @SubscribeEvent
+    public static void onEntityTick(EntityTickEvent.Pre event) {
+        if (event.getEntity() instanceof LivingEntity entity && entity.level() instanceof ServerLevel world) {
+            FathommodModVariables.EntityVariables vars = entity.getData(FathommodModVariables.ENTITY_VARIABLES);
+            if (vars.isSummon && (world.getEntity(UUID.fromString(vars.summonOwner)) != null || vars.summonTimeLeft-- <= 0)) {
+                entity.discard();
+            }
+            try {
+                if (vars.isSummon && (entity instanceof Mob mob) && mob.getTarget() == null) {
+                    mob.getNavigation().moveTo(world.getEntity(UUID.fromString(entity.getData(FathommodModVariables.ENTITY_VARIABLES).summonOwner)), 0.75d);
+                }
+            } catch (NullPointerException ignored) {}
+            vars.syncPlayerVariables(entity);
+        }
     }
 
     @SubscribeEvent
@@ -160,10 +194,49 @@ public class EventHandler {
         rangeHandler(entity);
     }
 
+    @SubscribeEvent
+    public static void onUseItem(PlayerInteractEvent.RightClickItem event) {
+        Player player = event.getEntity();
+        if (player.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.KILLERS_PAW.get()) {
+            player.getCooldowns().addCooldown(FathommodModItems.KILLERS_PAW.get(), 900);
+            for (int i = 0; i < 3; i++) {
+                Rabbit rabbit = new Rabbit(EntityType.RABBIT, player.level());
+                String command = switch (i) {
+                    case 0 -> "^ ^ ^1";
+                    case 1 -> "^-1 ^ ^";
+                    case 2 -> "^1 ^ ^";
+                    default -> "^ ^ ^";
+                };
+
+                rabbit.setVariant(Rabbit.Variant.EVIL);
+                rabbit.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "killer_rabbit_ted_health"), 3, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                rabbit.getAttribute(Attributes.MOVEMENT_SPEED).addPermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "killer_rabbit_ted_movement_speed"), 1.5, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                rabbit.getAttribute(Attributes.ATTACK_DAMAGE).addPermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "killer_rabbit_ted_damage_boost"), 3, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                rabbit.getAttribute(Attributes.FOLLOW_RANGE).addPermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "killer_rabbit_ted_follow_range"), 69, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                rabbit.setHealth(rabbit.getMaxHealth());
+                for (Entity entity : player.level().getEntities(player, new AABB(player.getX() - 12.5, player.getY() - 12.5, player.getZ() - 12.5, player.getX() + 12.5, player.getY() + 12.5, player.getZ() + 12.5)).stream().sorted(Comparator
+                        .comparingDouble(entityToSort -> entityToSort.distanceToSqr(player.getX(), player.getY(), player.getZ()))).toList()) {
+                    if (entity instanceof LivingEntity && !(entity instanceof Player) && (entity instanceof Monster || (entity instanceof Mob mob && mob.getTarget() == player))) {
+                        rabbit.setTarget((LivingEntity) entity);
+                        break;
+                    }
+                }
+                rabbit.teleportTo(player.getX(), player.getY(), player.getZ());
+                player.level().addFreshEntity(rabbit);
+                FathommodModVariables.EntityVariables vars = rabbit.getData(FathommodModVariables.ENTITY_VARIABLES);
+                vars.summonOwner = player.getUUID().toString();
+                vars.isSummon = true;
+                vars.summonTimeLeft = 600;
+                vars.syncPlayerVariables(rabbit);
+                DevUtils.executeCommandAs(rabbit, "tp @s " + command);
+            }
+        }
+    }
+
     private static void rangeHandler(LivingEntity entity) {
         if (entity instanceof Player player) {
             if (player.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.BOXING_GLOVES.get()) {
-                player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:boxing_gloves_modifier"), -2, AttributeModifier.Operation.ADD_VALUE));
+                player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:boxing_gloves_modifier"), -1.5, AttributeModifier.Operation.ADD_VALUE));
                 player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).removeModifier(ResourceLocation.parse("fathommod:basic_spear_modifier"));
             } else if (player.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.BASIC_SPEAR.get()) {
                 player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).removeModifier(ResourceLocation.parse("fathommod:boxing_gloves_modifier"));
@@ -219,30 +292,6 @@ public class EventHandler {
         double y = entity.getY();
         double z = entity.getZ();
 
-        if (entity instanceof ServerPlayer) {
-            for (Entity entityiterator : ((ServerLevel) entity.level()).getEntities().getAll()) {
-                if (entityiterator instanceof TedEntity ted) {
-                    boolean flag = false;
-                    for (Entity entityiteratoriterator : ((ServerLevel) ted.level()).getEntities(ted, ted.getTeleportAABB())) {
-                        if (entityiteratoriterator instanceof Player player && !player.isDeadOrDying()) {
-                            flag = true;
-                            ted.target = player;
-                            break;
-                        }
-                    }
-                    if (!flag) {
-                        ted.discard();
-                    }
-                }
-            }
-        }
-
-        if (event.getSource().getEntity() != null && event.getSource().getEntity() instanceof Rabbit) {
-            event.setCanceled(true);
-            entity.invulnerableTime = 0;
-            entity.die(new DamageSource(entity.level().holderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath("fathommod", "skill_issue")))));
-        }
-
         if (event.getSource().getEntity() instanceof Player player)
             dropHandler(seed, entity, world, x, y, z, DevUtils.getEnchantLevel(player.getItemBySlot(EquipmentSlot.MAINHAND), Enchantments.LOOTING, player.level()));
     }
@@ -286,6 +335,13 @@ public class EventHandler {
                     _level.addFreshEntity(entityToSpawn);
                 }
             }
+        } else if (entity instanceof TedEntity) {
+            if (world instanceof ServerLevel level) {
+                ItemEntity entityToSpawn = new ItemEntity(level, x, y, z, new ItemStack(FathommodModItems.TED_CLAWS));
+                ItemEntity entityToSpawn2 = new ItemEntity(level, x, y, z, new ItemStack(FathommodModItems.TED_CLAWS));
+                entityToSpawn.setPickUpDelay(15);
+                level.addFreshEntity(entityToSpawn);
+            }
         }
     }
 
@@ -295,20 +351,14 @@ public class EventHandler {
         DamageSource source = event.getSource();
         Entity sourceentity = source.getEntity();
 
+        if (sourceentity instanceof BossEntity && entity.invulnerableTime > 0) {
+            entity.invulnerableTime = 0;
+            entity.hurt(source, event.getOriginalAmount());
+        }
+
         if (sourceentity instanceof Rabbit rabbit && rabbit.getData(FathommodModVariables.ENTITY_VARIABLES).isTedRabbit) {
             event.setCanceled(true);
-            entity.hurt(new DamageSource(entity.level().holderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "skill_issue")))), event.getAmount());
-        }
-    }
-
-    @SubscribeEvent
-    public static void onPlayerLeave(PlayerEvent.PlayerLoggedOutEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player && player.level() instanceof ServerLevel world && world.players().size() <= 1) {
-            for (Entity entity : world.getAllEntities()) {
-                if (entity instanceof BossEntity) {
-                    entity.discard();
-                }
-            }
+            entity.hurt(new DamageSource(entity.level().holderOrThrow(FathommodModDamageTypes.SKILL_ISSUE)), event.getAmount());
         }
     }
 
@@ -320,23 +370,21 @@ public class EventHandler {
 
         if (sourceentity instanceof TedEntity ted) {
             ted.currentAttack = TedEntity.Attacks.PURSUIT;
-            ted.setRockTimer(240);
+            ted.setRockTimer(160);
         }
 
         if (arrowSharpenerHandler(source) && sourceentity != null) {
             event.setNewDamage(event.getNewDamage() * 1.2f);
         }
         if (source.getEntity() instanceof LivingEntity && DevUtils.hasTrinket((LivingEntity) source.getEntity(), Trinkets.RING_OF_POWER))
-            event.setNewDamage(event.getNewDamage() + 1);
+            event.setNewDamage(event.getNewDamage() + 2);
         if (DevUtils.hasTrinket(entity, Trinkets.LIFES_GAMBLE))
             event.setNewDamage(event.getNewDamage() * 2);
-        if (sourceentity instanceof LivingEntity livingEntity && livingEntity.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.TED_CLAWS.get() && !source.is(ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "ted_weapon_combo")))) {
+        if (sourceentity instanceof LivingEntity livingEntity && livingEntity.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.TED_CLAWS.get() && !source.is(FathommodModDamageTypes.TED_WEAPON_COMBO)) {
             FathommodModVariables.EntityVariables vars = entity.getData(FathommodModVariables.ENTITY_VARIABLES);
             vars.comboHitSource = livingEntity.getUUID().toString();
             vars.syncPlayerVariables(livingEntity);
-            entity.addEffect(new MobEffectInstance(FathommodModMobEffects.COMBO_HIT, 25, Math.round(event.getNewDamage() * 5), false, false));
-//            FathommodMod.queueServerWork(entity.invulnerableTime + 1, () -> entity.hurt(new DamageSource(entity.level().holderOrThrow(DamageTypes.PLAYER_ATTACK), ((ServerLevel) entity.level()).getEntity(UUID.fromString(entity.getData(FathommodModAttachments.COMBO_HIT_SOURCE)))), event.getNewDamage()));
-//            FathommodMod.queueServerWork((entity.invulnerableTime * 2) + 1, () -> entity.hurt(new DamageSource(entity.level().holderOrThrow(DamageTypes.PLAYER_ATTACK), ((ServerLevel) entity.level()).getEntity(UUID.fromString(entity.getData(FathommodModAttachments.COMBO_HIT_SOURCE)))), event.getNewDamage()));
+            entity.addEffect(new MobEffectInstance(FathommodModMobEffects.COMBO_HIT, 10, Math.round(event.getNewDamage() * 5), false, false));
         }
     }
 
@@ -368,7 +416,7 @@ public class EventHandler {
     private static void balloonHandler(LivingEntity entity) {
         if (DevUtils.hasTrinket(entity, Trinkets.BALLOON)) {
             if (!(entity.getAttributes().hasModifier(Attributes.JUMP_STRENGTH, ResourceLocation.parse("fathommod:test")))) {
-                entity.getAttribute(Attributes.JUMP_STRENGTH).addPermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:test"), 0.5, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                entity.getAttribute(Attributes.JUMP_STRENGTH).addPermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:test"), 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
             }
             if (!(entity.getAttributes().hasModifier(Attributes.FALL_DAMAGE_MULTIPLIER, ResourceLocation.parse("fathommod:test2")))) {
                 entity.getAttribute(Attributes.FALL_DAMAGE_MULTIPLIER).addPermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:test2"), -999, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
@@ -438,7 +486,7 @@ public class EventHandler {
 
     private static void flightAttributeHandler(LivingEntity entity) {
         if (entity.getItemBySlot(EquipmentSlot.HEAD).getItem() == Trinkets.WINGS) {
-            if (DevUtils.hasTrinket(entity, Trinkets.DOUBLE_DOUBLE_JUMP_AND_JUMP_HEIGHT_ON_CRACK_BRO_THIS_IS_SO_OVERPOWERED_AND_TRASH_AT_THE_SAME_TIME_BECAUSE_YOU_TAKE_HELLA_FALL_DAMAGE)) {
+            if (DevUtils.hasTrinket(entity, Trinkets.DOUBLE_DOUBLE_JUMP)) {
                 entity.getItemBySlot(EquipmentSlot.HEAD).set(DataComponents.MAX_DAMAGE, 169);
             } else if (DevUtils.hasTrinket(entity, Trinkets.JUMP_HEIGHT)) {
                 entity.getItemBySlot(EquipmentSlot.HEAD).set(DataComponents.MAX_DAMAGE, 100);
@@ -458,16 +506,16 @@ public class EventHandler {
     }
 
     private static void jumpHeightHandler(LivingEntity entity) {
-        if (DevUtils.hasTrinket(entity, Trinkets.DOUBLE_DOUBLE_JUMP_AND_JUMP_HEIGHT_ON_CRACK_BRO_THIS_IS_SO_OVERPOWERED_AND_TRASH_AT_THE_SAME_TIME_BECAUSE_YOU_TAKE_HELLA_FALL_DAMAGE)) {
-            Objects.requireNonNull(entity.getAttribute(Attributes.JUMP_STRENGTH)).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:hhhhhhhhhhhhhhhhhhhhhhhh"), 2.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-            entity.getAttribute(Attributes.SAFE_FALL_DISTANCE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:fffdfdfdfdfdfdfdfdfdff"), 9, AttributeModifier.Operation.ADD_VALUE));
+        if (DevUtils.hasTrinket(entity, Trinkets.DOUBLE_DOUBLE_JUMP)) {
+            Objects.requireNonNull(entity.getAttribute(Attributes.JUMP_STRENGTH)).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:hhhhhhhhhhhhhhhhhhhhhhhh"), 0.9, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            entity.getAttribute(Attributes.SAFE_FALL_DISTANCE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:fffdfdfdfdfdfdfdfdfdff"), 3, AttributeModifier.Operation.ADD_VALUE));
             entity.getAttribute(Attributes.SAFE_FALL_DISTANCE).removeModifier(ResourceLocation.parse("fathommod:fffdfdfdfdfdfdfdfdfdf"));
             entity.getAttribute(Attributes.JUMP_STRENGTH).removeModifier(ResourceLocation.parse("fathommod:hhhhhhhhhhhhhhhhhhhhhhhhh"));
         } else if (DevUtils.hasTrinket(entity, Trinkets.JUMP_HEIGHT)) {
             entity.getAttribute(Attributes.JUMP_STRENGTH).removeModifier(ResourceLocation.parse("fathommod:hhhhhhhhhhhhhhhhhhhhhhhh"));
             entity.getAttribute(Attributes.SAFE_FALL_DISTANCE).removeModifier(ResourceLocation.parse("fathommod:fffdfdfdfdfdfdfdfdfdff"));
-            Objects.requireNonNull(entity.getAttribute(Attributes.JUMP_STRENGTH)).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:hhhhhhhhhhhhhhhhhhhhhhhhh"), 0.8, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-            entity.getAttribute(Attributes.SAFE_FALL_DISTANCE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:fffdfdfdfdfdfdfdfdfdf"), 3, AttributeModifier.Operation.ADD_VALUE));
+            Objects.requireNonNull(entity.getAttribute(Attributes.JUMP_STRENGTH)).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:hhhhhhhhhhhhhhhhhhhhhhhhh"), 0.489, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            entity.getAttribute(Attributes.SAFE_FALL_DISTANCE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:fffdfdfdfdfdfdfdfdfdf"), 2, AttributeModifier.Operation.ADD_VALUE));
         } else {
             entity.getAttribute(Attributes.JUMP_STRENGTH).removeModifier(ResourceLocation.parse("fathommod:hhhhhhhhhhhhhhhhhhhhhhhhh"));
             entity.getAttribute(Attributes.SAFE_FALL_DISTANCE).removeModifier(ResourceLocation.parse("fathommod:fffdfdfdfdfdfdfdfdfdff"));

@@ -223,6 +223,10 @@ public class FathommodModVariables {
 		public boolean isGodMode = false;
 		public boolean isTedRabbit = false;
 		public String comboHitSource = "";
+		public String summonOwner = "";
+		public boolean isSummon = false;
+		public int summonTimeLeft = 69;
+		public int lastAutoAttack = 0;
 
 		@Override
 		public CompoundTag serializeNBT(HolderLookup.Provider lookupProvider) {
@@ -234,6 +238,9 @@ public class FathommodModVariables {
    			nbt.putBoolean("isGodMode", isGodMode);
 			nbt.putBoolean("isTedRabbit", isTedRabbit);
 			nbt.putString("comboHitSource", comboHitSource);
+			nbt.putString("summonOwner", summonOwner);
+			nbt.putBoolean("isSummon", isSummon);
+			nbt.putInt("summonTimeLeft", summonTimeLeft);
 			return nbt;
 		}
 
@@ -246,6 +253,9 @@ public class FathommodModVariables {
 			isGodMode = nbt.getBoolean("isGodMode");
 			isTedRabbit = nbt.getBoolean("isTedRabbit");
 			comboHitSource = nbt.getString("comboHitSource");
+			summonOwner = nbt.getString("summonOwner");
+			isSummon = nbt.getBoolean("isSummon");
+			summonTimeLeft = nbt.getInt("summonTimeLeft");
 		}
 
 		public void syncPlayerVariables(Entity entity) {

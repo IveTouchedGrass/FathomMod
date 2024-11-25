@@ -1,13 +1,11 @@
 package net.fathommod.effect;
 
 import net.fathommod.FathommodMod;
+import net.fathommod.init.FathommodModDamageTypes;
 import net.fathommod.init.FathommodModMobEffects;
 import net.fathommod.network.FathommodModVariables;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffect;
@@ -37,7 +35,8 @@ public class ComboHitEffect extends MobEffect {
     public boolean applyEffectTick(@NotNull LivingEntity entity, int amplifier) {
         try {
             if (entity.level() instanceof ServerLevel level) {
-                entity.hurt(new DamageSource(entity.level().holderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "ted_weapon_combo"))), level.getEntity(UUID.fromString(entity.getData(FathommodModVariables.ENTITY_VARIABLES).comboHitSource))), (float) amplifier / 5);
+                entity.invulnerableTime -= 2;
+                entity.hurt(new DamageSource(entity.level().holderOrThrow(FathommodModDamageTypes.TED_WEAPON_COMBO), level.getEntity(UUID.fromString(entity.getData(FathommodModVariables.ENTITY_VARIABLES).comboHitSource))), (float) amplifier / 5);
                 return true;
             }
             return !entity.isInvulnerable() || entity.level().isClientSide();

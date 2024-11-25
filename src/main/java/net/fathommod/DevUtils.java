@@ -4,6 +4,7 @@ import net.fathommod.init.FathommodModItems;
 import net.fathommod.network.FathommodModVariables;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
@@ -15,10 +16,27 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.items.IItemHandlerModifiable;
+
+import java.util.List;
+import java.util.Optional;
 
 public class DevUtils {
+    public static boolean hasItem(Entity entity, Item item) {
+        if (entity.getCapability(Capabilities.ItemHandler.ENTITY, null) instanceof IItemHandlerModifiable _modHandlerIter) {
+            for (int _idx = 0; _idx < _modHandlerIter.getSlots(); _idx++) {
+                ItemStack itemstackiterator = _modHandlerIter.getStackInSlot(_idx);
+                if (itemstackiterator.getItem() == item) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     public static AABB scaleAABB(AABB originalBox, double scaleFactor) {
         double centerX = (originalBox.minX + originalBox.maxX) / 2.0;
@@ -32,6 +50,34 @@ public class DevUtils {
                 centerX - newHalfWidth, centerY - newHalfHeight, centerZ - newHalfDepth,  // Min corner
                 centerX + newHalfWidth, centerY + newHalfHeight, centerZ + newHalfDepth   // Max corner
         );
+    }
+
+    public static Entity performPreciseRaycast(Entity ignoredEntity, Level world, Vec3 origin, Vec3 direction, double maxDistance) {
+        direction = direction.normalize();
+
+        Vec3 rayEnd = origin.add(direction.scale(maxDistance));
+
+        List<Entity> entities = world.getEntities(null, new AABB(origin, rayEnd).inflate(1.0));
+
+        Entity closestEntity = null;
+        double closestDistance = maxDistance;
+
+        for (Entity entity : entities) {
+            if (entity.isSpectator() || entity == ignoredEntity || entity.level().getBlockState(BlockPos.containing(rayEnd.x, rayEnd.y, rayEnd.z)).getBlock() == Blocks.AIR || entity.level().getBlockState(BlockPos.containing(rayEnd.x, rayEnd.y, rayEnd.z)).getBlock() == Blocks.CAVE_AIR || entity.level().getBlockState(BlockPos.containing(rayEnd.x, rayEnd.y, rayEnd.z)).getBlock() == Blocks.VOID_AIR) continue;
+
+            AABB boundingBox = entity.getBoundingBox();
+            Optional<Vec3> intersection = boundingBox.clip(origin, rayEnd);
+
+            if (intersection.isPresent()) {
+                double distance = origin.distanceTo(intersection.get());
+                if (distance < closestDistance) {
+                    closestDistance = distance;
+                    closestEntity = entity;
+                }
+            }
+        }
+
+        return closestEntity;
     }
 
     public static class Pusher {

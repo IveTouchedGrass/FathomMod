@@ -1,5 +1,5 @@
 
-package net.fathommod.network;
+package net.fathommod.network.packets;
 
 import net.fathommod.FathommodMod;
 import net.fathommod.procedures.TrinketeryOpenOnKeyPressedProcedure;

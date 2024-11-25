@@ -1,7 +1,9 @@
-package net.fathommod.network;
+package net.fathommod.network.handlers;
 
 import net.fathommod.DevUtils;
 import net.fathommod.Trinkets;
+import net.fathommod.network.FathommodModVariables;
+import net.fathommod.network.packets.FlyMessage;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -26,9 +28,9 @@ public class FlyKeyMessageHandler {
         if (entity.getItemBySlot(EquipmentSlot.HEAD).getItem() == Trinkets.WINGS && entity.getData(FathommodModVariables.ENTITY_VARIABLES).doubleJumpCooldownInt <= 0 && entity.getData(FathommodModVariables.ENTITY_VARIABLES).doubleJumpCooldownInt == 0 && !entity.onGround()) { // gold helmet is a placeholder
             if (!(damage + 1 == maxDamage)) {
                 entity.getItemBySlot(EquipmentSlot.HEAD).hurtAndBreak(1, entity, EquipmentSlot.HEAD);
-                PacketDistributor.sendToPlayer((ServerPlayer) entity, new FlyMessage.FlyKeyMessage(true, (DevUtils.hasTrinket(entity, Trinkets.DOUBLE_DOUBLE_JUMP_AND_JUMP_HEIGHT_ON_CRACK_BRO_THIS_IS_SO_OVERPOWERED_AND_TRASH_AT_THE_SAME_TIME_BECAUSE_YOU_TAKE_HELLA_FALL_DAMAGE)) ? 4 : (DevUtils.hasTrinket(entity, Trinkets.JUMP_HEIGHT)) ? 2.5 : 1));
+                PacketDistributor.sendToPlayer((ServerPlayer) entity, new FlyMessage.FlyKeyMessage(true, (DevUtils.hasTrinket(entity, Trinkets.DOUBLE_DOUBLE_JUMP)) ? 4 : (DevUtils.hasTrinket(entity, Trinkets.JUMP_HEIGHT)) ? 2.5 : 1));
             } else {
-                PacketDistributor.sendToPlayer((ServerPlayer) entity, new FlyMessage.FlyKeyMessage(false, (DevUtils.hasTrinket(entity, Trinkets.DOUBLE_DOUBLE_JUMP_AND_JUMP_HEIGHT_ON_CRACK_BRO_THIS_IS_SO_OVERPOWERED_AND_TRASH_AT_THE_SAME_TIME_BECAUSE_YOU_TAKE_HELLA_FALL_DAMAGE)) ? 4 : (DevUtils.hasTrinket(entity, Trinkets.JUMP_HEIGHT)) ? 2.5 : 1));
+                PacketDistributor.sendToPlayer((ServerPlayer) entity, new FlyMessage.FlyKeyMessage(false, (DevUtils.hasTrinket(entity, Trinkets.DOUBLE_DOUBLE_JUMP)) ? 4 : (DevUtils.hasTrinket(entity, Trinkets.JUMP_HEIGHT)) ? 2.5 : 1));
             }
         }
     }
