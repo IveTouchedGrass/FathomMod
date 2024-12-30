@@ -29,8 +29,6 @@ public class FathommodMod {
 	public static final String MOD_ID = "fathommod";
 
 	public FathommodMod(IEventBus modEventBus) {
-		// Start of user code block mod constructor
-		// End of user code block mod constructor
 		NeoForge.EVENT_BUS.register(this);
 		NeoForge.EVENT_BUS.register(LightHandler.class);
 		modEventBus.register(FathommodModPackets.class);
@@ -48,13 +46,8 @@ public class FathommodMod {
 		FathommodModVariables.ATTACHMENT_TYPES.register(modEventBus);
 
 		FathommodModMenus.REGISTRY.register(modEventBus);
-
-		// Start of user code block mod init
-		// End of user code block mod init
 	}
 
-	// Start of user code block mod methods
-	// End of user code block mod methods
 	private static boolean networkingRegistered = false;
 	private static final Map<CustomPacketPayload.Type<?>, NetworkMessage<?>> MESSAGES = new HashMap<>();
 

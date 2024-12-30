@@ -18,4 +18,9 @@
     <option name="platformVersion" value="21.1.12" />
     <option name="srgType" value="TSRG" />
   </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_21" inherit-compiler-output="true">
+    <exclude-output />
+    <orderEntry type="jdk" jdkName="corretto-21" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
 </module>

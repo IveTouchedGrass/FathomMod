@@ -85,6 +85,7 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
     private short emergeTicks = 1;
     private boolean initializedSpawn = false;
     private int maxDetectedPlayers = 0;
+    private int powerScalingHealed = 0;
 
     private static final EntityDataAccessor<Byte> ATTACK_COOLDOWN = SynchedEntityData.defineId(TedEntity.class, EntityDataSerializers.BYTE);
     public static final EntityDataAccessor<Integer> RABBIT_TIMER = SynchedEntityData.defineId(TedEntity.class, EntityDataSerializers.INT);
@@ -143,6 +144,8 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
     }
 
     public void teleportToOrigin() {
+        if (this.level().isClientSide())
+            return;
         if (this.hasOriginPoint) {
             this.teleportTo(this.originX, this.originY, this.originZ);
             this.heal(this.getMaxHealth());
@@ -189,6 +192,7 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
         tag.putDouble("originZ", this.originZ);
         tag.putBoolean("hasOriginPoint", this.hasOriginPoint);
         tag.putInt("maxDetectedPlayers", this.maxDetectedPlayers);
+        tag.putInt("powerScalingHealed", this.powerScalingHealed);
         super.addAdditionalSaveData(tag);
     }
 
@@ -203,6 +207,7 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
         this.originZ = tag.getDouble("originZ");
         this.hasOriginPoint = tag.getBoolean("hasOriginPoint");
         this.maxDetectedPlayers = tag.getInt("maxDetectedPlayers");
+        this.powerScalingHealed = tag.getInt("powerScalingHealed");
     }
 
     public void swipeAttack() {
@@ -246,10 +251,10 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
 
     public static AttributeSupplier createAttributes() {
         return Monster.createMonsterAttributes()
-                .add(Attributes.MAX_HEALTH, 800)
+                .add(Attributes.MAX_HEALTH, 1050)
                 .add(Attributes.ATTACK_DAMAGE, -238)
                 .add(Attributes.ATTACK_SPEED, 1)
-                .add(Attributes.MOVEMENT_SPEED, 0.66d)
+                .add(Attributes.MOVEMENT_SPEED, 0.5d)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 1)
                 .add(Attributes.STEP_HEIGHT, 1)
                 .add(Attributes.FOLLOW_RANGE, 64)
@@ -372,10 +377,6 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
         this.updateTeleportAABB();
     }
 
-    private void scalePower() {
-
-    }
-
     @Override
     @Nullable
     public Player getTarget() {
@@ -385,6 +386,22 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
     @Override
     public void tick() {
         super.tick();
+        if (this.maxDetectedPlayers > this.powerScalingHealed) {
+            if (this.powerScalingHealed <= 1) {
+                this.heal((float) (this.getAttribute(Attributes.MAX_HEALTH).getBaseValue() * 0.2f));
+                this.powerScalingHealed = 2;
+            }
+            if (this.maxDetectedPlayers > this.powerScalingHealed) {
+                for (int ignored = 0; this.powerScalingHealed < this.maxDetectedPlayers; this.powerScalingHealed++) {
+                    this.heal((float) (this.getAttribute(Attributes.MAX_HEALTH).getBaseValue() * 0.5f));
+                }
+            }
+        }
+        this.getAttribute(Attributes.MAX_HEALTH).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "ted_health_boost_for_detecting_a_fk_ton_of_people"), switch (this.maxDetectedPlayers) {
+            case 0, 1 -> 0;
+            case 2 -> 0.2;
+            default -> 0.5 * (this.maxDetectedPlayers - 2);
+        }, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         this.entityData.set(HAS_TARGET, this.target != null);
         this.setPersistenceRequired();
         if (this.isNoAi()) {
@@ -463,7 +480,7 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
                 this.target = teleportTargets.getFirst();
             if (this.scanCooldown <= 0 && this.isAlive()) {
                 for (Player player : teleportTargets) {
-                    this.maxDetectedPlayers = Math.max(this.maxDetectedPlayers, this.level().getEntitiesOfClass(Player.class, this.getTeleportAABB()).size());
+                    this.maxDetectedPlayers = Math.max(this.maxDetectedPlayers, this.level().getEntitiesOfClass(Player.class, this.getTeleportAABB()).stream().filter(this::canAttack).toList().size());
                     player.addEffect(new MobEffectInstance(FathommodModMobEffects.ZERO_BUILD, 41, 0, false, false));
                     boolean hasBossBar = false;
                     if (this.target == null) {
@@ -513,12 +530,16 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
                     }
                     playedSound = true;
                     if ((!(entity instanceof Monster) && !(entity instanceof Rabbit)) || entity == this.target)
-                        entity.hurt(new DamageSource(this.level().holderOrThrow(FathommodModDamageTypes.TED_SWIPE), this), 40);
+                        entity.hurt(new DamageSource(this.level().holderOrThrow(FathommodModDamageTypes.TED_SWIPE), this), 30 * switch (this.maxDetectedPlayers) {
+                            case 0, 1 -> 1;
+                            case 2 -> 1.1f;
+                            default -> 1.1f + 0.2f * this.maxDetectedPlayers;
+                        });
                 }
             } else if (this.currentAttack == Attacks.INSTA_KILL) {
                 this.setAttackCooldown((byte) 40);
                 for (Entity entity : this.level().getEntities(this, this.getInstaKillAABB())) {
-                    if (!(entity instanceof Monster) && !(entity instanceof Rabbit) && entity instanceof LivingEntity livingEntity) {
+                    if (!(entity instanceof Monster) && entity instanceof LivingEntity livingEntity && !entity.getData(FathommodModVariables.ENTITY_VARIABLES).isTedRabbit) {
                         livingEntity.hurt(new DamageSource(this.level().holderOrThrow(FathommodModDamageTypes.TED_INSTA_KILL), this), Float.MAX_VALUE);
                         livingEntity.setHealth(0);
                     }
@@ -586,7 +607,7 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
 
         if (this.teleportTimer() > 0)
             this.setTeleportTimer(this.teleportTimer() - 1);
-        if (this.teleportTimer() <= 0 && this.isAlive() && this.target != null && !Config.isDevelopment) {
+        if (this.teleportTimer() <= 0 && this.isAlive() && this.target != null) {
             this.teleportTo(this.target.getX(), this.target.getY(), this.target.getZ());
             this.setTeleportTimer(360);
         }
@@ -603,7 +624,7 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
         }
 
         if (Config.isDevelopment) {
-            DevUtils.executeCommandAs(this, "say " + this.currentAttack + " Wind up: " + this.windUpLeft + " Attack cooldown: " + this.attackCooldown() + " Direction: " + this.getDirection() + " Scan Cooldown: " + this.scanCooldown + " Rock Timer: " + this.rockTimer() + " Rabbit Timer: " + this.rabbitTimer() + " Origin coords: " + this.originX + " " + this.originY + " " + this.originZ + " Can return: " + this.hasOriginPoint);
+            DevUtils.executeCommandAs(this, "say " + this.currentAttack + " Wind up: " + this.windUpLeft + " Attack cooldown: " + this.attackCooldown() + " Direction: " + this.getDirection() + " Scan Cooldown: " + this.scanCooldown + " Rock Timer: " + this.rockTimer() + " Rabbit Timer: " + this.rabbitTimer() + " Origin coords: " + this.originX + " " + this.originY + " " + this.originZ + " Can return: " + this.hasOriginPoint + " Max detected players: " + this.maxDetectedPlayers);
         }
     }
 
@@ -704,9 +725,14 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
 
     @Override
     public boolean hurt(DamageSource source, float amount) {
-        if (source.getEntity() != null && (!(source.getEntity() instanceof Player) || source.getEntity().getData(FathommodModVariables.ENTITY_VARIABLES).isSummon))
+        if (source.getEntity() != null && !(source.getEntity() instanceof Player) && !source.getEntity().getData(FathommodModVariables.ENTITY_VARIABLES).isSummon)
             return false;
         return !source.is(DamageTypes.FALL) && !source.is(DamageTypes.WITHER) && !source.is(DamageTypes.WITHER_SKULL) && !source.is(DamageTypes.DROWN) && !source.is(DamageTypes.MAGIC) && !source.is(DamageTypes.CACTUS) && super.hurt(source, amount);
+    }
+
+    @Override
+    protected boolean shouldDespawnInPeaceful() {
+        return false;
     }
 
     @Override

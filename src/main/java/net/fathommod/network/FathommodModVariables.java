@@ -241,6 +241,7 @@ public class FathommodModVariables {
 			nbt.putString("summonOwner", summonOwner);
 			nbt.putBoolean("isSummon", isSummon);
 			nbt.putInt("summonTimeLeft", summonTimeLeft);
+			nbt.putInt("lastAutoAttack", lastAutoAttack);
 			return nbt;
 		}
 
@@ -256,6 +257,7 @@ public class FathommodModVariables {
 			summonOwner = nbt.getString("summonOwner");
 			isSummon = nbt.getBoolean("isSummon");
 			summonTimeLeft = nbt.getInt("summonTimeLeft");
+			lastAutoAttack = nbt.getInt("lastAutoAttack");
 		}
 
 		public void syncPlayerVariables(Entity entity) {

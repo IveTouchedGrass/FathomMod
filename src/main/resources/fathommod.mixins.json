@@ -9,12 +9,14 @@
     "MixinElytra",
     "MixinGodMode",
     "MixinKillCmd",
+    "MixinLivingEntity",
     "MixinPush",
     "MixinRemove",
-    "MixinServerPlayer",
     "OtherGodModeMixin"
   ],
-  "client": [],
+  "client": [
+    "MixinAttributeMovement"
+  ],
   "server": [
   ],
   "injectors": {

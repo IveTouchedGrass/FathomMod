@@ -33,6 +33,9 @@ import net.minecraft.world.item.component.Unbreakable;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.EntityHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.event.ClientTickEvent;
@@ -55,6 +58,7 @@ public class EventHandler {
     @SubscribeEvent
     public static void onClientTick(ClientTickEvent.Post event) {
         Minecraft instance = Minecraft.getInstance();
+        HitResult hitResult = instance.hitResult;
 
 //        boolean isJumpHeld = instance.options.keyJump.isDown();
 
@@ -69,8 +73,21 @@ public class EventHandler {
         if (instance.options.keyShift.isDown() && instance.options.keyJump.isDown() && instance.level != null)
             PacketDistributor.sendToServer(new DoubleJumpMessage.DoubleJumpPacket(0f));
 
-        if (instance.options.keyAttack.isDown() && instance.level != null)
+        String blockName = "";
+        if (instance.level != null && hitResult instanceof BlockHitResult blockHitResult)
+            blockName = String.valueOf(instance.level.getBlockState(blockHitResult.getBlockPos()).getBlock()).substring(6);
+
+        if (instance.options.keyAttack.isDown() && instance.level != null && ((blockName.contains("air") && blockName.contains("minecraft:")) || hitResult instanceof EntityHitResult || hitResult.getType() == HitResult.Type.MISS) && (instance.player.getAttackStrengthScale(1f) >= 1 || instance.player.getAttribute(Attributes.ATTACK_SPEED).getValue() >= 20) && DevUtils.hasTrinket(instance.player, Trinkets.CHAINED_HANDLE)) {
             PacketDistributor.sendToServer(new AutoAttackMessage.AutoAttackPacket(0));
+        }
+
+        if (instance.player != null && (instance.options.keyUp.isDown() || instance.options.keyDown.isDown() || instance.options.keyLeft.isDown() || instance.options.keyRight.isDown())) {
+            ClientVars.movementHeldTimeTicks++;
+        } else {
+            ClientVars.movementHeldTimeTicks = 0;
+        }
+
+        ClientVars.clientTickAge++;
     }
 
     @SubscribeEvent
@@ -119,11 +136,12 @@ public class EventHandler {
     public static void onPlayerTick(PlayerTickEvent.Post event) {
         Player entity = event.getEntity();
         FathommodModVariables.EntityVariables vars = entity.getData(FathommodModVariables.ENTITY_VARIABLES);
-        if (entity instanceof ServerPlayer && vars.isGodMode) {
-            entity.getAbilities().invulnerable = true;
+        if (entity instanceof ServerPlayer) {
+            if (vars.isGodMode)
+                entity.getAbilities().invulnerable = true;
+            vars.lastAutoAttack += vars.lastAutoAttack <= 100 ? 1 : 0;
+            vars.syncPlayerVariables(entity);
         }
-        vars.lastAutoAttack++;
-        vars.syncPlayerVariables(entity);
     }
 
     @SubscribeEvent
@@ -146,6 +164,14 @@ public class EventHandler {
                 }
             } catch (NullPointerException ignored) {}
             vars.syncPlayerVariables(entity);
+
+            if (entity instanceof Mob mob && mob.getData(FathommodModVariables.ENTITY_VARIABLES).isTedRabbit) {
+                for (Entity entityiterator : event.getEntity().level().getEntities(entity, new AABB(entity.getX() - 50, entity.getY() - 50, entity.getZ() - 50, entity.getX() + 50, entity.getY() + 50,entity.getZ() + 50))) {
+                    if (entityiterator instanceof LivingEntity entityiterator2 && entityiterator instanceof Player && mob.getTarget() == null && mob.canAttack(entityiterator2)) {
+                        mob.setTarget(entityiterator2);
+                    }
+                }
+            }
         }
     }
 
@@ -457,7 +483,7 @@ public class EventHandler {
     }
 
     private static void chainedHandleCode(LivingEntity entity) {
-        if (DevUtils.hasTrinket(entity, Trinkets.CHAINED_HANDLE)) {
+        if (DevUtils.hasTrinket(entity, Trinkets.CHAINED_HANDLE) && entity.getItemBySlot(EquipmentSlot.MAINHAND).getItem() != FathommodModItems.BOXING_GLOVES.get()) {
             if (!(entity.getAttributes().hasModifier(Attributes.ENTITY_INTERACTION_RANGE, ResourceLocation.parse("fathommod:test4")))) {
                 entity.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).addPermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:test4"), 3, AttributeModifier.Operation.ADD_VALUE));
             }

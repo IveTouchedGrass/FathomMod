@@ -80,4 +80,9 @@ public class BoxingGlovesItem extends PickaxeItem implements DamageTypedWeapon {
 	public DamageClasses getDamageClass() {
 		return DamageClasses.ASSASSIN;
 	}
+
+	@Override
+	public int getIFrames() {
+		return 4;
+	}
 }

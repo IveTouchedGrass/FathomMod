@@ -4,59 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1dfa89d3-d98e-4dda-bffe-8194546586ac" name="Changes" comment="Fixed components breaking">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModDamageTypes.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/KillersPawItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinPush.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinServerPlayer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/handlers/AutoAttackPacketHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/handlers/ResetAttackStrengthPacketHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/packets/AutoAttackMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/packets/ResetAttackStrengthMessage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/models/custom/killers_paw.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/models/item/killers_paw.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/textures/item/killerspaw.png" afterDir="false" />
+    <list default="true" id="1dfa89d3-d98e-4dda-bffe-8194546586ac" name="Changes" comment="idk">
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/ClientVars.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/DebugMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinAttributeMovement.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinLivingEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Fathom_Mod.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/Fathom_Mod.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/DamageTypedWeapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/DamageTypedWeapon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/DevUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/DevUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/EventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/Trinkets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/Trinkets.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/client/renderer/TedRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/client/renderer/TedRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/effect/ComboHitEffect.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/effect/ComboHitEffect.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ThrowingKnivesEntityEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ThrowingKnivesEntityEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/ROCK.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/ROCK.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/FathommodMod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/FathommodMod.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/TedEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/TedEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/TedSpawner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/TedSpawner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModEntities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModEntities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModKeyMappings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/init/FathommodModKeyMappings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ArrowSharpenerItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/ArrowSharpenerItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BlackSmithsWillItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BlackSmithsWillItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BoxingGlovesItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BoxingGlovesItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/CrusifixItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/CrusifixItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/FabricItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/FabricItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/MetalBatItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/MetalBatItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/PaltnScytheItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/PaltnScytheItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/WoodBatItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/WoodBatItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/DoubleJumpMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/packets/DoubleJumpMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/DoubleJumpMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/handlers/DoubleJumpMessageHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FathommodModPackets.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FathommodModPackets.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinServerPlayer.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FathommodModVariables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FathommodModVariables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FlyKeyMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/handlers/FlyKeyMessageHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FlyMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/packets/FlyMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FlyShiftMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/packets/FlyShiftMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FlyShiftMessageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/handlers/FlyShiftMessageHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/TrinketeryOpenMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/packets/TrinketeryOpenMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/WingGlideHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/handlers/WingGlideHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/WingGlideMessage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/packets/WingGlideMessage.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/PaltnScytheRightclickedProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/PaltnScytheRightclickedProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/accesstransformer.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/accesstransformer.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/fathommod/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/lang/en_us.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/fathommod/sounds/bonk.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/fathommod/sounds/bonk.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/fathommod/damage_type/ted_rock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/fathommod/damage_type/ted_rock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/fathommod/damage_type/ted_swipe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/fathommod/damage_type/ted_swipe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/fathommod/recipe/basic_spear_crafting.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/fathommod/recipe/basic_spear_crafting.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/fathommod/recipe/metal_bat_crafting.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/fathommod/recipe/metal_bat_crafting.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data/fathommod/recipe/wood_bat_crafting.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data/fathommod/recipe/wood_bat_crafting.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/handlers/AutoAttackPacketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/handlers/AutoAttackPacketHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/IFrameHeavenProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/IFrameHeavenProcedure.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fathommod.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fathommod.mixins.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -175,16 +140,19 @@
     &quot;JavaClassFindUsagesOptions.isDerivedClasses&quot;: &quot;true&quot;,
     &quot;JavaClassFindUsagesOptions.isFieldsUsages&quot;: &quot;true&quot;,
     &quot;JavaClassFindUsagesOptions.isMethodsUsages&quot;: &quot;true&quot;,
+    &quot;JavaMethodFindUsagesOptions.isOverridingMethods&quot;: &quot;true&quot;,
+    &quot;JavaMethodFindUsagesOptions.isSearchForTextOccurrences&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;com.codeium.enabled&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;1.21.1-dev&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/Coding/Minecraft/Fathom Mod/src/main/resources/assets/fathommod/models/item&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.javacompiler&quot;
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -210,11 +178,13 @@
   </component>
   <component name="RunManager" selected="Application.Fathom Mod: Client">
     <configuration name="Fathom Mod: Client" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="corretto-21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <envs>
         <env name="MOD_CLASSES" value="Fathom Mod%%C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\build\resources\main;Fathom Mod%%C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\build\classes\java\main" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="cpw.mods.bootstraplauncher.BootstrapLauncher" />
-      <module name="Fathom_Mod.main" />
+      <module name="com.yourname.modid.Fathom_Mod.main" />
       <option name="PROGRAM_PARAMETERS" value="--launchTarget forgeclientuserdev --version 21.1.12 --assetIndex asset-index --assetsDir C:\Users\User\.gradle\caches\minecraft\assets\1.21.1 --gameDir . --fml.neoForgeVersion 21.1.12 --fml.fmlVersion 4.0.24 --fml.mcVersion 1.21.1 --fml.neoFormVersion 20240808.144430" />
       <shortenClasspath name="ARGS_FILE" />
       <option name="VM_PARAMETERS" value="-p C:\Users\User\.gradle\caches\modules-2\files-2.1\cpw.mods\bootstraplauncher\2.0.2\1a2d076cbc33b0520cbacd591224427b2a20047d\bootstraplauncher-2.0.2.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\cpw.mods\securejarhandler\3.0.8\c0ef95cecd8699a0449053ac7d9c160748d902cd\securejarhandler-3.0.8.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-commons\9.5\19ab5b5800a3910d30d3a3e64fdb00fd0cb42de0\asm-commons-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-util\9.5\64b5a1fc8c1b15ed2efd6a063e976bc8d3dc5ffe\asm-util-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-analysis\9.5\490bacc77de7cbc0be1a30bb3471072d705be4a4\asm-analysis-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-tree\9.5\fd33c8b6373abaa675be407082fdfda35021254a\asm-tree-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm\9.5\dc6ea1875f4d64fbc85e1691c95b96a3d8569c90\asm-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\net.neoforged\JarJarFileSystems\0.4.1\78f59f89defcd032ed788b151ca6a0d40ace796a\JarJarFileSystems-0.4.1.jar --add-modules ALL-MODULE-PATH --add-opens java.base/java.util.jar=cpw.mods.securejarhandler --add-opens java.base/java.lang.invoke=cpw.mods.securejarhandler --add-exports java.base/sun.security.util=cpw.mods.securejarhandler --add-exports jdk.naming.dns/com.sun.jndi.dns=java.naming -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump -Dforge.logging.console.level=debug -Dneoforge.enableGameTest=true -Dforge.logging.markers=REGISTRIES &quot;-DlegacyClassPath.file=C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\.gradle\configuration\neoForm\neoFormJoined1.21.1-20240808.144430\steps\writeMinecraftClasspathClient\classpath.txt&quot; -DignoreList=securejarhandler-3.0.8.jar,asm-9.5.jar,asm-commons-9.5.jar,asm-tree-9.5.jar,asm-util-9.5.jar,asm-analysis-9.5.jar,bootstraplauncher-2.0.2.jar,JarJarFileSystems-0.4.1.jar,mixinextras-neoforge-0.3.5.jar,client-extra,neoforge- -Dfml.gameLayerLibraries -DmergeModules=jna-5.10.0.jar,jna-platform-5.10.0.jar -Djava.net.preferIPv6Addresses=system -Dfml.pluginLayerLibraries" />
@@ -257,6 +227,7 @@
         <env name="MOD_CLASSES" value="Fathom Mod%%C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\build\resources\main;Fathom Mod%%C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\build\classes\java\main" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="cpw.mods.bootstraplauncher.BootstrapLauncher" />
+      <module name="Fathom_Mod.main" />
       <option name="PROGRAM_PARAMETERS" value="--launchTarget forgeserveruserdev --gameDir . --fml.neoForgeVersion 21.1.12 --fml.fmlVersion 4.0.24 --fml.mcVersion 1.21.1 --fml.neoFormVersion 20240808.144430" />
       <shortenClasspath name="ARGS_FILE" />
       <option name="VM_PARAMETERS" value="-p C:\Users\User\.gradle\caches\modules-2\files-2.1\cpw.mods\bootstraplauncher\2.0.2\1a2d076cbc33b0520cbacd591224427b2a20047d\bootstraplauncher-2.0.2.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\cpw.mods\securejarhandler\3.0.8\c0ef95cecd8699a0449053ac7d9c160748d902cd\securejarhandler-3.0.8.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-commons\9.5\19ab5b5800a3910d30d3a3e64fdb00fd0cb42de0\asm-commons-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-util\9.5\64b5a1fc8c1b15ed2efd6a063e976bc8d3dc5ffe\asm-util-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-analysis\9.5\490bacc77de7cbc0be1a30bb3471072d705be4a4\asm-analysis-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-tree\9.5\fd33c8b6373abaa675be407082fdfda35021254a\asm-tree-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm\9.5\dc6ea1875f4d64fbc85e1691c95b96a3d8569c90\asm-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\net.neoforged\JarJarFileSystems\0.4.1\78f59f89defcd032ed788b151ca6a0d40ace796a\JarJarFileSystems-0.4.1.jar --add-modules ALL-MODULE-PATH --add-opens java.base/java.util.jar=cpw.mods.securejarhandler --add-opens java.base/java.lang.invoke=cpw.mods.securejarhandler --add-exports java.base/sun.security.util=cpw.mods.securejarhandler --add-exports jdk.naming.dns/com.sun.jndi.dns=java.naming -Dforge.logging.console.level=debug -Dforge.logging.markers=REGISTRIES &quot;-DlegacyClassPath.file=C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\.gradle\configuration\neoForm\neoFormJoined1.21.1-20240808.144430\steps\writeMinecraftClasspathServer\classpath.txt&quot; -DignoreList=securejarhandler-3.0.8.jar,asm-9.5.jar,asm-commons-9.5.jar,asm-tree-9.5.jar,asm-util-9.5.jar,asm-analysis-9.5.jar,bootstraplauncher-2.0.2.jar,JarJarFileSystems-0.4.1.jar,mixinextras-neoforge-0.3.5.jar,client-extra,neoforge- -Dfml.gameLayerLibraries -DmergeModules=jna-5.10.0.jar,jna-platform-5.10.0.jar -Djava.net.preferIPv6Addresses=system -Dfml.pluginLayerLibraries" />
@@ -510,7 +481,15 @@
       <option name="project" value="LOCAL" />
       <updated>1731444274651</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="idk">
+      <option name="closed" value="true" />
+      <created>1732511819183</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1732511819183</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -540,7 +519,8 @@
     <MESSAGE value="Added God Mode" />
     <MESSAGE value="i already forgot what i added" />
     <MESSAGE value="Fixed components breaking" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed components breaking" />
+    <MESSAGE value="idk" />
+    <option name="LAST_COMMIT_MESSAGE" value="idk" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>

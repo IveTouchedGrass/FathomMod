@@ -7,10 +7,13 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
@@ -18,6 +21,8 @@ import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.capabilities.Capabilities;
 import net.neoforged.neoforge.items.IItemHandlerModifiable;
@@ -62,8 +67,20 @@ public class DevUtils {
         Entity closestEntity = null;
         double closestDistance = maxDistance;
 
+        BlockHitResult blockHitResult = world.clip(new ClipContext(
+                origin,
+                rayEnd,
+                ClipContext.Block.VISUAL,
+                ClipContext.Fluid.NONE,
+                ignoredEntity
+        ));
+
+        if (blockHitResult.getType() == HitResult.Type.BLOCK) {
+            rayEnd = blockHitResult.getLocation();
+        }
+
         for (Entity entity : entities) {
-            if (entity.isSpectator() || entity == ignoredEntity || entity.level().getBlockState(BlockPos.containing(rayEnd.x, rayEnd.y, rayEnd.z)).getBlock() == Blocks.AIR || entity.level().getBlockState(BlockPos.containing(rayEnd.x, rayEnd.y, rayEnd.z)).getBlock() == Blocks.CAVE_AIR || entity.level().getBlockState(BlockPos.containing(rayEnd.x, rayEnd.y, rayEnd.z)).getBlock() == Blocks.VOID_AIR) continue;
+            if (entity.isSpectator() || entity == ignoredEntity/* || entity.level().getBlockState(BlockPos.containing(rayEnd.x, rayEnd.y, rayEnd.z)).getBlock() == Blocks.AIR || entity.level().getBlockState(BlockPos.containing(rayEnd.x, rayEnd.y, rayEnd.z)).getBlock() == Blocks.CAVE_AIR || entity.level().getBlockState(BlockPos.containing(rayEnd.x, rayEnd.y, rayEnd.z)).getBlock() == Blocks.VOID_AIR*/) continue;
 
             AABB boundingBox = entity.getBoundingBox();
             Optional<Vec3> intersection = boundingBox.clip(origin, rayEnd);
@@ -79,6 +96,28 @@ public class DevUtils {
 
         return closestEntity;
     }
+
+    public static double inverseLerp(double start, double end, double alpha) {
+        if (start == end) {
+            return 0.0f;
+        }
+        return Math.max(0d, Math.min(1d, (alpha - start) / (end - start)));
+    }
+
+    public static double exponentialLerp(double start, double end, double alpha) {
+        if (start == end) {
+            return 0.0f;
+        }
+
+        double severity = 20;
+
+        double t = Math.max(0d, Math.min(1d, (alpha - start) / (end - start)));
+
+        return start + (end - start) * (1 - Math.pow(2, -severity * t));
+    }
+
+
+
 
     public static class Pusher {
         public static void toCoords(Entity entity, double x, double y, double z, double speed) {
@@ -106,8 +145,6 @@ public class DevUtils {
     }
 
     public static boolean hasTrinket(LivingEntity entity, Item item) {
-        if (entity.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.BOXING_GLOVES.get() && item == FathommodModItems.CHAIN_HANDLE.get())
-            return false;
         return (entity.getData(FathommodModVariables.ENTITY_VARIABLES).trinket1.getItem() == item || entity.getData(FathommodModVariables.ENTITY_VARIABLES).trinket2.getItem() == item || entity.getData(FathommodModVariables.ENTITY_VARIABLES).trinket3.getItem() == item || entity.getData(FathommodModVariables.ENTITY_VARIABLES).trinket4.getItem() == item);
     }
 
