@@ -1,26 +1,26 @@
 
 package net.fathommod.item;
 
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.*;
-import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
-
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.tags.TagKey;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.core.component.DataComponents;
-
-import net.fathommod.procedures.PhasingTexasLivingEntityIsHitWithToolProcedure;
+import net.fathommod.DamageClasses;
+import net.fathommod.DamageTypedWeapon;
 import net.fathommod.init.FathommodModItems;
+import net.fathommod.procedures.PhasingTexasLivingEntityIsHitWithToolProcedure;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 
 import java.util.List;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
-public class PhasingTexasItem extends SwordItem {
+public class PhasingTexasItem extends SwordItem implements DamageTypedWeapon {
 	private static final Tier TOOL_TIER = new Tier() {
 		@Override
 		public int getUses() {
@@ -82,5 +82,10 @@ public class PhasingTexasItem extends SwordItem {
 	@Override
 	public ItemStack getCraftingRemainingItem(ItemStack itemstack) {
 		return new ItemStack(this);
+	}
+
+	@Override
+	public DamageClasses getDamageClass() {
+		return DamageClasses.MELEE;
 	}
 }

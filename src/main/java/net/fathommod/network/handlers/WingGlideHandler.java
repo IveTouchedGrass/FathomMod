@@ -1,5 +1,7 @@
-package net.fathommod.network;
+package net.fathommod.network.handlers;
 
+import net.fathommod.network.FathommodModVariables;
+import net.fathommod.network.packets.WingGlideMessage;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.item.Items;
@@ -12,7 +14,7 @@ public class WingGlideHandler {
         if (entity.getItemBySlot(EquipmentSlot.CHEST).getItem() == Items.GOLDEN_CHESTPLATE && !entity.onGround() && !(entity.getItemBySlot(EquipmentSlot.CHEST).getDamageValue() + 1 == entity.getItemBySlot(EquipmentSlot.CHEST).getMaxDamage()) && !entity.isFallFlying()) {
             entity.startFallFlying();
             PacketDistributor.sendToPlayer(entity, new WingGlideMessage.WingGlidePacket(true));
-            FathommodModVariables.PlayerVariables vars = entity.getData(FathommodModVariables.PLAYER_VARIABLES);
+            FathommodModVariables.EntityVariables vars = entity.getData(FathommodModVariables.ENTITY_VARIABLES);
             vars.wingGliding = true;
             vars.syncPlayerVariables(entity);
         }

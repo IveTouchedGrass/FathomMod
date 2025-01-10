@@ -1,34 +1,23 @@
 package net.fathommod.effect;
 
-import net.fathommod.Config;
-import net.fathommod.DevUtils;
 import net.fathommod.FathommodMod;
-import net.fathommod.init.FathommodModAttachments;
-import net.fathommod.init.FathommodModItems;
+import net.fathommod.init.FathommodModDamageTypes;
 import net.fathommod.init.FathommodModMobEffects;
 import net.fathommod.network.FathommodModVariables;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.EffectRenderingInventoryScreen;
-import net.minecraft.core.RegistryAccess;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.network.chat.Component;
-import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.client.extensions.common.IClientMobEffectExtensions;
 import net.neoforged.neoforge.client.extensions.common.RegisterClientExtensionsEvent;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.Objects;
 import java.util.UUID;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, modid = FathommodMod.MOD_ID)
@@ -44,12 +33,16 @@ public class ComboHitEffect extends MobEffect {
 
     @Override
     public boolean applyEffectTick(@NotNull LivingEntity entity, int amplifier) {
-        if (entity.level() instanceof ServerLevel level && !entity.getData(FathommodModAttachments.COMBO_HIT_SOURCE).isEmpty()/* && entity.getData(FathommodModAttachments.COMBO_HIT_COUNT) > 0*/) {
-            entity.setData(FathommodModAttachments.COMBO_HIT_COUNT, entity.getData(FathommodModAttachments.COMBO_HIT_COUNT) - 1);
-            entity.hurt(new DamageSource(entity.level().holderOrThrow(ResourceKey.create(Registries.DAMAGE_TYPE, ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "ted_weapon_combo"))), level.getEntity(UUID.fromString(entity.getData(FathommodModAttachments.COMBO_HIT_SOURCE)))), (float) amplifier / 5);
+        try {
+            if (entity.level() instanceof ServerLevel level) {
+                entity.invulnerableTime -= 2;
+                entity.hurt(new DamageSource(entity.level().holderOrThrow(FathommodModDamageTypes.TED_WEAPON_COMBO), level.getEntity(UUID.fromString(entity.getData(FathommodModVariables.ENTITY_VARIABLES).comboHitSource))), (float) amplifier / 5);
+                return true;
+            }
+            return !entity.isInvulnerable() || entity.level().isClientSide();
+        } catch (IllegalArgumentException e) {
             return true;
         }
-        return (!entity.getData(FathommodModAttachments.COMBO_HIT_SOURCE).isEmpty() && !entity.isInvulnerable()/* && entity.getData(FathommodModAttachments.COMBO_HIT_COUNT) > 0*/) || entity.level().isClientSide();
     }
 
     @SubscribeEvent

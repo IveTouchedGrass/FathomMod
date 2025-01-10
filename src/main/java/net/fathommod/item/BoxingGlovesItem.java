@@ -1,28 +1,28 @@
 
 package net.fathommod.item;
 
-import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.Component;
-import net.minecraft.world.item.*;
-import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
-
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.tags.TagKey;
-import net.minecraft.tags.BlockTags;
-import net.minecraft.core.component.DataComponents;
-
+import net.fathommod.DamageClasses;
+import net.fathommod.DamageTypedWeapon;
 import net.fathommod.init.FathommodModItems;
+import net.minecraft.ChatFormatting;
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.network.chat.Component;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.*;
+import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.ModifyDefaultComponentsEvent;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
-public class BoxingGlovesItem extends PickaxeItem {
+public class BoxingGlovesItem extends PickaxeItem implements DamageTypedWeapon {
 	private static final Tier TOOL_TIER = new Tier() {
 		@Override
 		public int getUses() {
@@ -56,7 +56,7 @@ public class BoxingGlovesItem extends PickaxeItem {
 	};
 
 	public BoxingGlovesItem() {
-		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 1f, 16f)));
+		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 3f, 65f)));
 	}
 
 	@SubscribeEvent
@@ -74,5 +74,15 @@ public class BoxingGlovesItem extends PickaxeItem {
 		components.add(Component.translatable("tooltip.fathommod.boxing_gloves.first_line").setStyle(net.minecraft.network.chat.Style.EMPTY.withColor(ChatFormatting.GRAY)));
 
 		super.appendHoverText(stack, context, components, tooltipFlag);
+	}
+
+	@Override
+	public DamageClasses getDamageClass() {
+		return DamageClasses.ASSASSIN;
+	}
+
+	@Override
+	public int getIFrames() {
+		return 4;
 	}
 }

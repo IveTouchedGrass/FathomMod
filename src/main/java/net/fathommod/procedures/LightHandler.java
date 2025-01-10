@@ -1,9 +1,9 @@
 package net.fathommod.procedures;
 
 import net.fathommod.DevUtils;
+import net.fathommod.FathommodMod;
 import net.fathommod.Trinkets;
 import net.fathommod.network.FathommodModVariables;
-import net.fathommod.FathommodMod;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
@@ -21,7 +21,7 @@ public class LightHandler {
         if (player.level() instanceof ServerLevel world) {
             BlockPos playerPos = player.blockPosition();
             lightItemCheck(player);
-            if (player.getData(FathommodModVariables.PLAYER_VARIABLES).hasLightItem) {
+            if (player.getData(FathommodModVariables.ENTITY_VARIABLES).hasLightItem) {
                 if (placeLight(world, playerPos))
                     clearSurroundingBlocks(world, playerPos, 15, false);
             } else clearSurroundingBlocks(world, playerPos, 18, true);
@@ -29,7 +29,7 @@ public class LightHandler {
     }
 
     private static void lightItemCheck(Player player) {
-        FathommodModVariables.PlayerVariables vars = player.getData(FathommodModVariables.PLAYER_VARIABLES);
+        FathommodModVariables.EntityVariables vars = player.getData(FathommodModVariables.ENTITY_VARIABLES);
         vars.hasLightItem = DevUtils.hasTrinket(player, Trinkets.LIGHT);
         vars.syncPlayerVariables(player);
     }

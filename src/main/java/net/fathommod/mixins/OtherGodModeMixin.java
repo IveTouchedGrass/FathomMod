@@ -11,6 +11,6 @@ import org.spongepowered.asm.mixin.injection.At;
 public class OtherGodModeMixin {
     @ModifyReturnValue(method = "hurt", at = @At("RETURN"))
     public boolean hurt(boolean original, DamageSource p_9037_, float p_9038_) {
-        return !((Player) (Object) this).getData(FathommodModVariables.PLAYER_VARIABLES).isGodMode && original;
+        return !((Player) (Object) this).getData(FathommodModVariables.ENTITY_VARIABLES).isGodMode && original;
     }
 }

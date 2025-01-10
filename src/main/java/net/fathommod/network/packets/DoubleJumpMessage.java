@@ -1,4 +1,4 @@
-package net.fathommod.network;
+package net.fathommod.network.packets;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.network.codec.ByteBufCodecs;

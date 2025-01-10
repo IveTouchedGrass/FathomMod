@@ -4,14 +4,13 @@
  */
 package net.fathommod.init;
 
-import net.neoforged.neoforge.client.event.EntityRenderersEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.api.distmarker.Dist;
-
-import net.fathommod.client.model.Modeltnt_arrow_Converted;
-import net.fathommod.client.model.Modelthrowing_knife_Converted;
 import net.fathommod.client.model.ModelWood_Bat_Projectile;
+import net.fathommod.client.model.Modelthrowing_knife_Converted;
+import net.fathommod.client.model.Modeltnt_arrow_Converted;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.EntityRenderersEvent;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
 public class FathommodModModels {

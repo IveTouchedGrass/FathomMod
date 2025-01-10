@@ -1,34 +1,32 @@
 package net.fathommod.network;
 
-import net.neoforged.neoforge.registries.NeoForgeRegistries;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.network.handling.IPayloadContext;
-import net.neoforged.neoforge.network.PacketDistributor;
-import net.neoforged.neoforge.event.entity.player.PlayerEvent;
-import net.neoforged.neoforge.common.util.INBTSerializable;
-import net.neoforged.neoforge.attachment.AttachmentType;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
-
-import net.minecraft.world.level.saveddata.SavedData;
-import net.minecraft.world.level.ServerLevelAccessor;
-import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.server.level.ServerLevel;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.network.protocol.PacketFlow;
-import net.minecraft.network.codec.StreamCodec;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.RegistryFriendlyByteBuf;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.core.HolderLookup;
-
 import net.fathommod.FathommodMod;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.RegistryFriendlyByteBuf;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.network.protocol.PacketFlow;
+import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.saveddata.SavedData;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.neoforge.attachment.AttachmentType;
+import net.neoforged.neoforge.common.util.INBTSerializable;
+import net.neoforged.neoforge.event.entity.player.PlayerEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
+import net.neoforged.neoforge.network.handling.IPayloadContext;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.function.Supplier;
@@ -36,7 +34,7 @@ import java.util.function.Supplier;
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class FathommodModVariables {
 	public static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, FathommodMod.MOD_ID);
-	public static final Supplier<AttachmentType<PlayerVariables>> PLAYER_VARIABLES = ATTACHMENT_TYPES.register("player_variables", () -> AttachmentType.serializable(PlayerVariables::new).build());
+	public static final Supplier<AttachmentType<EntityVariables>> ENTITY_VARIABLES = ATTACHMENT_TYPES.register("player_variables", () -> AttachmentType.serializable(EntityVariables::new).build());
 
 	@SubscribeEvent
 	public static void init(FMLCommonSetupEvent event) {
@@ -49,34 +47,34 @@ public class FathommodModVariables {
 		@SubscribeEvent
 		public static void onPlayerLoggedInSyncPlayerVariables(PlayerEvent.PlayerLoggedInEvent event) {
 			if (event.getEntity() instanceof ServerPlayer player)
-				player.getData(PLAYER_VARIABLES).syncPlayerVariables(event.getEntity());
+				player.getData(ENTITY_VARIABLES).syncPlayerVariables(event.getEntity());
 		}
 
 		@SubscribeEvent
 		public static void onPlayerRespawnedSyncPlayerVariables(PlayerEvent.PlayerRespawnEvent event) {
 			if (event.getEntity() instanceof ServerPlayer player)
-				player.getData(PLAYER_VARIABLES).syncPlayerVariables(event.getEntity());
+				player.getData(ENTITY_VARIABLES).syncPlayerVariables(event.getEntity());
 		}
 
 		@SubscribeEvent
 		public static void onPlayerChangedDimensionSyncPlayerVariables(PlayerEvent.PlayerChangedDimensionEvent event) {
 			if (event.getEntity() instanceof ServerPlayer player)
-				player.getData(PLAYER_VARIABLES).syncPlayerVariables(event.getEntity());
+				player.getData(ENTITY_VARIABLES).syncPlayerVariables(event.getEntity());
 		}
 
 		@SubscribeEvent
 		public static void clonePlayer(PlayerEvent.Clone event) {
-			PlayerVariables original = event.getOriginal().getData(PLAYER_VARIABLES);
-			PlayerVariables clone = new PlayerVariables();
-			clone.TrinketKeepINV = original.TrinketKeepINV;
-			clone.TrinketKeepINV2 = original.TrinketKeepINV2;
-			clone.TrinketKeepINV3 = original.TrinketKeepINV3;
-			clone.TrinketKeepINV4 = original.TrinketKeepINV4;
+			EntityVariables original = event.getOriginal().getData(ENTITY_VARIABLES);
+			EntityVariables clone = new EntityVariables();
+			clone.trinket1 = original.trinket1;
+			clone.trinket2 = original.trinket2;
+			clone.trinket3 = original.trinket3;
+			clone.trinket4 = original.trinket4;
 			clone.isGodMode = original.isGodMode;
             //noinspection StatementWithEmptyBody
             if (!event.isWasDeath()) {
 			}
-			event.getEntity().setData(PLAYER_VARIABLES, clone);
+			event.getEntity().setData(ENTITY_VARIABLES, clone);
 		}
 
 		@SubscribeEvent
@@ -103,7 +101,6 @@ public class FathommodModVariables {
 
 	public static class WorldVariables extends SavedData {
 		public static final String DATA_NAME = "fathommod_worldvars";
-		public boolean iwannadie = false;
 
 		public static WorldVariables load(CompoundTag tag, HolderLookup.Provider lookupProvider) {
 			WorldVariables data = new WorldVariables();
@@ -112,12 +109,12 @@ public class FathommodModVariables {
 		}
 
 		public void read(CompoundTag nbt, HolderLookup.Provider lookupProvider) {
-			iwannadie = nbt.getBoolean("iwannadie");
+//			iwannadie = nbt.getBoolean("iwannadie");
 		}
 
 		@Override
 		public @NotNull CompoundTag save(CompoundTag nbt, HolderLookup.Provider lookupProvider) {
-			nbt.putBoolean("iwannadie", iwannadie);
+//			nbt.putBoolean("iwannadie", iwannadie);
 			return nbt;
 		}
 
@@ -212,40 +209,55 @@ public class FathommodModVariables {
 		}
 	}
 
-	public static class PlayerVariables implements INBTSerializable<CompoundTag> {
-		public ItemStack TrinketKeepINV = ItemStack.EMPTY;
-		public ItemStack TrinketKeepINV2 = ItemStack.EMPTY;
-		public ItemStack TrinketKeepINV3 = ItemStack.EMPTY;
-		public ItemStack TrinketKeepINV4 = ItemStack.EMPTY;
+	public static class EntityVariables implements INBTSerializable<CompoundTag> {
+		public ItemStack trinket1 = ItemStack.EMPTY;
+		public ItemStack trinket2 = ItemStack.EMPTY;
+		public ItemStack trinket3 = ItemStack.EMPTY;
+		public ItemStack trinket4 = ItemStack.EMPTY;
 		public boolean doubleJumpCooldown = false;
 		public int doubleJumpCooldownInt = 0;
 		public boolean secondDoubleJumpUsed = false;
 		public byte ringOfLifeRegenCooldown = 60;
 		public boolean wingGliding = false;
 		public boolean hasLightItem = false;
-		public short tedEmerge = 50;
- 		public boolean isGodMode = false;
+		public boolean isGodMode = false;
+		public boolean isTedRabbit = false;
+		public String comboHitSource = "";
+		public String summonOwner = "";
+		public boolean isSummon = false;
+		public int summonTimeLeft = 69;
+		public int lastAutoAttack = 0;
 
 		@Override
 		public CompoundTag serializeNBT(HolderLookup.Provider lookupProvider) {
 			CompoundTag nbt = new CompoundTag();
-			nbt.put("TrinketKeepINV", TrinketKeepINV.saveOptional(lookupProvider));
-			nbt.put("TrinketKeepINV2", TrinketKeepINV2.saveOptional(lookupProvider));
-			nbt.put("TrinketKeepINV3", TrinketKeepINV3.saveOptional(lookupProvider));
-			nbt.put("TrinketKeepINV4", TrinketKeepINV4.saveOptional(lookupProvider));
-			nbt.putShort("tedEmergeTicks", tedEmerge);
+			nbt.put("trinket1", trinket1.saveOptional(lookupProvider));
+			nbt.put("trinket2", trinket2.saveOptional(lookupProvider));
+			nbt.put("trinket3", trinket3.saveOptional(lookupProvider));
+			nbt.put("trinket4", trinket4.saveOptional(lookupProvider));
    			nbt.putBoolean("isGodMode", isGodMode);
+			nbt.putBoolean("isTedRabbit", isTedRabbit);
+			nbt.putString("comboHitSource", comboHitSource);
+			nbt.putString("summonOwner", summonOwner);
+			nbt.putBoolean("isSummon", isSummon);
+			nbt.putInt("summonTimeLeft", summonTimeLeft);
+			nbt.putInt("lastAutoAttack", lastAutoAttack);
 			return nbt;
 		}
 
 		@Override
 		public void deserializeNBT(HolderLookup.Provider lookupProvider, CompoundTag nbt) {
-			TrinketKeepINV = ItemStack.parseOptional(lookupProvider, nbt.getCompound("TrinketKeepINV"));
-			TrinketKeepINV2 = ItemStack.parseOptional(lookupProvider, nbt.getCompound("TrinketKeepINV2"));
-			TrinketKeepINV3 = ItemStack.parseOptional(lookupProvider, nbt.getCompound("TrinketKeepINV3"));
-			TrinketKeepINV4 = ItemStack.parseOptional(lookupProvider, nbt.getCompound("TrinketKeepINV4"));
-			tedEmerge = nbt.getShort("tedEmergeTicks");
+			trinket1 = ItemStack.parseOptional(lookupProvider, nbt.getCompound("trinket1"));
+			trinket2 = ItemStack.parseOptional(lookupProvider, nbt.getCompound("trinket2"));
+			trinket3 = ItemStack.parseOptional(lookupProvider, nbt.getCompound("trinket3"));
+			trinket4 = ItemStack.parseOptional(lookupProvider, nbt.getCompound("trinket4"));
 			isGodMode = nbt.getBoolean("isGodMode");
+			isTedRabbit = nbt.getBoolean("isTedRabbit");
+			comboHitSource = nbt.getString("comboHitSource");
+			summonOwner = nbt.getString("summonOwner");
+			isSummon = nbt.getBoolean("isSummon");
+			summonTimeLeft = nbt.getInt("summonTimeLeft");
+			lastAutoAttack = nbt.getInt("lastAutoAttack");
 		}
 
 		public void syncPlayerVariables(Entity entity) {
@@ -254,11 +266,11 @@ public class FathommodModVariables {
 		}
 	}
 
-	public record PlayerVariablesSyncMessage(PlayerVariables data) implements CustomPacketPayload {
+	public record PlayerVariablesSyncMessage(EntityVariables data) implements CustomPacketPayload {
 		public static final Type<PlayerVariablesSyncMessage> TYPE = new Type<>(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "player_variables_sync"));
 		public static final StreamCodec<RegistryFriendlyByteBuf, PlayerVariablesSyncMessage> STREAM_CODEC = StreamCodec
 				.of((RegistryFriendlyByteBuf buffer, PlayerVariablesSyncMessage message) -> buffer.writeNbt(message.data().serializeNBT(buffer.registryAccess())), (RegistryFriendlyByteBuf buffer) -> {
-					PlayerVariablesSyncMessage message = new PlayerVariablesSyncMessage(new PlayerVariables());
+					PlayerVariablesSyncMessage message = new PlayerVariablesSyncMessage(new EntityVariables());
 					message.data.deserializeNBT(buffer.registryAccess(), buffer.readNbt());
 					return message;
 				});
@@ -270,7 +282,7 @@ public class FathommodModVariables {
 
 		public static void handleData(final PlayerVariablesSyncMessage message, final IPayloadContext context) {
 			if (context.flow() == PacketFlow.CLIENTBOUND && message.data != null) {
-				context.enqueueWork(() -> context.player().getData(PLAYER_VARIABLES).deserializeNBT(context.player().registryAccess(), message.data.serializeNBT(context.player().registryAccess()))).exceptionally(e -> {
+				context.enqueueWork(() -> context.player().getData(ENTITY_VARIABLES).deserializeNBT(context.player().registryAccess(), message.data.serializeNBT(context.player().registryAccess()))).exceptionally(e -> {
 					context.connection().disconnect(Component.literal(e.getMessage()));
 					return null;
 				});

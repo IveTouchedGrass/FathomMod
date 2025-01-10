@@ -1,8 +1,10 @@
-package net.fathommod.network;
+package net.fathommod.network.handlers;
 
 import net.fathommod.DevUtils;
 import net.fathommod.FathommodMod;
 import net.fathommod.Trinkets;
+import net.fathommod.network.FathommodModVariables;
+import net.fathommod.network.packets.DoubleJumpMessage;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.phys.Vec3;
@@ -25,9 +27,9 @@ public class DoubleJumpMessageHandler {
     public static void handleOnServer(final DoubleJumpMessage.DoubleJumpPacket data, final IPayloadContext context) {
         try {
             Player entity = context.player();
-            if ((DevUtils.hasTrinket(entity, Trinkets.DOUBLE_JUMP) || DevUtils.hasTrinket(entity, Trinkets.DOUBLE_DOUBLE_JUMP_AND_JUMP_HEIGHT_ON_CRACK_BRO_THIS_IS_SO_OVERPOWERED_AND_TRASH_AT_THE_SAME_TIME_BECAUSE_YOU_TAKE_HELLA_FALL_DAMAGE)) && entity.getData(FathommodModVariables.PLAYER_VARIABLES).doubleJumpCooldownInt == 0 && (!entity.getData(FathommodModVariables.PLAYER_VARIABLES).doubleJumpCooldown || (DevUtils.hasTrinket(entity, Trinkets.DOUBLE_DOUBLE_JUMP_AND_JUMP_HEIGHT_ON_CRACK_BRO_THIS_IS_SO_OVERPOWERED_AND_TRASH_AT_THE_SAME_TIME_BECAUSE_YOU_TAKE_HELLA_FALL_DAMAGE) && !entity.getData(FathommodModVariables.PLAYER_VARIABLES).secondDoubleJumpUsed)) && !entity.isFallFlying() && !entity.onClimbable() && !entity.isInWater()) {
-                PacketDistributor.sendToPlayer((ServerPlayer) entity, new DoubleJumpMessage.DoubleJumpPacket(DevUtils.hasTrinket(entity, Trinkets.DOUBLE_DOUBLE_JUMP_AND_JUMP_HEIGHT_ON_CRACK_BRO_THIS_IS_SO_OVERPOWERED_AND_TRASH_AT_THE_SAME_TIME_BECAUSE_YOU_TAKE_HELLA_FALL_DAMAGE) ? 1.6f : DevUtils.hasTrinket(entity, Trinkets.JUMP_HEIGHT) ? 1.1f : 0.6f));
-                FathommodModVariables.PlayerVariables vars = entity.getData(FathommodModVariables.PLAYER_VARIABLES);
+            if ((DevUtils.hasTrinket(entity, Trinkets.DOUBLE_JUMP) || DevUtils.hasTrinket(entity, Trinkets.DOUBLE_DOUBLE_JUMP)) && entity.getData(FathommodModVariables.ENTITY_VARIABLES).doubleJumpCooldownInt == 0 && (!entity.getData(FathommodModVariables.ENTITY_VARIABLES).doubleJumpCooldown || (DevUtils.hasTrinket(entity, Trinkets.DOUBLE_DOUBLE_JUMP) && !entity.getData(FathommodModVariables.ENTITY_VARIABLES).secondDoubleJumpUsed)) && !entity.isFallFlying() && !entity.onClimbable() && !entity.isInWater()) {
+                PacketDistributor.sendToPlayer((ServerPlayer) entity, new DoubleJumpMessage.DoubleJumpPacket(DevUtils.hasTrinket(entity, Trinkets.DOUBLE_DOUBLE_JUMP) ? 1.6f : DevUtils.hasTrinket(entity, Trinkets.JUMP_HEIGHT) ? 1.1f : 0.6f));
+                FathommodModVariables.EntityVariables vars = entity.getData(FathommodModVariables.ENTITY_VARIABLES);
                 if (!vars.doubleJumpCooldown) {
                     vars.doubleJumpCooldown = true;
                     vars.secondDoubleJumpUsed = false;

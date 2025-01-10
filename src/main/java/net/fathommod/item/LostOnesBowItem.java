@@ -1,25 +1,26 @@
 
 package net.fathommod.item;
 
+import net.fathommod.DamageClasses;
+import net.fathommod.DamageTypedWeapon;
+import net.fathommod.entity.TNTArrowEntity;
+import net.fathommod.procedures.LostOnesBowRangedItemShootsProjectileProcedure;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.entity.projectile.AbstractArrow;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.InteractionResultHolder;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.server.level.ServerPlayer;
-
-import net.fathommod.procedures.LostOnesBowRangedItemShootsProjectileProcedure;
-import net.fathommod.entity.TNTArrowEntity;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class LostOnesBowItem extends Item {
+public class LostOnesBowItem extends Item implements DamageTypedWeapon {
 	public LostOnesBowItem() {
 		super(new Item.Properties().durability(629).rarity(Rarity.COMMON));
 	}
@@ -104,5 +105,10 @@ public class LostOnesBowItem extends Item {
 		components.add(Component.translatable("tooltip.fathommod.lost_ones_bow.first_line").setStyle(Style.EMPTY.withColor(0x58a7bf)));
 
 		super.appendHoverText(p_41421_, p_339594_, components, p_41424_);
+	}
+
+	@Override
+	public DamageClasses getDamageClass() {
+		return DamageClasses.RANGED;
 	}
 }

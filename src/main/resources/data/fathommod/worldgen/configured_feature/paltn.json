@@ -21,6 +21,18 @@
             "type": "minecraft:matching_blocks",
             "blocks": "minecraft:air"
           }
+        },
+        {
+          "type": "minecraft:height_range",
+          "height": {
+            "type": "minecraft:uniform",
+            "min_inclusive": {
+              "absolute": 100
+            },
+            "max_inclusive": {
+              "below_top": 0
+            }
+          }
         }
       ]
     }

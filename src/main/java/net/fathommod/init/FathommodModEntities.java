@@ -4,6 +4,7 @@
  */
 package net.fathommod.init;
 
+import net.fathommod.FathommodMod;
 import net.fathommod.entity.BloodDwellerEntity;
 import net.fathommod.entity.TNTArrowEntity;
 import net.fathommod.entity.ThrowingKnivesEntityEntity;
@@ -11,21 +12,18 @@ import net.fathommod.entity.ted.ROCK;
 import net.fathommod.entity.ted.TedEntity;
 import net.fathommod.entity.ted.TedSpawner;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.*;
- import net.minecraft.world.level.ServerLevelAccessor;
+import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.level.levelgen.Heightmap;
-import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
-import net.neoforged.neoforge.registries.DeferredRegister;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.bus.api.SubscribeEvent;
-
-import net.minecraft.core.registries.Registries;
-
-import net.fathommod.FathommodMod;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.event.entity.EntityAttributeCreationEvent;
+import net.neoforged.neoforge.event.entity.RegisterSpawnPlacementsEvent;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 @SuppressWarnings("RedundantTypeArguments")
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
@@ -37,7 +35,7 @@ public class FathommodModEntities {
 			EntityType.Builder.<ThrowingKnivesEntityEntity>of(ThrowingKnivesEntityEntity::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 0.5f));
 	public static final DeferredHolder<EntityType<?>, EntityType<BloodDwellerEntity>> BLOOD_DWELLER = register("blood_dweller", EntityType.Builder.<BloodDwellerEntity>of(BloodDwellerEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(0.5f, 2f));
 	public static final DeferredHolder<EntityType<?>, EntityType<TedEntity>> TED = register("ted", EntityType.Builder.<TedEntity>of(TedEntity::new, MobCategory.MONSTER).setShouldReceiveVelocityUpdates(true).sized(1.7f, 4.5f).setTrackingRange(99).setUpdateInterval(1));
-	public static final DeferredHolder<EntityType<?>, EntityType<net.fathommod.entity.ted.ROCK>> ROCK = register("rock", EntityType.Builder.<ROCK>of(ROCK::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(1.f, 1.f));
+	public static final DeferredHolder<EntityType<?>, EntityType<net.fathommod.entity.ted.ROCK>> ROCK = register("rock", EntityType.Builder.<ROCK>of(ROCK::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(1.5f, 1.5f));
 	public static final DeferredHolder<EntityType<?>, EntityType<TedSpawner>> TED_SPAWNER = register("ted_spawner", EntityType.Builder.<TedSpawner>of(TedSpawner::new, MobCategory.MISC).setShouldReceiveVelocityUpdates(true).setTrackingRange(64).setUpdateInterval(1).sized(1.7f, 4.5f));
 
 	@SuppressWarnings("RedundantCast")

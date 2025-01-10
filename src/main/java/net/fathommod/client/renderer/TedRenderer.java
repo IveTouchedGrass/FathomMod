@@ -38,12 +38,6 @@ public class TedRenderer extends GeoEntityRenderer<TedEntity> {
             if (entity.getInstaKillAABB() != null && !entity.isNoAi()) {
                 this.renderAABB(poseStack, entity.getInstaKillAABB(), bufferSource, entity, 255, 0, 0, 1);
             }
-            if (entity.getRockAABB() != null && !entity.isNoAi()) {
-                this.renderAABB(poseStack, entity.getRockAABB(), bufferSource, entity, 255, 255, 0, 0.5f);
-            }
-            if (entity.getAttackAABB() != null && !entity.isNoAi()) {
-                this.renderAABB(poseStack, entity.getAttackAABB(), bufferSource, entity, 0, 0, 255, 0.5f);
-            }
             if (entity.getTeleportAABB() != null && !entity.isNoAi()) {
                 this.renderAABB(poseStack, entity.getTeleportAABB(), bufferSource, entity, 69, 125, 42, 0.5f);
             }

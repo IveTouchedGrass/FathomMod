@@ -4,13 +4,19 @@
   "package": "net.fathommod.mixins",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "MixinComponent",
     "MixinDiscard",
     "MixinElytra",
     "MixinGodMode",
     "MixinKillCmd",
+    "MixinLivingEntity",
+    "MixinPush",
+    "MixinRemove",
     "OtherGodModeMixin"
   ],
-  "client": [],
+  "client": [
+    "MixinAttributeMovement"
+  ],
   "server": [
   ],
   "injectors": {

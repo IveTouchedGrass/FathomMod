@@ -3,14 +3,17 @@
   "category": "equipment",
   "pattern": [
     "a",
-    "a",
-    "b"
+    "b",
+    "c"
   ],
   "key": {
     "a": {
-      "item": "minecraft:oak_planks"
+      "item": "minecraft:netherite_scrap"
     },
     "b": {
+      "item": "minecraft:oak_planks"
+    },
+    "c": {
       "item": "minecraft:iron_ingot"
     }
   },

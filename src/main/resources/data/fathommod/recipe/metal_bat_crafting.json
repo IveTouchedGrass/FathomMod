@@ -3,14 +3,17 @@
   "category": "equipment",
   "pattern": [
     "a",
-    "a",
-    "b"
+    "b",
+    "c"
   ],
   "key": {
     "a": {
-      "item": "minecraft:iron_ingot"
+      "item": "minecraft:netherite_ingot"
     },
     "b": {
+      "item": "minecraft:iron_block"
+    },
+    "c": {
       "item": "fathommod:wood_bat"
     }
   },

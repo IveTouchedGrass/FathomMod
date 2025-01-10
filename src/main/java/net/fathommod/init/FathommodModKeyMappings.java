@@ -4,24 +4,22 @@
  */
 package net.fathommod.init;
 
-import org.lwjgl.glfw.GLFW;
-
-import net.neoforged.neoforge.network.PacketDistributor;
-import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
-import net.neoforged.neoforge.client.event.ClientTickEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.api.distmarker.Dist;
-
-import net.minecraft.client.Minecraft;
+import net.fathommod.network.packets.TrinketeryOpenMessage;
 import net.minecraft.client.KeyMapping;
-
-import net.fathommod.network.TrinketeryOpenMessage;
+import net.minecraft.client.Minecraft;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.client.event.ClientTickEvent;
+import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
+import net.neoforged.neoforge.network.PacketDistributor;
+import org.lwjgl.glfw.GLFW;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD, value = {Dist.CLIENT})
 public class FathommodModKeyMappings {
 	public static final KeyMapping TRINKETERY_OPEN = new KeyMapping("key.fathommod.trinketery_open", GLFW.GLFW_KEY_RIGHT_ALT, "key.categories.misc") {
 		private boolean isDownOld = false;
+
 
 		@Override
 		public void setDown(boolean isDown) {
