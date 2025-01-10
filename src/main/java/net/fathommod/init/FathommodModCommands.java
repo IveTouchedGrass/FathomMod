@@ -2,8 +2,6 @@ package net.fathommod.init;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.BoolArgumentType;
-import com.mojang.brigadier.context.CommandContext;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.fathommod.FathommodMod;
 import net.fathommod.network.FathommodModVariables;
 import net.minecraft.commands.CommandSourceStack;
@@ -11,13 +9,12 @@ import net.minecraft.commands.Commands;
 import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntitySelector;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME, modid = FathommodMod.MOD_ID)
+@SuppressWarnings("unused")
 public class FathommodModCommands {
 
     @SubscribeEvent
