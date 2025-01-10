@@ -51,7 +51,7 @@ import java.util.Comparator;
 import java.util.Objects;
 import java.util.UUID;
 
-@SuppressWarnings("DataFlowIssue")
+@SuppressWarnings({"DataFlowIssue", "unused"})
 @EventBusSubscriber(modid = FathommodMod.MOD_ID)
 public class EventHandler {
 
@@ -81,7 +81,7 @@ public class EventHandler {
             PacketDistributor.sendToServer(new AutoAttackMessage.AutoAttackPacket(0));
         }
 
-        if (instance.player != null && (instance.options.keyUp.isDown() || instance.options.keyDown.isDown() || instance.options.keyLeft.isDown() || instance.options.keyRight.isDown())) {
+        if (instance.player != null && ((instance.options.keyUp.isDown() && !instance.options.keyDown.isDown()) || (instance.options.keyDown.isDown() && !instance.options.keyUp.isDown()) || (instance.options.keyLeft.isDown() && !instance.options.keyRight.isDown()) || (!instance.options.keyLeft.isDown() && instance.options.keyRight.isDown()))) {
             ClientVars.movementHeldTimeTicks++;
         } else {
             ClientVars.movementHeldTimeTicks = 0;
@@ -167,8 +167,8 @@ public class EventHandler {
 
             if (entity instanceof Mob mob && mob.getData(FathommodModVariables.ENTITY_VARIABLES).isTedRabbit) {
                 for (Entity entityiterator : event.getEntity().level().getEntities(entity, new AABB(entity.getX() - 50, entity.getY() - 50, entity.getZ() - 50, entity.getX() + 50, entity.getY() + 50,entity.getZ() + 50))) {
-                    if (entityiterator instanceof LivingEntity entityiterator2 && entityiterator instanceof Player && mob.getTarget() == null && mob.canAttack(entityiterator2)) {
-                        mob.setTarget(entityiterator2);
+                    if (entityiterator instanceof Player player && mob.getTarget() == null && mob.canAttack(player)) {
+                        mob.setTarget(player);
                     }
                 }
             }
@@ -345,7 +345,7 @@ public class EventHandler {
                     _level.addFreshEntity(entityToSpawn);
                 }
             }
-        } else if (entity instanceof Zombie || entity instanceof ZombieVillager) {
+        } else if (entity instanceof Zombie) {
             if (seed <= (0.05 * ((1.5 * looting > 0) ? 1 : 1.5 * looting))) {
                 if (world instanceof ServerLevel _level) {
                     ItemEntity entityToSpawn = new ItemEntity(_level, x, y, z, new ItemStack(Trinkets.ARMOR_POLISH));

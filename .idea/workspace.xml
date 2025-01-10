@@ -4,25 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1dfa89d3-d98e-4dda-bffe-8194546586ac" name="Changes" comment="idk">
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/ClientVars.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/DebugMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinAttributeMovement.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinLivingEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/Fathom_Mod.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/Fathom_Mod.main.iml" afterDir="false" />
+    <list default="true" id="1dfa89d3-d98e-4dda-bffe-8194546586ac" name="Changes" comment="Backing up code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/DamageTypedWeapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/DamageTypedWeapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/DevUtils.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/DevUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/EventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/FathommodMod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/FathommodMod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/TedEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/entity/ted/TedEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BoxingGlovesItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/item/BoxingGlovesItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/mixins/MixinServerPlayer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FathommodModVariables.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/FathommodModVariables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/network/handlers/AutoAttackPacketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/network/handlers/AutoAttackPacketHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/IFrameHeavenProcedure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/net/fathommod/procedures/IFrameHeavenProcedure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fathommod.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fathommod.mixins.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,12 +73,12 @@
     &quot;assignee&quot;: &quot;IveTouchedGrass&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/IveTouchedGrass/FathomMod.git&quot;,
-    &quot;accountId&quot;: &quot;857eec24-8231-4447-be4a-98c77ffbd61a&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/IveTouchedGrass/FathomMod.git",
+    "accountId": "0070dff2-c7ca-4bcf-946e-43055e79c87e"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/java/net/mcreator/youpieceof/EventHandler.java" root0="SKIP_INSPECTION" />
   </component>
@@ -123,38 +107,39 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Application.Fathom Mod: Client.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Fathom Mod: Server.executor&quot;: &quot;Run&quot;,
-    &quot;Application.Imma_pull_a_heroshima_because_geckolib_being_dumb: Client.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build Fathom Mod.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Fathom Mod [:cpw.mods.bootstraplauncher.BootstrapLauncher.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Fathom Mod [clientIdeBeforeRun].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Fathom Mod [compileJava].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Fathom Mod [serverIdeBeforeRun].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.imma_pull_a_heroshima_because_geckolib_being_dumb [:cpw.mods.bootstraplauncher.BootstrapLauncher.main()].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.imma_pull_a_heroshima_because_geckolib_being_dumb [clientIdeBeforeRun].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.imma_pull_a_heroshima_because_geckolib_being_dumb [compileJava].executor&quot;: &quot;Run&quot;,
-    &quot;JavaClassFindUsagesOptions.isDerivedClasses&quot;: &quot;true&quot;,
-    &quot;JavaClassFindUsagesOptions.isFieldsUsages&quot;: &quot;true&quot;,
-    &quot;JavaClassFindUsagesOptions.isMethodsUsages&quot;: &quot;true&quot;,
-    &quot;JavaMethodFindUsagesOptions.isOverridingMethods&quot;: &quot;true&quot;,
-    &quot;JavaMethodFindUsagesOptions.isSearchForTextOccurrences&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;1.21.1-dev&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/Coding/Minecraft/Fathom Mod/src/main/resources/assets/fathommod/models/item&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Fathom Mod: Client.executor": "Run",
+    "Application.Fathom Mod: Server.executor": "Run",
+    "Application.Imma_pull_a_heroshima_because_geckolib_being_dumb: Client.executor": "Run",
+    "Gradle.Build Fathom Mod.executor": "Run",
+    "Gradle.Fathom Mod [:cpw.mods.bootstraplauncher.BootstrapLauncher.main()].executor": "Run",
+    "Gradle.Fathom Mod [clientIdeBeforeRun].executor": "Run",
+    "Gradle.Fathom Mod [compileJava].executor": "Run",
+    "Gradle.Fathom Mod [serverIdeBeforeRun].executor": "Run",
+    "Gradle.imma_pull_a_heroshima_because_geckolib_being_dumb [:cpw.mods.bootstraplauncher.BootstrapLauncher.main()].executor": "Run",
+    "Gradle.imma_pull_a_heroshima_because_geckolib_being_dumb [clientIdeBeforeRun].executor": "Run",
+    "Gradle.imma_pull_a_heroshima_because_geckolib_being_dumb [compileJava].executor": "Run",
+    "JavaClassFindUsagesOptions.isDerivedClasses": "true",
+    "JavaClassFindUsagesOptions.isFieldsUsages": "true",
+    "JavaClassFindUsagesOptions.isMethodsUsages": "true",
+    "JavaMethodFindUsagesOptions.isOverridingMethods": "true",
+    "JavaMethodFindUsagesOptions.isSearchForTextOccurrences": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.codeium.enabled": "true",
+    "git-widget-placeholder": "1.21.1-dev",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/User/Desktop/Coding/Minecraft/Fathom Mod/src/main/resources/assets/fathommod/models/item",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.keymap"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\src\main\resources\assets\fathommod\models\item" />
@@ -178,13 +163,10 @@
   </component>
   <component name="RunManager" selected="Application.Fathom Mod: Client">
     <configuration name="Fathom Mod: Client" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="corretto-21" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <envs>
         <env name="MOD_CLASSES" value="Fathom Mod%%C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\build\resources\main;Fathom Mod%%C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\build\classes\java\main" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="cpw.mods.bootstraplauncher.BootstrapLauncher" />
-      <module name="com.yourname.modid.Fathom_Mod.main" />
       <option name="PROGRAM_PARAMETERS" value="--launchTarget forgeclientuserdev --version 21.1.12 --assetIndex asset-index --assetsDir C:\Users\User\.gradle\caches\minecraft\assets\1.21.1 --gameDir . --fml.neoForgeVersion 21.1.12 --fml.fmlVersion 4.0.24 --fml.mcVersion 1.21.1 --fml.neoFormVersion 20240808.144430" />
       <shortenClasspath name="ARGS_FILE" />
       <option name="VM_PARAMETERS" value="-p C:\Users\User\.gradle\caches\modules-2\files-2.1\cpw.mods\bootstraplauncher\2.0.2\1a2d076cbc33b0520cbacd591224427b2a20047d\bootstraplauncher-2.0.2.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\cpw.mods\securejarhandler\3.0.8\c0ef95cecd8699a0449053ac7d9c160748d902cd\securejarhandler-3.0.8.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-commons\9.5\19ab5b5800a3910d30d3a3e64fdb00fd0cb42de0\asm-commons-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-util\9.5\64b5a1fc8c1b15ed2efd6a063e976bc8d3dc5ffe\asm-util-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-analysis\9.5\490bacc77de7cbc0be1a30bb3471072d705be4a4\asm-analysis-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-tree\9.5\fd33c8b6373abaa675be407082fdfda35021254a\asm-tree-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm\9.5\dc6ea1875f4d64fbc85e1691c95b96a3d8569c90\asm-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\net.neoforged\JarJarFileSystems\0.4.1\78f59f89defcd032ed788b151ca6a0d40ace796a\JarJarFileSystems-0.4.1.jar --add-modules ALL-MODULE-PATH --add-opens java.base/java.util.jar=cpw.mods.securejarhandler --add-opens java.base/java.lang.invoke=cpw.mods.securejarhandler --add-exports java.base/sun.security.util=cpw.mods.securejarhandler --add-exports jdk.naming.dns/com.sun.jndi.dns=java.naming -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump -Dforge.logging.console.level=debug -Dneoforge.enableGameTest=true -Dforge.logging.markers=REGISTRIES &quot;-DlegacyClassPath.file=C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\.gradle\configuration\neoForm\neoFormJoined1.21.1-20240808.144430\steps\writeMinecraftClasspathClient\classpath.txt&quot; -DignoreList=securejarhandler-3.0.8.jar,asm-9.5.jar,asm-commons-9.5.jar,asm-tree-9.5.jar,asm-util-9.5.jar,asm-analysis-9.5.jar,bootstraplauncher-2.0.2.jar,JarJarFileSystems-0.4.1.jar,mixinextras-neoforge-0.3.5.jar,client-extra,neoforge- -Dfml.gameLayerLibraries -DmergeModules=jna-5.10.0.jar,jna-platform-5.10.0.jar -Djava.net.preferIPv6Addresses=system -Dfml.pluginLayerLibraries" />
@@ -227,7 +209,6 @@
         <env name="MOD_CLASSES" value="Fathom Mod%%C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\build\resources\main;Fathom Mod%%C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\build\classes\java\main" />
       </envs>
       <option name="MAIN_CLASS_NAME" value="cpw.mods.bootstraplauncher.BootstrapLauncher" />
-      <module name="Fathom_Mod.main" />
       <option name="PROGRAM_PARAMETERS" value="--launchTarget forgeserveruserdev --gameDir . --fml.neoForgeVersion 21.1.12 --fml.fmlVersion 4.0.24 --fml.mcVersion 1.21.1 --fml.neoFormVersion 20240808.144430" />
       <shortenClasspath name="ARGS_FILE" />
       <option name="VM_PARAMETERS" value="-p C:\Users\User\.gradle\caches\modules-2\files-2.1\cpw.mods\bootstraplauncher\2.0.2\1a2d076cbc33b0520cbacd591224427b2a20047d\bootstraplauncher-2.0.2.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\cpw.mods\securejarhandler\3.0.8\c0ef95cecd8699a0449053ac7d9c160748d902cd\securejarhandler-3.0.8.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-commons\9.5\19ab5b5800a3910d30d3a3e64fdb00fd0cb42de0\asm-commons-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-util\9.5\64b5a1fc8c1b15ed2efd6a063e976bc8d3dc5ffe\asm-util-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-analysis\9.5\490bacc77de7cbc0be1a30bb3471072d705be4a4\asm-analysis-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm-tree\9.5\fd33c8b6373abaa675be407082fdfda35021254a\asm-tree-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\org.ow2.asm\asm\9.5\dc6ea1875f4d64fbc85e1691c95b96a3d8569c90\asm-9.5.jar;C:\Users\User\.gradle\caches\modules-2\files-2.1\net.neoforged\JarJarFileSystems\0.4.1\78f59f89defcd032ed788b151ca6a0d40ace796a\JarJarFileSystems-0.4.1.jar --add-modules ALL-MODULE-PATH --add-opens java.base/java.util.jar=cpw.mods.securejarhandler --add-opens java.base/java.lang.invoke=cpw.mods.securejarhandler --add-exports java.base/sun.security.util=cpw.mods.securejarhandler --add-exports jdk.naming.dns/com.sun.jndi.dns=java.naming -Dforge.logging.console.level=debug -Dforge.logging.markers=REGISTRIES &quot;-DlegacyClassPath.file=C:\Users\User\Desktop\Coding\Minecraft\Fathom Mod\.gradle\configuration\neoForm\neoFormJoined1.21.1-20240808.144430\steps\writeMinecraftClasspathServer\classpath.txt&quot; -DignoreList=securejarhandler-3.0.8.jar,asm-9.5.jar,asm-commons-9.5.jar,asm-tree-9.5.jar,asm-util-9.5.jar,asm-analysis-9.5.jar,bootstraplauncher-2.0.2.jar,JarJarFileSystems-0.4.1.jar,mixinextras-neoforge-0.3.5.jar,client-extra,neoforge- -Dfml.gameLayerLibraries -DmergeModules=jna-5.10.0.jar,jna-platform-5.10.0.jar -Djava.net.preferIPv6Addresses=system -Dfml.pluginLayerLibraries" />
@@ -489,7 +470,15 @@
       <option name="project" value="LOCAL" />
       <updated>1732511819183</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Backing up code">
+      <option name="closed" value="true" />
+      <created>1735588182321</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1735588182321</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -520,7 +509,8 @@
     <MESSAGE value="i already forgot what i added" />
     <MESSAGE value="Fixed components breaking" />
     <MESSAGE value="idk" />
-    <option name="LAST_COMMIT_MESSAGE" value="idk" />
+    <MESSAGE value="Backing up code" />
+    <option name="LAST_COMMIT_MESSAGE" value="Backing up code" />
   </component>
   <component name="XDebuggerManager">
     <pin-to-top-manager>
