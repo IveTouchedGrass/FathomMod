@@ -21,6 +21,15 @@ public class FathommodModPackets {
                 )
         );
 
+        registrar.playBidirectional(
+                AutoAttackConfirmCanAttackMessage.AutoAttackConfirmCanAttackPacket.TYPE,
+                AutoAttackConfirmCanAttackMessage.AutoAttackConfirmCanAttackPacket.STREAM_CODEC,
+                new DirectionalPayloadHandler<>(
+                        AutoAttackPacketConfirmationHandler::handleOnClient,
+                        AutoAttackPacketConfirmationHandler::handleOnServer
+                )
+        );
+
         registrar.playToServer(
                 FlyShiftMessage.FlyShiftPacket.TYPE,
                 FlyShiftMessage.FlyShiftPacket.STREAM_CODEC,

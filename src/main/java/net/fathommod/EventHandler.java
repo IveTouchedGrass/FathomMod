@@ -5,8 +5,8 @@ import net.fathommod.init.FathommodModDamageTypes;
 import net.fathommod.init.FathommodModItems;
 import net.fathommod.init.FathommodModMobEffects;
 import net.fathommod.init.FathommodModSounds;
+import net.fathommod.network.packets.AutoAttackConfirmCanAttackMessage;
 import net.fathommod.network.packets.AutoAttackMessage;
-import net.fathommod.network.packets.DoubleJumpMessage;
 import net.fathommod.network.FathommodModVariables;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponents;
@@ -69,16 +69,20 @@ public class EventHandler {
 
         instance.smartCull = true;
         instance.options.skipMultiplayerWarning = true;
-
-        if (instance.options.keyShift.isDown() && instance.options.keyJump.isDown() && instance.level != null)
-            PacketDistributor.sendToServer(new DoubleJumpMessage.DoubleJumpPacket(0f));
-
+//
+//        if (instance.options.keyShift.isDown() && instance.options.keyJump.isDown() && instance.level != null)
+//            PacketDistributor.sendToServer(new DoubleJumpMessage.DoubleJumpPacket(0f));
+//
         String blockName = "";
         if (instance.level != null && hitResult instanceof BlockHitResult blockHitResult)
             blockName = String.valueOf(instance.level.getBlockState(blockHitResult.getBlockPos()).getBlock()).substring(6);
 
-        if (instance.options.keyAttack.isDown() && instance.level != null && ((blockName.contains("air") && blockName.contains("minecraft:")) || hitResult instanceof EntityHitResult || hitResult.getType() == HitResult.Type.MISS) && (instance.player.getAttackStrengthScale(1f) >= 1 || instance.player.getAttribute(Attributes.ATTACK_SPEED).getValue() >= 20) && DevUtils.hasTrinket(instance.player, Trinkets.CHAINED_HANDLE)) {
+        if (instance.options.keyAttack.isDown() && instance.level != null && ((blockName.contains("air") && blockName.contains("minecraft:")) || hitResult instanceof EntityHitResult || hitResult.getType() == HitResult.Type.MISS) && (instance.player.getAttackStrengthScale(1f) >= 1 || instance.player.getAttribute(Attributes.ATTACK_SPEED).getValue() >= 20) && ClientVars.canAutoAttack) {
             PacketDistributor.sendToServer(new AutoAttackMessage.AutoAttackPacket(0));
+        }
+
+        if (ClientVars.clientTickAge % 20 == 0) {
+            PacketDistributor.sendToServer(new AutoAttackConfirmCanAttackMessage.AutoAttackConfirmCanAttackPacket(false));
         }
 
         if (instance.player != null && ((instance.options.keyUp.isDown() && !instance.options.keyDown.isDown()) || (instance.options.keyDown.isDown() && !instance.options.keyUp.isDown()) || (instance.options.keyLeft.isDown() && !instance.options.keyRight.isDown()) || (!instance.options.keyLeft.isDown() && instance.options.keyRight.isDown()))) {
