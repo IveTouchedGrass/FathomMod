@@ -8,6 +8,7 @@ import net.fathommod.init.FathommodModSounds;
 import net.fathommod.network.packets.AutoAttackConfirmCanAttackMessage;
 import net.fathommod.network.packets.AutoAttackMessage;
 import net.fathommod.network.FathommodModVariables;
+import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
@@ -47,6 +48,7 @@ import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.UUID;
@@ -81,17 +83,37 @@ public class EventHandler {
             PacketDistributor.sendToServer(new AutoAttackMessage.AutoAttackPacket(0));
         }
 
-        if (ClientVars.clientTickAge % 20 == 0) {
+        if (ClientVars.clientTickAge % 20 == 0 && instance.level != null) {
             PacketDistributor.sendToServer(new AutoAttackConfirmCanAttackMessage.AutoAttackConfirmCanAttackPacket(false));
         }
 
         if (instance.player != null && ((instance.options.keyUp.isDown() && !instance.options.keyDown.isDown()) || (instance.options.keyDown.isDown() && !instance.options.keyUp.isDown()) || (instance.options.keyLeft.isDown() && !instance.options.keyRight.isDown()) || (!instance.options.keyLeft.isDown() && instance.options.keyRight.isDown()))) {
-            ClientVars.movementHeldTimeTicks++;
+            if (ClientVars.movementHeldTimeTicks < 80)
+                ClientVars.movementHeldTimeTicks++;
+            ClientVars.pressedKeys.clear();
+            if (instance.options.keyUp.isDown())
+                ClientVars.pressedKeys.add(instance.options.keyUp);
+            if (instance.options.keyDown.isDown())
+                ClientVars.pressedKeys.add(instance.options.keyDown);
+            if (instance.options.keyLeft.isDown())
+                ClientVars.pressedKeys.add(instance.options.keyLeft);
+            if (instance.options.keyRight.isDown())
+                ClientVars.pressedKeys.add(instance.options.keyRight);
+            instance.player.sendSystemMessage(Component.literal(String.valueOf(ClientVars.pressedKeys) + String.valueOf(ClientVars.pressedKeys)));
+            for (KeyMapping mapping : ClientVars.pressedKeys) {
+                if (!ClientVars.lastPressedKeys.contains(mapping)) {
+                    ClientVars.movementHeldTimeTicks *= 0.75;
+                    ClientVars.movementHeldTimeTicks = Math.round(ClientVars.movementHeldTimeTicks);
+                }
+            }
         } else {
             ClientVars.movementHeldTimeTicks = 0;
         }
 
         ClientVars.clientTickAge++;
+        ClientVars.lastPressedKeys = new ArrayList<>(ClientVars.pressedKeys);
+        if (instance.player != null && ClientVars.movementHeldTimeTicks > 0)
+            instance.player.sendSystemMessage(Component.literal(String.valueOf(ClientVars.movementHeldTimeTicks)));
     }
 
     @SubscribeEvent
