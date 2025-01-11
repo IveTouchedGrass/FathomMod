@@ -20,7 +20,7 @@ public class AutoAttackPacketHandler {
     public static void handleDataOnServer(final AutoAttackMessage.AutoAttackPacket data, final IPayloadContext context) {
         ServerPlayer entity = ((ServerPlayer) context.player());
         FathommodModVariables.EntityVariables vars = entity.getData(FathommodModVariables.ENTITY_VARIABLES);
-        if ((!(entity.getItemBySlot(EquipmentSlot.MAINHAND).getItem() instanceof DamageTypedWeapon weapon && weapon.getDamageClass() == DamageClasses.ASSASSIN) || vars.lastAutoAttack > weapon.getIFrames() / 2) && DevUtils.hasTrinket(entity, Trinkets.CHAINED_HANDLE) && entity.getAttackStrengthScale(0f) >= 1f) {
+        if ((!(entity.getItemBySlot(EquipmentSlot.MAINHAND).getItem() instanceof DamageTypedWeapon weapon && weapon.getDamageClass() == DamageClasses.ASSASSIN) || vars.lastAutoAttack > weapon.getIFrames() / 2) && DevUtils.hasTrinket(entity, Trinkets.AUTO_ATTACK) && entity.getAttackStrengthScale(0f) >= 1f) {
             vars.lastAutoAttack = 0;
             vars.syncPlayerVariables(entity);
             Vec3 pos = entity.position();

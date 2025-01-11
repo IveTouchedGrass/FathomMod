@@ -122,5 +122,9 @@
   "tooltip.fathommod.arrow_sharpener.first_line": "- +10% arrow damage",
   "tooltip.fathommod.black_smiths_will.first_line": "- TRY MY UNBREAKING!",
   "tooltip.fathommod.black_smiths_will.second_line": "- Makes armor literally unbreakable while trinket is equipped",
-  "tooltip.fathommod.tnt_arrow.first_line": "- attach an explosive to an arrow, what can go wrong?"
+  "tooltip.fathommod.tnt_arrow.first_line": "- attach an explosive to an arrow, what can go wrong?",
+  "tooltip.fathommod.gloves_trinket.first_line": "- i totally didn't make this trinket in under 20 seconds",
+  "tooltip.fathommod.gloves_trinket.second_line": "- enables auto swing",
+  "tooltip.fathommod.gloves_trinket.third_line": "- +10% attack speed",
+  "item.fathommod.gloves": "Gloves"
 }

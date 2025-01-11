@@ -27,6 +27,7 @@ public class Trinkets {
     public static final Item DOUBLE_DOUBLE_JUMP = FathommodModItems.FROG_GEAR.get();
     public static final Item ARMOR_POLISH = FathommodModItems.ARMOR_POLISH.get();
     public static final Item SEAS_GIFT = FathommodModItems.SEAS_GIFT.get();
+    public static final Item AUTO_ATTACK = FathommodModItems.AUTO_ATTACK_TRINKET.get();
 
     public static final List<Item> ALL_TRINKETS = List.of(
             ARROW_SHARPENER,
@@ -48,6 +49,7 @@ public class Trinkets {
             JUMP_HEIGHT,
             DOUBLE_DOUBLE_JUMP,
             ARMOR_POLISH,
-            SEAS_GIFT
+            SEAS_GIFT,
+            AUTO_ATTACK
     );
 }

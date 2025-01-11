@@ -15,6 +15,6 @@ public class AutoAttackPacketConfirmationHandler {
 
     public static void handleOnServer(final AutoAttackConfirmCanAttackMessage.AutoAttackConfirmCanAttackPacket ignored, final IPayloadContext context) {
         ServerPlayer player = ((ServerPlayer) context.player());
-        PacketDistributor.sendToPlayer(player, new AutoAttackConfirmCanAttackMessage.AutoAttackConfirmCanAttackPacket(DevUtils.hasTrinket(player, Trinkets.CHAINED_HANDLE)));
+        PacketDistributor.sendToPlayer(player, new AutoAttackConfirmCanAttackMessage.AutoAttackConfirmCanAttackPacket(DevUtils.hasTrinket(player, Trinkets.AUTO_ATTACK)));
     }
 }

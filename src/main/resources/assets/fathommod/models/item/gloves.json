@@ -1,0 +1,7 @@
+{
+  "parent": "fathommod:custom/gloves",
+  "textures": {
+    "0": "fathommod:item/gloves",
+    "particle": "fathommod:item/gloves"
+  }
+}
