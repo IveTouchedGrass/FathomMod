@@ -8,6 +8,7 @@ import net.fathommod.init.FathommodModSounds;
 import net.fathommod.network.packets.AutoAttackConfirmCanAttackMessage;
 import net.fathommod.network.packets.AutoAttackMessage;
 import net.fathommod.network.FathommodModVariables;
+import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
@@ -44,9 +45,11 @@ import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Objects;
 import java.util.UUID;
@@ -81,17 +84,37 @@ public class EventHandler {
             PacketDistributor.sendToServer(new AutoAttackMessage.AutoAttackPacket(0));
         }
 
-        if (ClientVars.clientTickAge % 20 == 0) {
+        if (ClientVars.clientTickAge % 20 == 0 && instance.level != null) {
             PacketDistributor.sendToServer(new AutoAttackConfirmCanAttackMessage.AutoAttackConfirmCanAttackPacket(false));
         }
 
         if (instance.player != null && ((instance.options.keyUp.isDown() && !instance.options.keyDown.isDown()) || (instance.options.keyDown.isDown() && !instance.options.keyUp.isDown()) || (instance.options.keyLeft.isDown() && !instance.options.keyRight.isDown()) || (!instance.options.keyLeft.isDown() && instance.options.keyRight.isDown()))) {
-            ClientVars.movementHeldTimeTicks++;
+            if (ClientVars.movementHeldTimeTicks < 80)
+                ClientVars.movementHeldTimeTicks++;
+            ClientVars.pressedKeys.clear();
+            if (instance.options.keyUp.isDown())
+                ClientVars.pressedKeys.add(instance.options.keyUp);
+            if (instance.options.keyDown.isDown())
+                ClientVars.pressedKeys.add(instance.options.keyDown);
+            if (instance.options.keyLeft.isDown())
+                ClientVars.pressedKeys.add(instance.options.keyLeft);
+            if (instance.options.keyRight.isDown())
+                ClientVars.pressedKeys.add(instance.options.keyRight);
+            instance.player.sendSystemMessage(Component.literal(String.valueOf(ClientVars.pressedKeys) + String.valueOf(ClientVars.pressedKeys)));
+            for (KeyMapping mapping : ClientVars.pressedKeys) {
+                if (!ClientVars.lastPressedKeys.contains(mapping)) {
+                    ClientVars.movementHeldTimeTicks *= 0.75;
+                    ClientVars.movementHeldTimeTicks = Math.round(ClientVars.movementHeldTimeTicks);
+                }
+            }
         } else {
             ClientVars.movementHeldTimeTicks = 0;
         }
 
         ClientVars.clientTickAge++;
+        ClientVars.lastPressedKeys = new ArrayList<>(ClientVars.pressedKeys);
+        if (instance.player != null && ClientVars.movementHeldTimeTicks > 0)
+            instance.player.sendSystemMessage(Component.literal(String.valueOf(ClientVars.movementHeldTimeTicks)));
     }
 
     @SubscribeEvent
@@ -180,16 +203,17 @@ public class EventHandler {
     }
 
     @SubscribeEvent
+    public static void onLevelTick(LevelTickEvent.Post event) {
+        ServerTempVars.serverTickAge++;
+    }
+
+    @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Pre event) {
         Player entity = event.getEntity();
 
-        blankHandler(entity);
+        if (entity.level().isClientSide())
+            return;
 
-        jumpHeightHandler(entity);
-
-        balloonHandler(entity);
-
-        lifesGambleAttributeHandler(entity);
         {
             FathommodModVariables.EntityVariables vars = entity.getData(FathommodModVariables.ENTITY_VARIABLES);
             if (entity.onGround()) {
@@ -203,30 +227,47 @@ public class EventHandler {
                 vars.doubleJumpCooldownInt = 0;
             vars.syncPlayerVariables(entity);
         }
-        bootsHandler(entity);
 
-        ringOfLifeHealing(entity);
 
-        chainedHandleCode(entity);
+        if (ServerTempVars.serverTickAge % 20 == 0) { // normal trinkets only run every 20 ticks (optimization reasons)
+            legRingHandler(entity);
 
-        handleExtensionCode(entity);
+            jumpHeightHandler(entity);
 
-        digFasterHandler(entity);
+            balloonHandler(entity);
 
-        flightAttributeHandler(entity);
+            lifesGambleAttributeHandler(entity);
 
-        armorPolishHandler(entity);
+            bootsHandler(entity);
 
-        seasGiftHandler(entity);
+            ringOfLifeHealing(entity);
 
-        unbreakableHandler(entity);
+            chainedHandleCode(entity);
 
-        rangeHandler(entity);
+            handleExtensionCode(entity);
+
+            digFasterHandler(entity);
+
+            flightAttributeHandler(entity);
+
+            armorPolishHandler(entity);
+
+            unbreakableHandler(entity);
+
+            rangeHandler(entity);
+
+            notBoxingGloveHandler(entity);
+        }
+
+        if (ServerTempVars.serverTickAge % 4 == 0) // conditional trinkets run every 4 ticks
+            seasGiftHandler(entity);
     }
 
     @SubscribeEvent
     public static void onUseItem(PlayerInteractEvent.RightClickItem event) {
         Player player = event.getEntity();
+        if (player.level().isClientSide())
+            return;
         if (player.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.KILLERS_PAW.get()) {
             player.getCooldowns().addCooldown(FathommodModItems.KILLERS_PAW.get(), 900);
             for (int i = 0; i < 3; i++) {
@@ -266,16 +307,23 @@ public class EventHandler {
     private static void rangeHandler(LivingEntity entity) {
         if (entity instanceof Player player) {
             if (player.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.BOXING_GLOVES.get()) {
-                player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:boxing_gloves_modifier"), -1.5, AttributeModifier.Operation.ADD_VALUE));
-                player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).removeModifier(ResourceLocation.parse("fathommod:basic_spear_modifier"));
+                player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "boxing_gloves_modifier"), -1.5, AttributeModifier.Operation.ADD_VALUE));
+                player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "basic_spear_modifier"));
             } else if (player.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.BASIC_SPEAR.get()) {
-                player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).removeModifier(ResourceLocation.parse("fathommod:boxing_gloves_modifier"));
-                player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:basic_spear_modifier"), 3.5, AttributeModifier.Operation.ADD_VALUE));
+                player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "boxing_gloves_modifier"));
+                player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "basic_spear_modifier"), 3.5, AttributeModifier.Operation.ADD_VALUE));
             } else {
-                player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).removeModifier(ResourceLocation.parse("fathommod:boxing_gloves_modifier"));
-                player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).removeModifier(ResourceLocation.parse("fathommod:basic_spear_modifier"));
+                player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "boxing_gloves_modifier"));
+                player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "basic_spear_modifier"));
             }
         }
+    }
+
+    private static void notBoxingGloveHandler(LivingEntity entity) {
+        if (DevUtils.hasTrinket(entity, Trinkets.AUTO_ATTACK))
+            entity.getAttribute(Attributes.ATTACK_SPEED).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "not_boxing_glove_modifier"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+        else
+            entity.getAttribute(Attributes.ATTACK_SPEED).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "not_boxing_glove_modifier"));
     }
 
     private static void unbreakableHandler(LivingEntity entity) {
@@ -308,6 +356,8 @@ public class EventHandler {
 
     @SubscribeEvent
     public static void afterEntityDamage(LivingDamageEvent.Post event) {
+        if (event.getEntity().level().isClientSide())
+            return;
         if (event.getSource().getEntity() instanceof ServerPlayer player && player.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.METAL_BAT.get()) {
             player.level().playSound(null, player.blockPosition(), FathommodModSounds.BONK.get(), SoundSource.PLAYERS, 2.75f, 1f);
         }
@@ -315,6 +365,8 @@ public class EventHandler {
 
     @SubscribeEvent
     public static void onEntityDeath(LivingDeathEvent event) {
+        if (event.getEntity().level().isClientSide())
+            return;
         double seed = Math.random();
         LivingEntity entity = event.getEntity();
         Level world = entity.level();
@@ -377,6 +429,8 @@ public class EventHandler {
 
     @SubscribeEvent
     public static void onEntityHurt(LivingIncomingDamageEvent event) {
+        if (event.getEntity().level().isClientSide())
+            return;
         LivingEntity entity = event.getEntity();
         DamageSource source = event.getSource();
         Entity sourceentity = source.getEntity();
@@ -394,6 +448,8 @@ public class EventHandler {
 
     @SubscribeEvent
     public static void onEntityAttacked(LivingDamageEvent.Pre event) {
+        if (event.getEntity().level().isClientSide())
+            return;
         Entity sourceentity = event.getSource().getEntity();
         LivingEntity entity = event.getEntity();
         DamageSource source = event.getSource();
@@ -428,6 +484,8 @@ public class EventHandler {
 
     @SubscribeEvent
     public static void onLivingJump(LivingEvent.LivingJumpEvent event) {
+        if (event.getEntity().level().isClientSide())
+            return;
         if (!(event.getEntity() instanceof Player))
             return;
         if (event.getEntity().isShiftKeyDown()) {
@@ -439,31 +497,23 @@ public class EventHandler {
             vars.doubleJumpCooldownInt = 5;
             vars.syncPlayerVariables(event.getEntity());
         }
-
-        event.getEntity().getAttribute(Attributes.GRAVITY).removeModifier(ResourceLocation.parse("fathommod:test11"));
     }
 
     private static void balloonHandler(LivingEntity entity) {
         if (DevUtils.hasTrinket(entity, Trinkets.BALLOON)) {
-            if (!(entity.getAttributes().hasModifier(Attributes.JUMP_STRENGTH, ResourceLocation.parse("fathommod:test")))) {
-                entity.getAttribute(Attributes.JUMP_STRENGTH).addPermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:test"), 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-            }
-            if (!(entity.getAttributes().hasModifier(Attributes.FALL_DAMAGE_MULTIPLIER, ResourceLocation.parse("fathommod:test2")))) {
-                entity.getAttribute(Attributes.FALL_DAMAGE_MULTIPLIER).addPermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:test2"), -999, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-            }
+            entity.getAttribute(Attributes.JUMP_STRENGTH).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "balloon_jump_modifier"), 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            entity.getAttribute(Attributes.FALL_DAMAGE_MULTIPLIER).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "balloon_fall_dmg_modifier"), -999, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         } else {
-            entity.getAttribute(Attributes.JUMP_STRENGTH).removeModifier(ResourceLocation.parse("fathommod:test"));
-            entity.getAttribute(Attributes.FALL_DAMAGE_MULTIPLIER).removeModifier(ResourceLocation.parse("fathommod:test2"));
+            entity.getAttribute(Attributes.JUMP_STRENGTH).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "balloon_jump_modifier"));
+            entity.getAttribute(Attributes.FALL_DAMAGE_MULTIPLIER).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "balloon_fall_dmg_modifier"));
         }
     }
 
     private static void lifesGambleAttributeHandler(LivingEntity entity) {
         if (DevUtils.hasTrinket(entity, Trinkets.LIFES_GAMBLE)) {
-            if (!(entity.getAttributes().hasModifier(Attributes.MAX_HEALTH, ResourceLocation.parse("fathommod:test3")))) {
-                entity.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:test3"), 20, AttributeModifier.Operation.ADD_VALUE));
-            }
+                entity.getAttribute(Attributes.MAX_HEALTH).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "life_gamble_modifier"), 20, AttributeModifier.Operation.ADD_VALUE));
         } else {
-            entity.getAttribute(Attributes.MAX_HEALTH).removeModifier(ResourceLocation.parse("fathommod:test3"));
+            entity.getAttribute(Attributes.MAX_HEALTH).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "life_gamble_modifier"));
         }
     }
 
@@ -488,29 +538,23 @@ public class EventHandler {
 
     private static void chainedHandleCode(LivingEntity entity) {
         if (DevUtils.hasTrinket(entity, Trinkets.CHAINED_HANDLE) && entity.getItemBySlot(EquipmentSlot.MAINHAND).getItem() != FathommodModItems.BOXING_GLOVES.get()) {
-            if (!(entity.getAttributes().hasModifier(Attributes.ENTITY_INTERACTION_RANGE, ResourceLocation.parse("fathommod:test4")))) {
-                entity.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).addPermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:test4"), 3, AttributeModifier.Operation.ADD_VALUE));
-            }
-            if (!(entity.getAttributes().hasModifier(Attributes.ATTACK_DAMAGE, ResourceLocation.parse("fathommod:test5")))) {
-                entity.getAttribute(Attributes.ATTACK_DAMAGE).addPermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:test5"), -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-            }
-            entity.getAttribute(Attributes.BLOCK_INTERACTION_RANGE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:chain_handle_block"), 3, AttributeModifier.Operation.ADD_VALUE));
+            entity.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "chain_handle_entity_reach_modifier"), 3, AttributeModifier.Operation.ADD_VALUE));
+            entity.getAttribute(Attributes.ATTACK_DAMAGE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "chain_handle_damage_modifier"), -0.3, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            entity.getAttribute(Attributes.BLOCK_INTERACTION_RANGE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "chain_handle_entity_reach_modifier"), 3, AttributeModifier.Operation.ADD_VALUE));
         } else {
-            entity.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).removeModifier(ResourceLocation.parse("fathommod:test4"));
-            entity.getAttribute(Attributes.ATTACK_DAMAGE).removeModifier(ResourceLocation.parse("fathommod:test5"));
-            entity.getAttribute(Attributes.BLOCK_INTERACTION_RANGE).removeModifier(ResourceLocation.parse("fathommod:chain_handle_block"));
+            entity.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "chain_handle_entity_reach_modifier"));
+            entity.getAttribute(Attributes.ATTACK_DAMAGE).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "chain_handle_damage_modifier"));
+            entity.getAttribute(Attributes.BLOCK_INTERACTION_RANGE).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "chain_handle_block_reach_modifier"));
         }
     }
 
     private static void handleExtensionCode(LivingEntity entity) {
         if (DevUtils.hasTrinket(entity, Trinkets.HANDLE_EXTENSION)) {
-            if (!(entity.getAttributes().hasModifier(Attributes.ENTITY_INTERACTION_RANGE, ResourceLocation.parse("fathommod:handle_extension_entity")))) {
-                entity.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:handle_extension_entity"), 1, AttributeModifier.Operation.ADD_VALUE));
-                entity.getAttribute(Attributes.BLOCK_INTERACTION_RANGE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:handle_extension_block"), 1, AttributeModifier.Operation.ADD_VALUE));
-            }
+            entity.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "handle_extension_entity_modifier"), 1, AttributeModifier.Operation.ADD_VALUE));
+            entity.getAttribute(Attributes.BLOCK_INTERACTION_RANGE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "handle_extension_block_modifier"), 1, AttributeModifier.Operation.ADD_VALUE));
         } else {
-            entity.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).removeModifier(ResourceLocation.parse("fathommod:handle_extension_entity"));
-            entity.getAttribute(Attributes.BLOCK_INTERACTION_RANGE).removeModifier(ResourceLocation.parse("fathommod:handle_extension_block"));
+            entity.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "handle_extension_entity_modifier"));
+            entity.getAttribute(Attributes.BLOCK_INTERACTION_RANGE).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "handle_extension_block_modifier"));
         }
     }
 
@@ -523,11 +567,11 @@ public class EventHandler {
             } else {
                 entity.getItemBySlot(EquipmentSlot.HEAD).set(DataComponents.MAX_DAMAGE, 77);
             }
-            entity.getAttribute(Attributes.FALL_DAMAGE_MULTIPLIER).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.parse("test9"), -999, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
-            entity.getAttribute(Attributes.GRAVITY).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.parse("test10"), -0.15, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            entity.getAttribute(Attributes.FALL_DAMAGE_MULTIPLIER).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "wings_fall_dmg_modifier"), -999, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            entity.getAttribute(Attributes.GRAVITY).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "wings_gravity_modifier"), -0.15, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         } else {
-            entity.getAttribute(Attributes.FALL_DAMAGE_MULTIPLIER).removeModifier(ResourceLocation.parse("fathommod:test9"));
-            entity.getAttribute(Attributes.GRAVITY).removeModifier(ResourceLocation.parse("fathommod:test10"));
+            entity.getAttribute(Attributes.FALL_DAMAGE_MULTIPLIER).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "wings_fall_dmg_modifier"));
+            entity.getAttribute(Attributes.GRAVITY).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "wings_gravity_modifier"));
         }
 
         if (entity.onGround() && entity.getItemBySlot(EquipmentSlot.HEAD).getItem() == Trinkets.WINGS) {
@@ -537,88 +581,74 @@ public class EventHandler {
 
     private static void jumpHeightHandler(LivingEntity entity) {
         if (DevUtils.hasTrinket(entity, Trinkets.DOUBLE_DOUBLE_JUMP)) {
-            Objects.requireNonNull(entity.getAttribute(Attributes.JUMP_STRENGTH)).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:hhhhhhhhhhhhhhhhhhhhhhhh"), 0.9, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-            entity.getAttribute(Attributes.SAFE_FALL_DISTANCE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:fffdfdfdfdfdfdfdfdfdff"), 3, AttributeModifier.Operation.ADD_VALUE));
-            entity.getAttribute(Attributes.SAFE_FALL_DISTANCE).removeModifier(ResourceLocation.parse("fathommod:fffdfdfdfdfdfdfdfdfdf"));
-            entity.getAttribute(Attributes.JUMP_STRENGTH).removeModifier(ResourceLocation.parse("fathommod:hhhhhhhhhhhhhhhhhhhhhhhhh"));
+            Objects.requireNonNull(entity.getAttribute(Attributes.JUMP_STRENGTH)).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "jump_trinkets_jump_power_modifier"), 0.9, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            entity.getAttribute(Attributes.SAFE_FALL_DISTANCE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "jump_trinkets_safe_fall_dist_mod"), 3, AttributeModifier.Operation.ADD_VALUE));
         } else if (DevUtils.hasTrinket(entity, Trinkets.JUMP_HEIGHT)) {
-            entity.getAttribute(Attributes.JUMP_STRENGTH).removeModifier(ResourceLocation.parse("fathommod:hhhhhhhhhhhhhhhhhhhhhhhh"));
-            entity.getAttribute(Attributes.SAFE_FALL_DISTANCE).removeModifier(ResourceLocation.parse("fathommod:fffdfdfdfdfdfdfdfdfdff"));
-            Objects.requireNonNull(entity.getAttribute(Attributes.JUMP_STRENGTH)).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:hhhhhhhhhhhhhhhhhhhhhhhhh"), 0.489, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-            entity.getAttribute(Attributes.SAFE_FALL_DISTANCE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:fffdfdfdfdfdfdfdfdfdf"), 2, AttributeModifier.Operation.ADD_VALUE));
+            Objects.requireNonNull(entity.getAttribute(Attributes.JUMP_STRENGTH)).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "jump_trinkets_jump_power_modifier"), 0.489, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            entity.getAttribute(Attributes.SAFE_FALL_DISTANCE).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "jump_trinkets_safe_fall_dist_mod"), 2, AttributeModifier.Operation.ADD_VALUE));
         } else {
-            entity.getAttribute(Attributes.JUMP_STRENGTH).removeModifier(ResourceLocation.parse("fathommod:hhhhhhhhhhhhhhhhhhhhhhhhh"));
-            entity.getAttribute(Attributes.SAFE_FALL_DISTANCE).removeModifier(ResourceLocation.parse("fathommod:fffdfdfdfdfdfdfdfdfdff"));
-            entity.getAttribute(Attributes.SAFE_FALL_DISTANCE).removeModifier(ResourceLocation.parse("fathommod:fffdfdfdfdfdfdfdfdfdf"));
-            entity.getAttribute(Attributes.JUMP_STRENGTH).removeModifier(ResourceLocation.parse("fathommod:hhhhhhhhhhhhhhhhhhhhhhhh"));
+            entity.getAttribute(Attributes.SAFE_FALL_DISTANCE).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "jump_trinkets_safe_fall_dist_mod"));
+            entity.getAttribute(Attributes.JUMP_STRENGTH).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "jump_trinkets_jump_power_modifier"));
         }
     }
 
     private static void digFasterHandler(LivingEntity entity) {
         if (DevUtils.hasTrinket(entity, Trinkets.DIG_FASTER)) {
-            entity.getAttribute(Attributes.BLOCK_BREAK_SPEED).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:test8"), 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            entity.getAttribute(Attributes.BLOCK_BREAK_SPEED).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "dig_faster_trinket_modifier"), 0.25, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         } else {
-            if (entity.getAttribute(Attributes.BLOCK_BREAK_SPEED).hasModifier(ResourceLocation.parse("fathommod:test8"))) {
-                entity.getAttribute(Attributes.BLOCK_BREAK_SPEED).removeModifier(ResourceLocation.parse("fathommod:test8"));
-            }
+            entity.getAttribute(Attributes.BLOCK_BREAK_SPEED).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "dig_faster_trinket_modifier"));
         }
     }
 
     private static void armorPolishHandler(LivingEntity entity) {
         if (DevUtils.hasTrinket(entity, Trinkets.ARMOR_POLISH)) {
-            entity.getAttribute(Attributes.ARMOR_TOUGHNESS).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:test12"), 0.5, AttributeModifier.Operation.ADD_VALUE));
+            entity.getAttribute(Attributes.ARMOR_TOUGHNESS).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "armor_polish_trinket_modifier"), 0.5, AttributeModifier.Operation.ADD_VALUE));
         } else {
-            entity.getAttribute(Attributes.ARMOR_TOUGHNESS).removeModifier(ResourceLocation.parse("fathommod:test12"));
+            entity.getAttribute(Attributes.ARMOR_TOUGHNESS).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "armor_polish_trinket_modifier"));
         }
     }
 
-    private static void blankHandler(LivingEntity entity) {
+    private static void legRingHandler(LivingEntity entity) {
         if (DevUtils.hasTrinket(entity, Trinkets.LEG_RING)) {
-            entity.getAttribute(Attributes.MOVEMENT_SPEED).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:test13"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+            entity.getAttribute(Attributes.MOVEMENT_SPEED).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "leg_ring_trinket_modifier"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
         } else {
-            entity.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(ResourceLocation.parse("fathommod:test13"));
+            entity.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "leg_ring_trinket_modifier"));
         }
     }
 
     private static void seasGiftHandler(LivingEntity entity) {
         if (DevUtils.hasTrinket(entity, Trinkets.SEAS_GIFT) && entity.isUnderWater()) {
-            entity.getAttribute(Attributes.ARMOR).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.parse("test14"), 2, AttributeModifier.Operation.ADD_VALUE));
+            entity.getAttribute(Attributes.ARMOR).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "seas_gift_trinket_modifier"), 2, AttributeModifier.Operation.ADD_VALUE));
         } else {
-            entity.getAttribute(Attributes.ARMOR).removeModifier(ResourceLocation.parse("test14"));
+            entity.getAttribute(Attributes.ARMOR).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "seas_gift_trinket_modifier"));
         }
     }
-
-    @SuppressWarnings("unused")
+    
     public static boolean hasWings(LivingEntity entity) {
         return DevUtils.hasTrinket(entity, Items.GOLDEN_HELMET);
     }
 
-//    @SubscribeEvent
-//    public static void onGatherData(GatherDataEvent event) {
-//        event.getGenerator().addProvider(event.includeServer(), new MineshaftLootTableModifProvider());
-//    }
-
     private static void bootsHandler(LivingEntity entity) {
         if (DevUtils.hasTrinket(entity, Trinkets.CRACK_ON_CRACK)) {
-            entity.getAttribute(Attributes.STEP_HEIGHT).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:crack_step"), 0.5, AttributeModifier.Operation.ADD_VALUE));
-            entity.getAttribute(Attributes.MOVEMENT_SPEED).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:crack"), 2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-            entity.getAttribute(NeoForgeMod.SWIM_SPEED).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:water_crack"), 4, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            entity.getAttribute(Attributes.STEP_HEIGHT).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "crack_step"), 0.5, AttributeModifier.Operation.ADD_VALUE));
+            entity.getAttribute(Attributes.MOVEMENT_SPEED).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "crack"), 2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            entity.getAttribute(NeoForgeMod.SWIM_SPEED).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "water_crack"), 4, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         } else if (DevUtils.hasTrinket(entity, Trinkets.CRACK_BUT_FOR_WATER) && DevUtils.hasTrinket(entity, Trinkets.CRACK)) {
-            entity.getAttribute(Attributes.STEP_HEIGHT).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:crack_step"), 0.5, AttributeModifier.Operation.ADD_VALUE));
-            entity.getAttribute(Attributes.MOVEMENT_SPEED).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:crack"), 1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-            entity.getAttribute(NeoForgeMod.SWIM_SPEED).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:water_crack"), 2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            entity.getAttribute(Attributes.STEP_HEIGHT).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "crack_step"), 0.5, AttributeModifier.Operation.ADD_VALUE));
+            entity.getAttribute(Attributes.MOVEMENT_SPEED).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "crack"), 1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            entity.getAttribute(NeoForgeMod.SWIM_SPEED).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "water_crack"), 2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         } else if (DevUtils.hasTrinket(entity, Trinkets.CRACK_BUT_FOR_WATER)) {
-            entity.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(ResourceLocation.parse("fathommod:crack"));
-            entity.getAttribute(Attributes.STEP_HEIGHT).removeModifier(ResourceLocation.parse("fathommod:crack_step"));
-            entity.getAttribute(NeoForgeMod.SWIM_SPEED).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:water_crack"), 2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            entity.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "crack"));
+            entity.getAttribute(Attributes.STEP_HEIGHT).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "crack_step"));
+            entity.getAttribute(NeoForgeMod.SWIM_SPEED).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "water_crack"), 2, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         } else if (DevUtils.hasTrinket(entity, Trinkets.CRACK)) {
-            entity.getAttribute(Attributes.STEP_HEIGHT).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:crack_step"), 0.5, AttributeModifier.Operation.ADD_VALUE));
-            entity.getAttribute(Attributes.MOVEMENT_SPEED).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.parse("fathommod:crack"), 1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-            entity.getAttribute(NeoForgeMod.SWIM_SPEED).removeModifier(ResourceLocation.parse("fathommod:water_crack"));
+            entity.getAttribute(Attributes.STEP_HEIGHT).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "crack_step"), 0.5, AttributeModifier.Operation.ADD_VALUE));
+            entity.getAttribute(Attributes.MOVEMENT_SPEED).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "crack"), 1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            entity.getAttribute(NeoForgeMod.SWIM_SPEED).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "water_crack"));
         } else {
-            entity.getAttribute(NeoForgeMod.SWIM_SPEED).removeModifier(ResourceLocation.parse("fathommod:water_crack"));
-            entity.getAttribute(Attributes.STEP_HEIGHT).removeModifier(ResourceLocation.parse("fathommod:crack_step"));
-            entity.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(ResourceLocation.parse("fathommod:crack"));
+            entity.getAttribute(NeoForgeMod.SWIM_SPEED).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "water_crack"));
+            entity.getAttribute(Attributes.STEP_HEIGHT).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "crack_step"));
+            entity.getAttribute(Attributes.MOVEMENT_SPEED).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "crack"));
         }
     }
 }

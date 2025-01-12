@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
-public class BoxingGlovesItem extends PickaxeItem implements DamageTypedWeapon {
+public class BoxingGlovesItem extends PickaxeItem implements DamageTypedWeapon { // NOT to be confused with the other gloves trinket
 	private static final Tier TOOL_TIER = new Tier() {
 		@Override
 		public int getUses() {

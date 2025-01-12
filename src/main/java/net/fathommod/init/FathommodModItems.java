@@ -62,6 +62,7 @@ public class FathommodModItems {
 	public static final DeferredHolder<Item, Item> ZEUS_BOOTS = REGISTRY.register("zeus_boots", net.fathommod.item.ZeusBootsItem::new);
 	public static final DeferredHolder<Item, Item> THANKS_SLIMEYS_DYSLEXIA = REGISTRY.register("amor_polish", AmorPolishItem::new);
 	public static final DeferredHolder<Item, Item> TED_CLAWS = REGISTRY.register("ted_claws", TedClawsItem::new);
+	public static final DeferredHolder<Item, Item> AUTO_ATTACK_TRINKET = REGISTRY.register("gloves", GlovesTrinketItem::new);
 
 	// Start of user code block custom items
 	// End of user code block custom items
