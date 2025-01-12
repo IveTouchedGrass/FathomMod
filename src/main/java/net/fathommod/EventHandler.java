@@ -321,7 +321,7 @@ public class EventHandler {
 
     private static void notBoxingGloveHandler(LivingEntity entity) {
         if (DevUtils.hasTrinket(entity, Trinkets.AUTO_ATTACK))
-            entity.getAttribute(Attributes.ATTACK_SPEED).addTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "not_boxing_glove_modifier"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            entity.getAttribute(Attributes.ATTACK_SPEED).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "not_boxing_glove_modifier"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
         else
             entity.getAttribute(Attributes.ATTACK_SPEED).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "not_boxing_glove_modifier"));
     }
@@ -511,7 +511,7 @@ public class EventHandler {
 
     private static void lifesGambleAttributeHandler(LivingEntity entity) {
         if (DevUtils.hasTrinket(entity, Trinkets.LIFES_GAMBLE)) {
-                entity.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "life_gamble_modifier"), 20, AttributeModifier.Operation.ADD_VALUE));
+                entity.getAttribute(Attributes.MAX_HEALTH).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "life_gamble_modifier"), 20, AttributeModifier.Operation.ADD_VALUE));
         } else {
             entity.getAttribute(Attributes.MAX_HEALTH).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "life_gamble_modifier"));
         }
