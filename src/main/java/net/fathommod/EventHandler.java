@@ -45,6 +45,7 @@ import net.neoforged.neoforge.common.NeoForgeMod;
 import net.neoforged.neoforge.event.entity.living.*;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import net.neoforged.neoforge.event.tick.EntityTickEvent;
+import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
@@ -202,16 +203,17 @@ public class EventHandler {
     }
 
     @SubscribeEvent
+    public static void onLevelTick(LevelTickEvent.Post event) {
+        ServerTempVars.serverTickAge++;
+    }
+
+    @SubscribeEvent
     public static void onPlayerTick(PlayerTickEvent.Pre event) {
         Player entity = event.getEntity();
 
-        legRingHandler(entity);
+        if (entity.level().isClientSide())
+            return;
 
-        jumpHeightHandler(entity);
-
-        balloonHandler(entity);
-
-        lifesGambleAttributeHandler(entity);
         {
             FathommodModVariables.EntityVariables vars = entity.getData(FathommodModVariables.ENTITY_VARIABLES);
             if (entity.onGround()) {
@@ -225,32 +227,47 @@ public class EventHandler {
                 vars.doubleJumpCooldownInt = 0;
             vars.syncPlayerVariables(entity);
         }
-        bootsHandler(entity);
 
-        ringOfLifeHealing(entity);
 
-        chainedHandleCode(entity);
+        if (ServerTempVars.serverTickAge % 20 == 0) { // normal trinkets only run every 20 ticks (optimization reasons)
+            legRingHandler(entity);
 
-        handleExtensionCode(entity);
+            jumpHeightHandler(entity);
 
-        digFasterHandler(entity);
+            balloonHandler(entity);
 
-        flightAttributeHandler(entity);
+            lifesGambleAttributeHandler(entity);
 
-        armorPolishHandler(entity);
+            bootsHandler(entity);
 
-        seasGiftHandler(entity);
+            ringOfLifeHealing(entity);
 
-        unbreakableHandler(entity);
+            chainedHandleCode(entity);
 
-        rangeHandler(entity);
+            handleExtensionCode(entity);
 
-        notBoxingGloveHandler(entity);
+            digFasterHandler(entity);
+
+            flightAttributeHandler(entity);
+
+            armorPolishHandler(entity);
+
+            unbreakableHandler(entity);
+
+            rangeHandler(entity);
+
+            notBoxingGloveHandler(entity);
+        }
+
+        if (ServerTempVars.serverTickAge % 4 == 0) // conditional trinkets run every 4 ticks
+            seasGiftHandler(entity);
     }
 
     @SubscribeEvent
     public static void onUseItem(PlayerInteractEvent.RightClickItem event) {
         Player player = event.getEntity();
+        if (player.level().isClientSide())
+            return;
         if (player.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.KILLERS_PAW.get()) {
             player.getCooldowns().addCooldown(FathommodModItems.KILLERS_PAW.get(), 900);
             for (int i = 0; i < 3; i++) {
@@ -339,6 +356,8 @@ public class EventHandler {
 
     @SubscribeEvent
     public static void afterEntityDamage(LivingDamageEvent.Post event) {
+        if (event.getEntity().level().isClientSide())
+            return;
         if (event.getSource().getEntity() instanceof ServerPlayer player && player.getItemBySlot(EquipmentSlot.MAINHAND).getItem() == FathommodModItems.METAL_BAT.get()) {
             player.level().playSound(null, player.blockPosition(), FathommodModSounds.BONK.get(), SoundSource.PLAYERS, 2.75f, 1f);
         }
@@ -346,6 +365,8 @@ public class EventHandler {
 
     @SubscribeEvent
     public static void onEntityDeath(LivingDeathEvent event) {
+        if (event.getEntity().level().isClientSide())
+            return;
         double seed = Math.random();
         LivingEntity entity = event.getEntity();
         Level world = entity.level();
@@ -408,6 +429,8 @@ public class EventHandler {
 
     @SubscribeEvent
     public static void onEntityHurt(LivingIncomingDamageEvent event) {
+        if (event.getEntity().level().isClientSide())
+            return;
         LivingEntity entity = event.getEntity();
         DamageSource source = event.getSource();
         Entity sourceentity = source.getEntity();
@@ -425,6 +448,8 @@ public class EventHandler {
 
     @SubscribeEvent
     public static void onEntityAttacked(LivingDamageEvent.Pre event) {
+        if (event.getEntity().level().isClientSide())
+            return;
         Entity sourceentity = event.getSource().getEntity();
         LivingEntity entity = event.getEntity();
         DamageSource source = event.getSource();
@@ -459,6 +484,8 @@ public class EventHandler {
 
     @SubscribeEvent
     public static void onLivingJump(LivingEvent.LivingJumpEvent event) {
+        if (event.getEntity().level().isClientSide())
+            return;
         if (!(event.getEntity() instanceof Player))
             return;
         if (event.getEntity().isShiftKeyDown()) {
