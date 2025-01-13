@@ -25,5 +25,12 @@
         "stream": false
       }
     ]
+  },
+  "ted_boss_music": {
+    "sounds": [
+      {
+        "name": "fathommod:its_me_ted"
+      }
+    ]
   }
 }

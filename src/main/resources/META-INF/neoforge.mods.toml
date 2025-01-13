@@ -7,12 +7,9 @@ modId="fathommod"
 version="1.0.0.1"
 displayName="Fathom Mod"
 displayURL=""
-credits="IveTouchedGrass"
+credits="...."
 authors="IncredaSlimey"
 description="My version of calamity mod, but made for minecraft"
-
-# Start of user code block mod configuration
-# End of user code block mod configuration
 
 [[dependencies.fathommod]]
     modId="neoforge"
@@ -35,6 +32,3 @@ description="My version of calamity mod, but made for minecraft"
 
 [[mixins]]
 config="fathommod.mixins.json"
-
-# Start of user code block dependencies configuration
-# End of user code block dependencies configuration

@@ -1,23 +1,24 @@
 package net.fathommod.entity.ted;
 
-import net.fathommod.BossEntity;
-import net.fathommod.Config;
-import net.fathommod.DevUtils;
-import net.fathommod.FathommodMod;
+import net.fathommod.*;
 import net.fathommod.init.FathommodModDamageTypes;
 import net.fathommod.init.FathommodModEntities;
 import net.fathommod.init.FathommodModMobEffects;
 import net.fathommod.init.FathommodModSounds;
 import net.fathommod.network.FathommodModVariables;
+import net.minecraft.client.Minecraft;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerBossEvent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.Music;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.BossEvent;
@@ -55,6 +56,7 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class TedEntity extends Monster implements GeoEntity, BossEntity {
+    private final Music MUSIC = new Music(this.level().holderOrThrow(ResourceKey.create(Registries.SOUND_EVENT, ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "ted_boss_music"))),0, 0, true);
     public static final ResourceLocation TEXTURE_LOCATION = ResourceLocation.parse("fathommod:textures/entity/teddy_2.png");
 
     public static final RawAnimation IDLE_ANIM = RawAnimation.begin().thenLoop("Ted_Idle");
@@ -370,6 +372,12 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
     }
 
     @Override
+    public void discard() {
+        super.discard();
+        Minecraft.getInstance().getMusicManager().stopPlaying();
+    }
+
+    @Override
     public void aiStep() {
         super.aiStep();
         this.updateSwipeAABB();
@@ -384,247 +392,252 @@ public class TedEntity extends Monster implements GeoEntity, BossEntity {
     }
 
     @Override
+    @SuppressWarnings("DataFlowIssue")
     public void tick() {
         super.tick();
-        if (this.maxDetectedPlayers > this.powerScalingHealed) {
-            if (this.powerScalingHealed <= 1) {
-                this.heal((float) (this.getAttribute(Attributes.MAX_HEALTH).getBaseValue() * 0.2f));
-                this.powerScalingHealed = 2;
-            }
-            if (this.maxDetectedPlayers > this.powerScalingHealed) {
-                for (int ignored = 0; this.powerScalingHealed < this.maxDetectedPlayers; this.powerScalingHealed++) {
-                    this.heal((float) (this.getAttribute(Attributes.MAX_HEALTH).getBaseValue() * 0.5f));
-                }
-            }
-        }
-        this.getAttribute(Attributes.MAX_HEALTH).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "ted_health_boost_for_detecting_a_fk_ton_of_people"), switch (this.maxDetectedPlayers) {
-            case 0, 1 -> 0;
-            case 2 -> 0.2;
-            default -> 0.5 * (this.maxDetectedPlayers - 2);
-        }, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        this.entityData.set(HAS_TARGET, this.target != null);
-        this.setPersistenceRequired();
-        if (this.isNoAi()) {
-            this.bossBar.removeAllPlayers();
-            return;
-        }
-        this.setTarget(this.target);
-        this.swipeAABB = switch (this.getDirection()) {
-            case NORTH ->
-                    new AABB(this.getX() - 1.5, this.getY(), this.getZ() - 4, this.getX() + 1.5, this.getY() + 4.5, this.getZ());
-            case SOUTH ->
-                    new AABB(this.getX() - 1.5, this.getY(), this.getZ(), this.getX() + 1.5, this.getY() + 4.5, this.getZ() + 4);
-            case EAST ->
-                    new AABB(this.getX(), this.getY(), this.getZ() - 1.5, this.getX() + 4, this.getY() + 4.5, this.getZ() + 1.5);
-            case WEST ->
-                    new AABB(this.getX() - 4, this.getY(), this.getZ() - 1.5, this.getX(), this.getY() + 4.5, this.getZ() + 1.5);
-            default ->
-                    new AABB(this.getX(), this.getY(), this.getZ(), this.getX() + 1, this.getY() + 1, this.getZ() + 1);
-        };
-        this.setTarget(this.target);
-
-        this.setCustomName(Component.translatable("entity.fathommod.ted"));
-
-        if (this.currentAttack == Attacks.PURSUIT) {
-            this.windUpLeft = 127;
-        } else if (this.windUpLeft > 0) {
-            this.windUpLeft -= 1;
-        }
-
-        if (this.currentAttack != Attacks.PURSUIT) {
-            Objects.requireNonNull(this.getAttribute(Attributes.MOVEMENT_SPEED)).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:ted_stopped"), ((this.currentAttack == Attacks.SWIPE) ? -0.5 : -238), AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
+        if (this.level().isClientSide()) {
+            ClientDevUtils.playMusic(this.MUSIC);
         } else {
-            Objects.requireNonNull(this.getAttribute(Attributes.MOVEMENT_SPEED)).removeModifier(ResourceLocation.parse("fathommod:ted_stopped"));
-        }
-        boolean attackCondition = this.target != null && this.distance(this.target) <= 1.5 && this.canAttack(this.target) && this.isAlive() && this.attackCooldown() <= 0;
-
-        this.bossBar.setProgress(this.getHealth() / this.getMaxHealth());
-
-        Vec3 center = new Vec3(this.getX(), this.getY(), this.getZ());
-        List<Player> players = this.level().getEntitiesOfClass(Player.class, new AABB(center, center).inflate((100 * 2 - 1) / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(center))).toList();
-
-        if (deathTime >= 18) {
-            this.bossBar.removeAllPlayers();
-            for (Player player : players) {
-                DevUtils.executeCommandAs(player, "effect clear @s fathommod:zero_build");
-            }
-        }
-
-        if (this.age % 5 == 0 && this.isAlive())
-            for (int x = -6; x <= 6; x++) {
-                for (int z = -6; z <= 6; z++) {
-                    if (x >= -3 && z >= -3 && x <= 3 && z <= 3 && this.isAlive()) {
-                        DevUtils.executeCommandAs(this, String.format("forceload remove ~%1$s ~%2$s", x, z));
-                    } else {
-                        DevUtils.executeCommandAs(this, String.format("forceload add ~%1$s ~%2$s", x, z));
+            if (this.maxDetectedPlayers > this.powerScalingHealed) {
+                if (this.powerScalingHealed <= 1) {
+                    this.heal((float) (this.getAttribute(Attributes.MAX_HEALTH).getBaseValue() * 0.2f));
+                    this.powerScalingHealed = 2;
+                }
+                if (this.maxDetectedPlayers > this.powerScalingHealed) {
+                    for (int ignored = 0; this.powerScalingHealed < this.maxDetectedPlayers; this.powerScalingHealed++) {
+                        this.heal((float) (this.getAttribute(Attributes.MAX_HEALTH).getBaseValue() * 0.5f));
                     }
                 }
             }
-        if (this.target == null || !this.canAttack(this.target)) {
-            this.target = null;
-            this.currentAttack = Attacks.PURSUIT;
-            this.setAttackCooldown((byte) 40);
-            this.windUpLeft = 127;
-            this.setTeleportTimer(360);
-            this.setRockTimer(160);
-            this.setRabbitTimer(600);
-        }
-        List<Player> teleportTargets = this.level().getEntitiesOfClass(Player.class, this.getTeleportAABB()).stream().sorted(Comparator.comparingDouble(this::distance)).toList();
-        try {
-            if (teleportTargets.getFirst() != this.target) {
-                this.targetSwitchTicks++;
+            this.getAttribute(Attributes.MAX_HEALTH).addOrReplacePermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "ted_health_boost_for_detecting_a_fk_ton_of_people"), switch (this.maxDetectedPlayers) {
+                case 0, 1 -> 0;
+                case 2 -> 0.2;
+                default -> 0.5 * (this.maxDetectedPlayers - 2);
+            }, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+            this.entityData.set(HAS_TARGET, this.target != null);
+            this.setPersistenceRequired();
+            if (this.isNoAi()) {
+                this.bossBar.removeAllPlayers();
+                return;
+            }
+            this.setTarget(this.target);
+            this.swipeAABB = switch (this.getDirection()) {
+                case NORTH ->
+                        new AABB(this.getX() - 1.5, this.getY(), this.getZ() - 4, this.getX() + 1.5, this.getY() + 4.5, this.getZ());
+                case SOUTH ->
+                        new AABB(this.getX() - 1.5, this.getY(), this.getZ(), this.getX() + 1.5, this.getY() + 4.5, this.getZ() + 4);
+                case EAST ->
+                        new AABB(this.getX(), this.getY(), this.getZ() - 1.5, this.getX() + 4, this.getY() + 4.5, this.getZ() + 1.5);
+                case WEST ->
+                        new AABB(this.getX() - 4, this.getY(), this.getZ() - 1.5, this.getX(), this.getY() + 4.5, this.getZ() + 1.5);
+                default ->
+                        new AABB(this.getX(), this.getY(), this.getZ(), this.getX() + 1, this.getY() + 1, this.getZ() + 1);
+            };
+            this.setTarget(this.target);
+
+            this.setCustomName(Component.translatable("entity.fathommod.ted"));
+
+            if (this.currentAttack == Attacks.PURSUIT) {
+                this.windUpLeft = 127;
+            } else if (this.windUpLeft > 0) {
+                this.windUpLeft -= 1;
+            }
+
+            if (this.currentAttack != Attacks.PURSUIT) {
+                Objects.requireNonNull(this.getAttribute(Attributes.MOVEMENT_SPEED)).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.parse("fathommod:ted_stopped"), ((this.currentAttack == Attacks.SWIPE) ? -0.5 : -238), AttributeModifier.Operation.ADD_MULTIPLIED_TOTAL));
             } else {
-                this.targetSwitchTicks = 0;
+                Objects.requireNonNull(this.getAttribute(Attributes.MOVEMENT_SPEED)).removeModifier(ResourceLocation.parse("fathommod:ted_stopped"));
             }
-            if (this.targetSwitchTicks >= maxTargetSwitchTicks && this.canAttack(teleportTargets.getFirst()))
-                this.target = teleportTargets.getFirst();
-            if (this.scanCooldown <= 0 && this.isAlive()) {
-                for (Player player : teleportTargets) {
-                    this.maxDetectedPlayers = Math.max(this.maxDetectedPlayers, this.level().getEntitiesOfClass(Player.class, this.getTeleportAABB()).stream().filter(this::canAttack).toList().size());
-                    player.addEffect(new MobEffectInstance(FathommodModMobEffects.ZERO_BUILD, 41, 0, false, false));
-                    boolean hasBossBar = false;
-                    if (this.target == null) {
-                        if (this.canAttack(player)) {
+            boolean attackCondition = this.target != null && this.distance(this.target) <= 1.5 && this.canAttack(this.target) && this.isAlive() && this.attackCooldown() <= 0;
+
+            this.bossBar.setProgress(this.getHealth() / this.getMaxHealth());
+
+            Vec3 center = new Vec3(this.getX(), this.getY(), this.getZ());
+            List<Player> players = this.level().getEntitiesOfClass(Player.class, new AABB(center, center).inflate((100 * 2 - 1) / 2d), e -> true).stream().sorted(Comparator.comparingDouble(_entcnd -> _entcnd.distanceToSqr(center))).toList();
+
+            if (deathTime >= 18) {
+                this.bossBar.removeAllPlayers();
+                for (Player player : players) {
+                    DevUtils.executeCommandAs(player, "effect clear @s fathommod:zero_build");
+                }
+            }
+
+            if (this.age % 5 == 0 && this.isAlive())
+                for (int x = -6; x <= 6; x++) {
+                    for (int z = -6; z <= 6; z++) {
+                        if (x >= -3 && z >= -3 && x <= 3 && z <= 3 && this.isAlive()) {
+                            DevUtils.executeCommandAs(this, String.format("forceload remove ~%1$s ~%2$s", x, z));
+                        } else {
+                            DevUtils.executeCommandAs(this, String.format("forceload add ~%1$s ~%2$s", x, z));
+                        }
+                    }
+                }
+            if (this.target == null || !this.canAttack(this.target)) {
+                this.target = null;
+                this.currentAttack = Attacks.PURSUIT;
+                this.setAttackCooldown((byte) 40);
+                this.windUpLeft = 127;
+                this.setTeleportTimer(360);
+                this.setRockTimer(160);
+                this.setRabbitTimer(600);
+            }
+            List<Player> teleportTargets = this.level().getEntitiesOfClass(Player.class, this.getTeleportAABB()).stream().sorted(Comparator.comparingDouble(this::distance)).toList();
+            try {
+                if (teleportTargets.getFirst() != this.target) {
+                    this.targetSwitchTicks++;
+                } else {
+                    this.targetSwitchTicks = 0;
+                }
+                if (this.targetSwitchTicks >= maxTargetSwitchTicks && this.canAttack(teleportTargets.getFirst()))
+                    this.target = teleportTargets.getFirst();
+                if (this.scanCooldown <= 0 && this.isAlive()) {
+                    for (Player player : teleportTargets) {
+                        this.maxDetectedPlayers = Math.max(this.maxDetectedPlayers, this.level().getEntitiesOfClass(Player.class, this.getTeleportAABB()).stream().filter(this::canAttack).toList().size());
+                        player.addEffect(new MobEffectInstance(FathommodModMobEffects.ZERO_BUILD, 41, 0, false, false));
+                        boolean hasBossBar = false;
+                        if (this.target == null) {
+                            if (this.canAttack(player)) {
+                                this.target = player;
+                                this.teleportTo(this.target.getX(), this.target.getY(), this.target.getZ());
+                            }
+                        }
+                        for (Player _player : bossBar.getPlayers()) {
+                            if (_player == player) {
+                                hasBossBar = true;
+                                break;
+                            }
+                        }
+                        if (player instanceof ServerPlayer && !hasBossBar)
+                            bossBar.addPlayer((ServerPlayer) player);
+                        if (this.target == null && this.canAttack(player))
                             this.target = player;
-                            this.teleportTo(this.target.getX(), this.target.getY(), this.target.getZ());
+                    }
+                    this.scanCooldown = 15;
+                    if (this.target == null) {
+                        if (teleportTargets.isEmpty()) {
+                            this.teleportToOrigin();
+                            return;
                         }
-                    }
-                    for (Player _player : bossBar.getPlayers()) {
-                        if (_player == player) {
-                            hasBossBar = true;
-                            break;
-                        }
-                    }
-                    if (player instanceof ServerPlayer && !hasBossBar)
-                        bossBar.addPlayer((ServerPlayer) player);
-                    if (this.target == null && this.canAttack(player))
-                        this.target = player;
-                    }
-                this.scanCooldown = 15;
-                if (this.target == null) {
-                    if (teleportTargets.isEmpty()) {
-                        this.teleportToOrigin();
-                        return;
                     }
                 }
+            } catch (NoSuchElementException e) {
+                this.teleportToOrigin();
             }
-        } catch (NoSuchElementException e) {
-            this.teleportToOrigin();
-        }
-        this.scanCooldown--;
+            this.scanCooldown--;
 
-        if (this.target != null && this.distance(this.target) > 50 && this.isAlive()) {
-            this.teleportTo(this.target.getX(), this.target.getY(), this.target.getZ());
-        }
+            if (this.target != null && this.distance(this.target) > 50 && this.isAlive()) {
+                this.teleportTo(this.target.getX(), this.target.getY(), this.target.getZ());
+            }
 
-        if (this.target != null)
-            this.lookAt(this.target, 30, 30);
+            if (this.target != null)
+                this.lookAt(this.target, 30, 30);
 
-        if (this.target != null && this.windUpLeft <= 0 && this.currentAttack != Attacks.PURSUIT && this.isAlive() && this.isAlive()) {
-            if (this.currentAttack == Attacks.SWIPE) {
-                this.setAttackCooldown((byte) 40);
-                boolean playedSound = false;
-                for (Entity entity : this.level().getEntities(this, this.getSwipeAABB())) {
-                    if (!playedSound) {
-                        this.level().playLocalSound(this, FathommodModSounds.SMACK.get(), SoundSource.HOSTILE, 1.0F, 1.0F);
-                    }
-                    playedSound = true;
-                    if ((!(entity instanceof Monster) && !(entity instanceof Rabbit)) || entity == this.target)
-                        entity.hurt(new DamageSource(this.level().holderOrThrow(FathommodModDamageTypes.TED_SWIPE), this), 30 * switch (this.maxDetectedPlayers) {
-                            case 0, 1 -> 1;
-                            case 2 -> 1.1f;
-                            default -> 1.1f + 0.2f * this.maxDetectedPlayers;
-                        });
-                }
-            } else if (this.currentAttack == Attacks.INSTA_KILL) {
-                this.setAttackCooldown((byte) 40);
-                for (Entity entity : this.level().getEntities(this, this.getInstaKillAABB())) {
-                    if (!(entity instanceof Monster) && entity instanceof LivingEntity livingEntity && !entity.getData(FathommodModVariables.ENTITY_VARIABLES).isTedRabbit) {
-                        livingEntity.hurt(new DamageSource(this.level().holderOrThrow(FathommodModDamageTypes.TED_INSTA_KILL), this), Float.MAX_VALUE);
-                        livingEntity.setHealth(0);
-                    }
-                }
-            } else if (this.currentAttack == Attacks.ROCK) {
-                Level world = this.level();
-                if (world instanceof ServerLevel projectileLevel) {
-                    Projectile _entityToSpawn = new Object() {
-                        public Projectile getArrow(float damage) {
-                            AbstractArrow entityToSpawn = new ROCK(FathommodModEntities.ROCK.get(), level());
-                            entityToSpawn.setBaseDamage(damage);
-                            return entityToSpawn;
+            if (this.target != null && this.windUpLeft <= 0 && this.currentAttack != Attacks.PURSUIT && this.isAlive() && this.isAlive()) {
+                if (this.currentAttack == Attacks.SWIPE) {
+                    this.setAttackCooldown((byte) 40);
+                    boolean playedSound = false;
+                    for (Entity entity : this.level().getEntities(this, this.getSwipeAABB())) {
+                        if (!playedSound) {
+                            this.level().playLocalSound(this, FathommodModSounds.SMACK.get(), SoundSource.HOSTILE, 1.0F, 1.0F);
                         }
-                    }.getArrow(5);
-                    _entityToSpawn.setPos(this.getX(), this.getY() + 2.7, this.getZ());
-                    DevUtils.Pusher.toCoords(_entityToSpawn, this.target.getX(), this.target.getY() + this.target.getEyeHeight(), this.target.getZ(), 3);
+                        playedSound = true;
+                        if ((!(entity instanceof Monster) && !(entity instanceof Rabbit)) || entity == this.target)
+                            entity.hurt(new DamageSource(this.level().holderOrThrow(FathommodModDamageTypes.TED_SWIPE), this), 30 * switch (this.maxDetectedPlayers) {
+                                case 0, 1 -> 1;
+                                case 2 -> 1.1f;
+                                default -> 1.1f + 0.2f * this.maxDetectedPlayers;
+                            });
+                    }
+                } else if (this.currentAttack == Attacks.INSTA_KILL) {
+                    this.setAttackCooldown((byte) 40);
+                    for (Entity entity : this.level().getEntities(this, this.getInstaKillAABB())) {
+                        if (!(entity instanceof Monster) && entity instanceof LivingEntity livingEntity && !entity.getData(FathommodModVariables.ENTITY_VARIABLES).isTedRabbit) {
+                            livingEntity.hurt(new DamageSource(this.level().holderOrThrow(FathommodModDamageTypes.TED_INSTA_KILL), this), Float.MAX_VALUE);
+                            livingEntity.setHealth(0);
+                        }
+                    }
+                } else if (this.currentAttack == Attacks.ROCK) {
+                    Level world = this.level();
+                    if (world instanceof ServerLevel projectileLevel) {
+                        Projectile _entityToSpawn = new Object() {
+                            public Projectile getArrow(float damage) {
+                                AbstractArrow entityToSpawn = new ROCK(FathommodModEntities.ROCK.get(), level());
+                                entityToSpawn.setBaseDamage(damage);
+                                return entityToSpawn;
+                            }
+                        }.getArrow(5);
+                        _entityToSpawn.setPos(this.getX(), this.getY() + 2.7, this.getZ());
+                        DevUtils.Pusher.toCoords(_entityToSpawn, this.target.getX(), this.target.getY() + this.target.getEyeHeight(), this.target.getZ(), 3);
 //                    _entityToSpawn.setDeltaMovement(new Vec3(_entityToSpawn.getDeltaMovement().x, 0.01 * this.distance(this.target), _entityToSpawn.getDeltaMovement().z));
-                    projectileLevel.addFreshEntity(_entityToSpawn);
-                }
-            } else if (this.currentAttack == Attacks.SPAWN_RABBITS) {
-                for (int i = 0; i < 3; i++) {
-                    Rabbit rabbit = new Rabbit(EntityType.RABBIT, this.level());
+                        projectileLevel.addFreshEntity(_entityToSpawn);
+                    }
+                } else if (this.currentAttack == Attacks.SPAWN_RABBITS) {
+                    for (int i = 0; i < 3; i++) {
+                        Rabbit rabbit = new Rabbit(EntityType.RABBIT, this.level());
 
-                    String command = switch (i) {
-                        case 0 -> "^ ^ ^1";
-                        case 1 -> "^-1 ^ ^";
-                        case 2 -> "^1 ^ ^";
-                        default -> "^ ^ ^";
-                    };
+                        String command = switch (i) {
+                            case 0 -> "^ ^ ^1";
+                            case 1 -> "^-1 ^ ^";
+                            case 2 -> "^1 ^ ^";
+                            default -> "^ ^ ^";
+                        };
 
-                    rabbit.setVariant(Rabbit.Variant.EVIL);
-                    rabbit.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "killer_rabbit_ted_health"), 3, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-                    rabbit.getAttribute(Attributes.MOVEMENT_SPEED).addPermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "killer_rabbit_ted_movement_speed"), 1.5, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-                    rabbit.getAttribute(Attributes.ATTACK_DAMAGE).addPermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "killer_rabbit_ted_damage_boost"), 3, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-                    rabbit.getAttribute(Attributes.FOLLOW_RANGE).addPermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "killer_rabbit_ted_follow_range"), 69, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-                    rabbit.setHealth(rabbit.getMaxHealth());
-                    rabbit.setTarget(this.target);
-                    rabbit.teleportTo(this.getX(), this.getY(), this.getZ());
-                    this.level().addFreshEntity(rabbit);
-                    FathommodModVariables.EntityVariables vars = rabbit.getData(FathommodModVariables.ENTITY_VARIABLES);
-                    vars.isTedRabbit = true;
-                    vars.syncPlayerVariables(rabbit);
-                    DevUtils.executeCommandAs(rabbit, "tp @s " + command);
+                        rabbit.setVariant(Rabbit.Variant.EVIL);
+                        rabbit.getAttribute(Attributes.MAX_HEALTH).addPermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "killer_rabbit_ted_health"), 3, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                        rabbit.getAttribute(Attributes.MOVEMENT_SPEED).addPermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "killer_rabbit_ted_movement_speed"), 1.5, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                        rabbit.getAttribute(Attributes.ATTACK_DAMAGE).addPermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "killer_rabbit_ted_damage_boost"), 3, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                        rabbit.getAttribute(Attributes.FOLLOW_RANGE).addPermanentModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "killer_rabbit_ted_follow_range"), 69, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+                        rabbit.setHealth(rabbit.getMaxHealth());
+                        rabbit.setTarget(this.target);
+                        rabbit.teleportTo(this.getX(), this.getY(), this.getZ());
+                        this.level().addFreshEntity(rabbit);
+                        FathommodModVariables.EntityVariables vars = rabbit.getData(FathommodModVariables.ENTITY_VARIABLES);
+                        vars.isTedRabbit = true;
+                        vars.syncPlayerVariables(rabbit);
+                        DevUtils.executeCommandAs(rabbit, "tp @s " + command);
+                    }
                 }
+                this.windUpLeft = 127;
+                this.currentAttack = Attacks.PURSUIT;
             }
-            this.windUpLeft = 127;
-            this.currentAttack = Attacks.PURSUIT;
-        }
-        if (this.attackCooldown() > 0)
-            this.setAttackCooldown((byte) (this.attackCooldown() - 1));
+            if (this.attackCooldown() > 0)
+                this.setAttackCooldown((byte) (this.attackCooldown() - 1));
 
-        if (this.rockTimer() > 0)
-            this.setRockTimer(this.rockTimer() - 1);
-        if (this.rockTimer() <= 0 && this.isAlive() && !this.level().isClientSide() && this.currentAttack == Attacks.PURSUIT) {
-            this.throwRock();
-            this.setRockTimer(160);
-        }
+            if (this.rockTimer() > 0)
+                this.setRockTimer(this.rockTimer() - 1);
+            if (this.rockTimer() <= 0 && this.isAlive() && !this.level().isClientSide() && this.currentAttack == Attacks.PURSUIT) {
+                this.throwRock();
+                this.setRockTimer(160);
+            }
 
-        if (this.rabbitTimer() > 0)
-            this.setRabbitTimer(this.rabbitTimer() - 1);
-        if (this.rabbitTimer() <= 0 && this.isAlive()) {
-            this.spawnRabbits();
-            this.setRabbitTimer(600);
-        }
+            if (this.rabbitTimer() > 0)
+                this.setRabbitTimer(this.rabbitTimer() - 1);
+            if (this.rabbitTimer() <= 0 && this.isAlive()) {
+                this.spawnRabbits();
+                this.setRabbitTimer(600);
+            }
 
-        if (this.teleportTimer() > 0)
-            this.setTeleportTimer(this.teleportTimer() - 1);
-        if (this.teleportTimer() <= 0 && this.isAlive() && this.target != null) {
-            this.teleportTo(this.target.getX(), this.target.getY(), this.target.getZ());
-            this.setTeleportTimer(360);
-        }
+            if (this.teleportTimer() > 0)
+                this.setTeleportTimer(this.teleportTimer() - 1);
+            if (this.teleportTimer() <= 0 && this.isAlive() && this.target != null) {
+                this.teleportTo(this.target.getX(), this.target.getY(), this.target.getZ());
+                this.setTeleportTimer(360);
+            }
 
-        age += 1;
+            age += 1;
 
-        if (this.target != null && this.attackCooldown() <= 0 && attackCondition && this.currentAttack == Attacks.PURSUIT && this.isAlive() && !this.level().isClientSide() && this.entityData.get(HAS_TARGET)) {
-            double choice = Mth.lerp(Math.random(), 0, 100);
-            if (choice < 66)
-                this.swipeAttack();
-            else
-                this.instaKill();
-            this.setAttackCooldown((byte) 40);
-        }
+            if (this.target != null && this.attackCooldown() <= 0 && attackCondition && this.currentAttack == Attacks.PURSUIT && this.isAlive() && !this.level().isClientSide() && this.entityData.get(HAS_TARGET)) {
+                double choice = Mth.lerp(Math.random(), 0, 100);
+                if (choice < 66)
+                    this.swipeAttack();
+                else
+                    this.instaKill();
+                this.setAttackCooldown((byte) 40);
+            }
 
-        if (Config.isDevelopment) {
-            DevUtils.executeCommandAs(this, "say " + this.currentAttack + " Wind up: " + this.windUpLeft + " Attack cooldown: " + this.attackCooldown() + " Direction: " + this.getDirection() + " Scan Cooldown: " + this.scanCooldown + " Rock Timer: " + this.rockTimer() + " Rabbit Timer: " + this.rabbitTimer() + " Origin coords: " + this.originX + " " + this.originY + " " + this.originZ + " Can return: " + this.hasOriginPoint + " Max detected players: " + this.maxDetectedPlayers);
+            if (Config.isDevelopment) {
+                DevUtils.executeCommandAs(this, "say " + this.currentAttack + " Wind up: " + this.windUpLeft + " Attack cooldown: " + this.attackCooldown() + " Direction: " + this.getDirection() + " Scan Cooldown: " + this.scanCooldown + " Rock Timer: " + this.rockTimer() + " Rabbit Timer: " + this.rabbitTimer() + " Origin coords: " + this.originX + " " + this.originY + " " + this.originZ + " Can return: " + this.hasOriginPoint + " Max detected players: " + this.maxDetectedPlayers);
+            }
         }
     }
 
