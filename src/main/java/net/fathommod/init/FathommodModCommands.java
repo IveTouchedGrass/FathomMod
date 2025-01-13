@@ -14,6 +14,7 @@ import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.GAME, modid = FathommodMod.MOD_ID)
+@SuppressWarnings("unused")
 public class FathommodModCommands {
 
     @SubscribeEvent
