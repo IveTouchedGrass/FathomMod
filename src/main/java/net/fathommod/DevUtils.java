@@ -1,25 +1,21 @@
 package net.fathommod;
 
-import net.fathommod.init.FathommodModItems;
 import net.fathommod.network.FathommodModVariables;
+import net.minecraft.client.Minecraft;
 import net.minecraft.commands.CommandSource;
 import net.minecraft.commands.CommandSourceStack;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.ai.attributes.AttributeInstance;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
@@ -55,6 +51,20 @@ public class DevUtils {
                 centerX - newHalfWidth, centerY - newHalfHeight, centerZ - newHalfDepth,  // Min corner
                 centerX + newHalfWidth, centerY + newHalfHeight, centerZ + newHalfDepth   // Max corner
         );
+    }
+
+    public static Optional<Player> getEntityFromAttributeInstance(AttributeInstance instance) {
+        Minecraft mc = Minecraft.getInstance();
+
+        if (mc.level == null)
+            return Optional.empty();
+
+        for (Player player : mc.level.players()) {
+            if (player.getAttribute(instance.getAttribute()) == instance) {
+                return Optional.of(player);
+            }
+        }
+        return Optional.empty();
     }
 
     public static Entity performPreciseRaycast(Entity ignoredEntity, Level world, Vec3 origin, Vec3 direction, double maxDistance) {
