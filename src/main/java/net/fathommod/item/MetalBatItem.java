@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class MetalBatItem extends AxeItem implements DamageTypedWeapon {
+public class MetalBatItem extends BatItem implements DamageTypedWeapon {
 	private static final Tier TOOL_TIER = new Tier() {
 		@Override
 		public int getUses() {
