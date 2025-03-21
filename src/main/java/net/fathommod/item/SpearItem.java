@@ -10,6 +10,6 @@ public abstract class SpearItem extends SwordItem implements SweetSpotItem {
 
     @Override
     public SweetSpotRange getSweetSpotRange() {
-        return new SweetSpotRange(.9, 1);
+        return new SweetSpotRange(.8, 1, 1.30);
     }
 }

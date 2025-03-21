@@ -10,6 +10,6 @@ public abstract class BatItem extends AxeItem implements SweetSpotItem {
 
     @Override
     public SweetSpotRange getSweetSpotRange() {
-        return new SweetSpotRange(.75, .9);
+        return new SweetSpotRange(.7, .85, 20);
     }
 }

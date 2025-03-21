@@ -1,5 +1,6 @@
 package net.fathommod.item;
 
+@SuppressWarnings("unused")
 public class SweetSpotRange {
     public final double startPercent;
     public final double endPercent;
@@ -13,6 +14,10 @@ public class SweetSpotRange {
         this.startPercent = startPercent;
         this.endPercent = endPercent;
         this.damageMultiplier = damage;
+    }
+
+    public SweetSpotRange(double startPercent, double endPercent, double damage) {
+        this(startPercent, endPercent, (float) damage);
     }
 
     public boolean isInRange(double value, double max) {

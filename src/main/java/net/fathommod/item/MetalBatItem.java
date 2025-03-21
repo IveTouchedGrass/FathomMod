@@ -14,6 +14,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class MetalBatItem extends BatItem implements DamageTypedWeapon {
 	private static final Tier TOOL_TIER = new Tier() {
 		@Override
@@ -32,7 +33,7 @@ public class MetalBatItem extends BatItem implements DamageTypedWeapon {
 		}
 
 		@Override
-		public TagKey<Block> getIncorrectBlocksForDrops() {
+		public @NotNull TagKey<Block> getIncorrectBlocksForDrops() {
 			return BlockTags.INCORRECT_FOR_WOODEN_TOOL;
 		}
 
@@ -42,13 +43,13 @@ public class MetalBatItem extends BatItem implements DamageTypedWeapon {
 		}
 
 		@Override
-		public Ingredient getRepairIngredient() {
+		public @NotNull Ingredient getRepairIngredient() {
 			return Ingredient.of(new ItemStack(Items.IRON_INGOT));
 		}
 	};
 
 	public MetalBatItem() {
-		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 17f, -3f)));
+		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 9f, -3f)));
 	}
 
 	@Override

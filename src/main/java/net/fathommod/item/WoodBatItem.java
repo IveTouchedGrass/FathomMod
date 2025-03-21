@@ -33,7 +33,7 @@ public class WoodBatItem extends BatItem implements DamageTypedWeapon {
 		}
 
 		@Override
-		public TagKey<Block> getIncorrectBlocksForDrops() {
+		public @NotNull TagKey<Block> getIncorrectBlocksForDrops() {
 			return BlockTags.INCORRECT_FOR_WOODEN_TOOL;
 		}
 
@@ -43,13 +43,13 @@ public class WoodBatItem extends BatItem implements DamageTypedWeapon {
 		}
 
 		@Override
-		public Ingredient getRepairIngredient() {
+		public @NotNull Ingredient getRepairIngredient() {
 			return Ingredient.of(new ItemStack(Blocks.OAK_PLANKS));
 		}
 	};
 
 	public WoodBatItem() {
-		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 9f, -2.8f)));
+		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 4f, -2.8f)));
 	}
 
 	@Override

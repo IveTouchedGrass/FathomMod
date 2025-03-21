@@ -14,7 +14,8 @@
     "MixinPush",
     "MixinRemove",
     "OtherGodModeMixin",
-    "SwordMixin"
+    "SwordMixin",
+    "MaceMixin"
   ],
   "client": [
     "CrosshairMixin",
