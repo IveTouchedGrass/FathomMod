@@ -58,7 +58,7 @@ public class BasicSpearItem extends SpearItem implements DamageTypedWeapon {
 	}
 
 	public BasicSpearItem() {
-		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 6f, -2.7f)));
+		super(TOOL_TIER, new Item.Properties().attributes(DiggerItem.createAttributes(TOOL_TIER, 5f, -2.7f)));
 	}
 
 	@Override
