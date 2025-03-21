@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class BasicSpearItem extends PickaxeItem implements DamageTypedWeapon {
+public class BasicSpearItem extends SpearItem implements DamageTypedWeapon {
 	private static final Tier TOOL_TIER = new Tier() {
 		@Override
 		public int getUses() {

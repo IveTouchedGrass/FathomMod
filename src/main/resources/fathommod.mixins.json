@@ -4,6 +4,7 @@
   "package": "net.fathommod.mixins",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "AxeMixin",
     "MixinComponent",
     "MixinDiscard",
     "MixinElytra",
@@ -12,9 +13,11 @@
     "MixinLivingEntity",
     "MixinPush",
     "MixinRemove",
-    "OtherGodModeMixin"
+    "OtherGodModeMixin",
+    "SwordMixin"
   ],
   "client": [
+    "CrosshairMixin",
     "MixinAttributeMovement"
   ],
   "server": [

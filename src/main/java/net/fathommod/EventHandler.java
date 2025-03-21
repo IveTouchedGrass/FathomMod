@@ -5,6 +5,7 @@ import net.fathommod.init.FathommodModDamageTypes;
 import net.fathommod.init.FathommodModItems;
 import net.fathommod.init.FathommodModMobEffects;
 import net.fathommod.init.FathommodModSounds;
+import net.fathommod.item.SweetSpotItem;
 import net.fathommod.network.packets.AutoAttackConfirmCanAttackMessage;
 import net.fathommod.network.packets.AutoAttackMessage;
 import net.fathommod.network.FathommodModVariables;
@@ -28,6 +29,7 @@ import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.Unbreakable;
@@ -62,6 +64,12 @@ public class EventHandler {
     public static void onClientTick(ClientTickEvent.Post event) {
         Minecraft instance = Minecraft.getInstance();
         HitResult hitResult = instance.hitResult;
+
+        if (Config.isDevelopment && instance.player != null && instance.player.getMainHandItem().getItem() instanceof SweetSpotItem item  && hitResult != null) {
+            if (hitResult instanceof EntityHitResult result) {
+                instance.player.sendSystemMessage(Component.literal(String.valueOf(item.getSweetSpotRange().isInRange(Math.sqrt(instance.player.distanceToSqr(result.getEntity())), instance.player.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).getValue()))));
+            }
+        }
 
 //        boolean isJumpHeld = instance.options.keyJump.isDown();
 
@@ -328,6 +336,15 @@ public class EventHandler {
 
     private static void unbreakableHandler(LivingEntity entity) {
         unbreakableToggler((DevUtils.hasTrinket(entity, Trinkets.UNBREAKABILITY)), entity);
+    }
+
+    @SubscribeEvent
+    private static void sweetSpotHandler(LivingIncomingDamageEvent event) {
+        if (event.getSource().getEntity() instanceof LivingEntity livingEntity && livingEntity.getMainHandItem().getItem() instanceof SweetSpotItem item) {
+            if (item.getSweetSpotRange().isInRange(Math.sqrt(livingEntity.distanceToSqr(event.getEntity())), livingEntity.getAttribute(Attributes.ENTITY_INTERACTION_RANGE).getValue())) {
+                event.setAmount(event.getAmount() * item.getSweetSpotRange().damageMultiplier);
+            }
+        }
     }
 
     public static void unbreakableToggler(boolean enable, Entity entity) {

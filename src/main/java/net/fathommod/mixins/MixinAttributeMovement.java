@@ -15,6 +15,6 @@ public class MixinAttributeMovement {
     public double getValue(double original) {
         //noinspection DataFlowIssue
         AttributeInstance instance = (AttributeInstance) (Object) this;
-        return instance.getAttribute() == Attributes.MOVEMENT_SPEED && DevUtils.inverseLerp(-30, 80, ClientVars.movementHeldTimeTicks) <= 1 ? original * DevUtils.inverseLerp(-30, 80, ClientVars.movementHeldTimeTicks) : original;
+        return instance.getAttribute() == Attributes.MOVEMENT_SPEED && DevUtils.getEntityFromAttributeInstance(instance).isPresent() && DevUtils.inverseLerp(-30, 80, ClientVars.movementHeldTimeTicks) <= 1 ? original * DevUtils.inverseLerp(-30, 80, ClientVars.movementHeldTimeTicks) : original;
     }
 }
