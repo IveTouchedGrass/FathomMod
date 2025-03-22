@@ -1,6 +1,7 @@
 package net.fathommod.init;
 
 import net.fathommod.FathommodMod;
+import net.fathommod.entity.ted.TedEntity;
 import net.fathommod.item.*;
 import net.minecraft.client.renderer.item.ItemProperties;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -18,6 +19,9 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.Objects;
+
+@SuppressWarnings("unused")
 public class FathommodModItems {
 	public static final DeferredRegister<Item> REGISTRY = DeferredRegister.create(BuiltInRegistries.ITEM, FathommodMod.MOD_ID);
 	public static final DeferredHolder<Item, Item> PALTN = block(FathommodModBlocks.PALTN);
@@ -63,6 +67,7 @@ public class FathommodModItems {
 	public static final DeferredHolder<Item, Item> THANKS_SLIMEYS_DYSLEXIA = REGISTRY.register("amor_polish", AmorPolishItem::new);
 	public static final DeferredHolder<Item, Item> TED_CLAWS = REGISTRY.register("ted_claws", TedClawsItem::new);
 	public static final DeferredHolder<Item, Item> AUTO_ATTACK_TRINKET = REGISTRY.register("gloves", GlovesTrinketItem::new);
+	public static final DeferredHolder<Item, Item> TED_SPAWNER = REGISTRY.register("ted_spawner", TedEntity.TedSpawnerItem::new);
 
 	// Start of user code block custom items
 	// End of user code block custom items
@@ -75,9 +80,7 @@ public class FathommodModItems {
 		@SubscribeEvent
 		@OnlyIn(Dist.CLIENT)
 		public static void clientLoad(FMLClientSetupEvent event) {
-			event.enqueueWork(() -> {
-				ItemProperties.register(RIOT_SHIELD.get(), ResourceLocation.parse("blocking"), ItemProperties.getProperty(new ItemStack(Items.SHIELD), ResourceLocation.parse("blocking")));
-			});
+			event.enqueueWork(() -> ItemProperties.register(RIOT_SHIELD.get(), ResourceLocation.parse("blocking"), Objects.requireNonNull(ItemProperties.getProperty(new ItemStack(Items.SHIELD), ResourceLocation.parse("blocking")))));
 		}
 	}
 }

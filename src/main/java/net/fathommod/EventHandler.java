@@ -1,17 +1,16 @@
 package net.fathommod;
 
 import net.fathommod.entity.ted.TedEntity;
-import net.fathommod.init.FathommodModDamageTypes;
-import net.fathommod.init.FathommodModItems;
-import net.fathommod.init.FathommodModMobEffects;
-import net.fathommod.init.FathommodModSounds;
+import net.fathommod.init.*;
 import net.fathommod.item.SweetSpotItem;
+import net.fathommod.network.FathommodModVariables;
 import net.fathommod.network.packets.AutoAttackConfirmCanAttackMessage;
 import net.fathommod.network.packets.AutoAttackMessage;
-import net.fathommod.network.FathommodModVariables;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -27,14 +26,19 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.Rabbit;
 import net.minecraft.world.entity.animal.frog.Frog;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.monster.*;
+import net.minecraft.world.entity.monster.Bogged;
+import net.minecraft.world.entity.monster.ElderGuardian;
+import net.minecraft.world.entity.monster.Monster;
+import net.minecraft.world.entity.monster.Zombie;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.component.Unbreakable;
 import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.chunk.ChunkAccess;
+import net.minecraft.world.level.chunk.LevelChunk;
+import net.minecraft.world.level.levelgen.Heightmap;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.EntityHitResult;
@@ -51,10 +55,7 @@ import net.neoforged.neoforge.event.tick.LevelTickEvent;
 import net.neoforged.neoforge.event.tick.PlayerTickEvent;
 import net.neoforged.neoforge.network.PacketDistributor;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 @SuppressWarnings({"DataFlowIssue", "unused"})
 @EventBusSubscriber(modid = FathommodMod.MOD_ID)
@@ -108,7 +109,7 @@ public class EventHandler {
                 ClientVars.pressedKeys.add(instance.options.keyLeft);
             if (instance.options.keyRight.isDown())
                 ClientVars.pressedKeys.add(instance.options.keyRight);
-            instance.player.sendSystemMessage(Component.literal(String.valueOf(ClientVars.pressedKeys) + String.valueOf(ClientVars.pressedKeys)));
+            instance.player.sendSystemMessage(Component.literal(ClientVars.pressedKeys + String.valueOf(ClientVars.pressedKeys)));
             for (KeyMapping mapping : ClientVars.pressedKeys) {
                 if (!ClientVars.lastPressedKeys.contains(mapping)) {
                     ClientVars.movementHeldTimeTicks *= 0.75;
@@ -150,13 +151,46 @@ public class EventHandler {
             event.setCanceled(true);
     }
 
+    private static ArrayList<int[]> generateSpawnLocationsArray(double originX, double originZ) {
+        int A = (int) originX;
+        int B = (int) originZ;
+
+        ArrayList<int[]> points = new ArrayList<>();
+
+        for (int x = A - 50; x <= A + 50; x++) {
+            for (int z = B - 50; z <= B + 50; z++) {
+                if (Math.abs(x - A) > 25 || Math.abs(z - B) > 25) {
+                    points.add(new int[]{x, z});
+                }
+            }
+        }
+
+        return points;
+    }
+
     @SubscribeEvent
     public static void onPlayerRightClick(PlayerInteractEvent.RightClickItem event) {
         ItemStack itemstack = event.getItemStack();
         Player entity = event.getEntity();
         Level world = event.getLevel();
-        if (itemstack.getItem() == Items.FIREWORK_ROCKET && itemstack.getEnchantmentLevel(world.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.INFINITY)) > 0) {
+        if (itemstack.getItem() == Items.FIREWORK_ROCKET && itemstack.getEnchantmentLevel(world.registryAccess().lookupOrThrow(Registries.ENCHANTMENT).getOrThrow(Enchantments.INFINITY)) > 0 && !entity.hasInfiniteMaterials()) {
             entity.addItem(itemstack);
+        }
+        if (itemstack.getItem() == FathommodModItems.TED_SPAWNER.get() && !world.isClientSide()) {
+            ArrayList<int[]> list = generateSpawnLocationsArray(entity.getX(), entity.getZ());
+            Collections.shuffle(list);
+            for (int[] point : list) {
+                ChunkAccess chunk = world.getChunk(point[0] >> 4, point[1] >> 4);
+                if (chunk instanceof LevelChunk lvlChunk) {
+                    if (!BuiltInRegistries.BLOCK.getKey(world.getBlockState(new BlockPos(point[0], lvlChunk.getHeight(Heightmap.Types.MOTION_BLOCKING, point[0], point[1]), point[1])).getBlock()).getPath().contains("air")) {
+                        TedEntity ted = new TedEntity(FathommodModEntities.TED.get(), world);
+                        ted.teleportTo(point[0], lvlChunk.getHeight(Heightmap.Types.MOTION_BLOCKING, point[0], point[1]) + 1, point[1]);
+                        world.addFreshEntity(ted);
+                        itemstack.shrink(1);
+                        break;
+                    }
+                }
+            }
         }
     }
 

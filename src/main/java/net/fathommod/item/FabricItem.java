@@ -1,7 +1,6 @@
 
 package net.fathommod.item;
 
-import net.fathommod.FathommodMod;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EquipmentSlotGroup;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;

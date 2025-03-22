@@ -2,7 +2,6 @@ package net.fathommod.procedures;
 
 import net.fathommod.DamageClasses;
 import net.fathommod.DamageTypedWeapon;
-import net.fathommod.init.FathommodModItems;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -17,16 +16,10 @@ import javax.annotation.Nullable;
 public class IFrameHeavenProcedure {
 	@SubscribeEvent
 	public static void onEntityAttacked(LivingDamageEvent.Post event) {
-		if (event.getEntity() != null) {
-			execute(event, event.getEntity(), event.getSource().getEntity());
-		}
-	}
+        execute(event.getEntity(), event.getSource().getEntity());
+    }
 
-	public static void execute(Entity entity, Entity sourceentity) {
-		execute(null, entity, sourceentity);
-	}
-
-	private static void execute(@Nullable Event event, Entity entity, Entity sourceentity) {
+	private static void execute(Entity entity, Entity sourceentity) {
 		if (entity == null || sourceentity == null)
 			return;
 		if ((sourceentity instanceof LivingEntity _livEnt ? _livEnt.getMainHandItem() : ItemStack.EMPTY).getItem() instanceof DamageTypedWeapon weapon && weapon.getDamageClass() == DamageClasses.ASSASSIN) {

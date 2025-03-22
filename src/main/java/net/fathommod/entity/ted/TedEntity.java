@@ -36,6 +36,7 @@ import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.AbstractArrow;
 import net.minecraft.world.entity.projectile.Projectile;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.ServerLevelAccessor;
 import net.minecraft.world.phys.AABB;
@@ -46,8 +47,8 @@ import org.jetbrains.annotations.Nullable;
 import software.bernie.geckolib.animatable.GeoAnimatable;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.animatable.instance.AnimatableInstanceCache;
-import software.bernie.geckolib.animation.AnimationState;
 import software.bernie.geckolib.animation.*;
+import software.bernie.geckolib.animation.AnimationState;
 import software.bernie.geckolib.util.GeckoLibUtil;
 
 import java.util.Comparator;
@@ -56,6 +57,12 @@ import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class TedEntity extends Monster implements GeoEntity, BossEntity {
+    public static class TedSpawnerItem extends Item {
+        public TedSpawnerItem() {
+            super(new Properties().stacksTo(1));
+        }
+    }
+
     private final Music MUSIC = new Music(this.level().holderOrThrow(ResourceKey.create(Registries.SOUND_EVENT, ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "ted_boss_music"))),0, 0, true);
     public static final ResourceLocation TEXTURE_LOCATION = ResourceLocation.parse("fathommod:textures/entity/teddy_2.png");
 

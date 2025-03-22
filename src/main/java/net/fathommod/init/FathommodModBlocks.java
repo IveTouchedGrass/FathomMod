@@ -17,6 +17,4 @@ public class FathommodModBlocks {
 	public static final DeferredHolder<Block, Block> SMALLROSERBUSH = REGISTRY.register("smallroserbush", SmallroserbushBlock::new);
 	public static final DeferredHolder<Block, Block> BIG_ROSERBUSH = REGISTRY.register("big_roserbush", BigRoserbushBlock::new);
 	public static final DeferredHolder<Block, Block> BLOOD_GRASS = REGISTRY.register("blood_grass", BloodGrassBlock::new);
-	// Start of user code block custom blocks
-	// End of user code block custom blocks
 }
