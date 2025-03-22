@@ -298,7 +298,7 @@ public class EventHandler {
 
             rangeHandler(entity);
 
-            notBoxingGloveHandler(entity);
+//            notBoxingGloveHandler(entity);
         }
 
         if (ServerTempVars.serverTickAge % 4 == 0) // conditional trinkets run every 4 ticks
@@ -361,12 +361,12 @@ public class EventHandler {
         }
     }
 
-    private static void notBoxingGloveHandler(LivingEntity entity) {
-        if (DevUtils.hasTrinket(entity, Trinkets.AUTO_ATTACK))
-            entity.getAttribute(Attributes.ATTACK_SPEED).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "not_boxing_glove_modifier"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
-        else
-            entity.getAttribute(Attributes.ATTACK_SPEED).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "not_boxing_glove_modifier"));
-    }
+//    private static void notBoxingGloveHandler(LivingEntity entity) {
+//        if (DevUtils.hasTrinket(entity, Trinkets.AUTO_ATTACK))
+//            entity.getAttribute(Attributes.ATTACK_SPEED).addOrUpdateTransientModifier(new AttributeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "not_boxing_glove_modifier"), 0.1, AttributeModifier.Operation.ADD_MULTIPLIED_BASE));
+//        else
+//            entity.getAttribute(Attributes.ATTACK_SPEED).removeModifier(ResourceLocation.fromNamespaceAndPath(FathommodMod.MOD_ID, "not_boxing_glove_modifier"));
+//    }
 
     private static void unbreakableHandler(LivingEntity entity) {
         unbreakableToggler((DevUtils.hasTrinket(entity, Trinkets.UNBREAKABILITY)), entity);
